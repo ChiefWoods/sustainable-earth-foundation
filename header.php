@@ -8,7 +8,7 @@
         <a href="">Home</a>
         <a href="">Sticky Wall</a>
         <a href="">Rewards</a>
-        <a href="">Profile</a>
+        <a href="profile.php">Profile</a>
         <a href="" style="background-color:#2B5292; padding: 5px 15px; color: white; border-radius: 5px;">Login</a>
         <div class="dropdown">
             <button id="dropbtn" onclick="myFunction()" class="dropbtn">
