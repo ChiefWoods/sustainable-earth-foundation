@@ -70,7 +70,12 @@ footer{
     border-bottom: 1px solid #000000;
     font-size: 15px;
     width: 200px;
+   
   }
+
+  input:focus{
+    outline: none;
+}
   
   .submit-btn{
     font-family: 'Times New Roman', Times, serif;

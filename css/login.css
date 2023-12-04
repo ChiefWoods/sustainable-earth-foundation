@@ -1,5 +1,5 @@
 body {
-    background-color: #2B5292;
+    background-color: #6487BF;
     margin: 0;
   }
 
@@ -41,8 +41,13 @@ body {
     font-size: 15px;
     width: 250px;
 }
+input:focus{
+    outline: none;
+}
+   
 
-.login-btn{
+
+.login-btn ,.signup-btn ,.update-btn{
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     background-color: #FF8D0B;
@@ -55,7 +60,7 @@ body {
     box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
 }
 
-.login-btn:hover {
+.login-btn:hover ,.signup-btn:hover ,.update-btn:hover{
     background-color: #eb7d00;
     color: rgb(255, 255, 255);
   }
