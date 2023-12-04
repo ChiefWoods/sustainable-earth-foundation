@@ -1,0 +1,282 @@
+@import '../css/colors.css';
+@import '../css/fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Libre Baskerville', serif;
+}
+
+:root {
+  --github-black: #0D1117;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: inline-flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100vw - (100vw - 100%));
+}
+
+/* Universal */
+
+button {
+  cursor: pointer;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  padding: 25px 50px;
+  gap: 30px;
+}
+
+/* Branding */
+
+.branding {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.branding > h1 {
+  font-size: 2.5rem;
+  color: var(--navy-blue);
+  align-self: center;
+  white-space: nowrap;
+}
+
+header .logo {
+  width: 125px;
+}
+
+.branding .divider::after {
+  content: "";
+  border-left: 2.5px solid var(--navy-blue);
+  height: 100%;
+  display: inline-block;
+}
+
+/* Header Nav */
+
+header nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.login-btn {
+  background: var(--navy-blue);
+  font-size: var(--font-m);
+  font-weight: 500;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 7px;
+}
+
+header .nav-link {
+  font-size: var(--font-m);
+  white-space: nowrap;
+  text-decoration: none;
+  color: black;
+}
+
+header .nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.notification-btn {
+  border: none;
+  background: transparent;
+}
+
+.notification-btn > img {
+  width: 25px;
+  fill: var(--navy-blue);
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background: var(--footer-beige);
+}
+
+footer > div:first-child {
+  display: flex;
+  padding: 25px 50px 0;
+  justify-content: space-between;
+}
+
+/* Nav-socials */
+
+.nav-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.nav-socials .logo {
+  width: 125px;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(2, 250px);
+  gap: 10px;
+}
+
+.quick-links a {
+  font-size: var(--font-s);
+  text-decoration: none;
+  color: black;
+  width: fit-content;
+}
+
+.quick-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-links span {
+  font-size: var(--font-m);
+}
+
+.social-links img {
+  width: 30px;
+}
+
+img[alt="Instagram"] {
+  background: var(--navy-blue);
+  border-radius: 50%;
+  padding: 2.5px;
+}
+
+/* Newsletter */
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  width: 340px;
+}
+
+.newsletter span {
+  font-size: var(--font-xl);
+  font-weight: 600;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid black;
+}
+
+.newsletter input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  font-size: var(--font-m);
+  outline: none;
+  padding: 12px 5px 12px 0;
+}
+
+.newsletter input::placeholder {
+  font-size: var(--font-m);
+}
+
+.newsletter button {
+  font-size: var(--font-s);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  padding: 12px 0 12px 8px;
+}
+
+footer > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+footer > div:nth-child(2) nav {
+  display: flex;
+  gap: 20px;
+}
+
+footer > div:nth-child(2) a {
+  font-size: var(--font-s);
+  text-decoration: none;
+  color: black;
+}
+
+footer .divider::after {
+  content: "";
+  border-left: 2px solid black;
+  height: 100%;
+  display: inline-block;
+}
+
+footer > div:nth-child(2) span {
+  font-size: var(--font-xs);
+}
+
+footer > div:last-child {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--github-black);
+  padding: 12px 3%;
+  height: 55px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+  z-index: 99;
+}
+
+.made-by,
+.github-link {
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  white-space: nowrap;
+}
+
+.made-by {
+  grid-column: 2;
+}
+
+.github-link {
+  grid-column: 3;
+  justify-self: end;
+  text-decoration: none;
+}
+
+.github-icon {
+  height: 25px;
+}
