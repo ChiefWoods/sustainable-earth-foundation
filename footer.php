@@ -1,0 +1,39 @@
+<footer>
+    <div class="footerTop">
+        <a href=""><img src="pic/logoonly.png" alt="SEF Logo" width="90px" height="34px" style="float: left;"></a>
+    </div>
+    <div class="footerLeft">
+        <ul>
+            <li><a href="">Goals</a></li>
+            <li><a href="">Target &amp; Indicators</a></li>
+            <li><a href="">Timeline</a></li>
+        </ul>
+        <ul style="padding-left: 150px;">
+            <li><a href="">Purpose</a></li>
+            <li><a href="">Events</a></li>
+        </ul>
+        <p> Follow us <button><img src="icon/fb.png" alt="Facebook" width="44px" height="40px" style="vertical-align:middle;"></button>
+            <button><img src="icon/ig.png" alt="Instagram" width="40px" height="48px"></button></p>
+    </div>
+    <div class="footerRight">
+        <h2>Let's Stay Connected!</h2>
+        <br>
+        <form> <input type="text" id="email" name="email" placeholder="Your Email">
+            <button class="submit-btn" value="Submit">Submit</button></form>
+    </div>
+    <div class="footerBottom">
+        <p>
+            <a href="">Contact Us</a>
+            |
+            <a href="">Fraud Alert</a>
+            |
+            <a href="">Privacy Notice</a>
+            |
+            <a href="">Terms Of User</a>
+        </p>
+        <br>
+        <div class="copyright">
+            <p>© Sustainable Earth Foundation. All Rights Reserved. </p>
+        </div>
+    </div>
+</footer>
