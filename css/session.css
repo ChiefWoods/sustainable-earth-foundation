@@ -1,0 +1,65 @@
+body {
+    background-color: #6487BF;
+    margin: 0;
+  }
+
+.container{
+    background-image: url("../assets/images/session-bg.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    position: relative;
+    margin: auto;
+    width: 900px; 
+    height: 600px;
+    border-radius: 30px;
+    margin-top: 150px;
+    overflow: hidden;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.window{
+    margin:150px 50px 50px 200px;
+    background-color: #ffffff;
+    position:relative;
+    width:500px;
+    height: 300px;
+    border-radius: 30px;
+    box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.text {
+    padding-top: 50px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.text h1{
+    margin-bottom: 35px;
+}
+
+
+
+.login-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #FF8D0B;
+    color: #ffffff;
+    width: 100px;
+    margin-top: 10px;
+    padding:5px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.login-btn:hover{
+    background-color: #eb7d00;
+    color: rgb(255, 255, 255);
+  }
+
+.login-btn a{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: #ffffff;
+}
+

@@ -1,0 +1,126 @@
+body {
+    background-color: #6487BF;
+    margin: 0;
+  }
+
+.container{
+    background-image: url("../assets/images/reward-bg.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    position: relative;
+    margin: auto;
+    width: 100%; 
+    height: 700px;
+    border-radius: 30px;
+    margin-top: 150px;
+    overflow: hidden;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.window{
+    margin:50px auto auto auto;
+    background-color: #EEF6FB;
+    position:relative;
+    width:1000px;
+    height: 600px;
+    border-radius: 30px;
+    box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.text {
+    padding-top: 50px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.saved-points{
+    margin-right: 80px;
+    float:right;
+    margin-top: -80px;
+}
+.container input[type=text]{
+    float: right;
+    height: 20px;
+    background-color:#FFF6D4;
+    border:none;
+    box-sizing: border-box;
+    border: 1px solid #828282;
+    font-size: 10px;
+    width: 80px;
+    border-radius: 15px;
+    box-shadow:inset 0 3px 0px 0px rgba(0,0,0,0.2);
+}
+input:focus{
+    outline: none;
+}
+
+.rewards-container{
+    background-color: #ffffff;
+    position:relative;
+    margin-top: 20px;
+    margin-left: 70px;
+    float: left;
+    width:160px;
+    height: 180px;
+    border-radius: 15px;
+    box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.rewards{
+    text-align: center;
+}
+
+.rewards h4{
+    margin-top: 30px;
+}
+
+.rewards p{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.redeem-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-top: 10px;
+    background-color: #FF8D0B;
+    color: #ffffff;
+    width: 100px;
+    padding:5px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.redeem-btn:hover{
+    background-color: #eb7d00;
+    color: rgb(255, 255, 255);
+  }
+
+.more {
+    text-align: center; 
+    margin-top: 250px; 
+}
+
+.more-btn {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #77A0DE;
+    color: #ffffff;
+    width: 100px;
+    padding: 5px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.2);
+    margin: auto; 
+    display: block; 
+}
+
+.more-btn:hover {
+    background-color: #5f8aca;
+    color: rgb(255, 255, 255);
+}
+
+
+
