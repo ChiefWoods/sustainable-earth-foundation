@@ -4,13 +4,13 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <script src="./js/dropdown.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/dropdown.js"></script>
 <style>
     .container{
-        background-image: url("pic/forgot.jpg");
+        background-image: url("../pic/forgot.jpg");
         
     }
     .left-container input[type=text]{

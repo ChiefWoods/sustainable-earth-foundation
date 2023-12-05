@@ -105,7 +105,7 @@ input:focus{
     margin-bottom: 10px;
     border-radius: 30px;
     border: none;
-    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 5px 1px 0 rgba(0,0,0,0.2);
 }
 
 .updateInfo-btn:hover{
@@ -123,6 +123,7 @@ input:focus{
     border-radius: 15px;
     margin-top: 20px;
     overflow: hidden;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
 }
 .bottom-container table{
    width: 90%;
@@ -132,10 +133,11 @@ input:focus{
    overflow: hidden;
    border-collapse: collapse !important;
    border: none !important;
+   box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
 }
 
 .bottom-container table td{
-    border-bottom: 0.2px solid black;
+    border-bottom: 0.2px solid #969696;
 }
 
 .bottom-container table tr th{

@@ -4,19 +4,18 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="./css/profile.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <script src="./js/dropdown.js"></script>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/dropdown.js"></script>
 </head>
 <body>
 
 <?php include 'header.php'; ?>
-
 <div class="container">
     <div class="left-shadow">
     <div class="left-container">
-        <img src="icon/user.png">
+        <img src="../icon/user.png">
         <br>
         <p>
           Username:
@@ -70,12 +69,11 @@
  
     </table>
     <div class="tip">
-        <p> <img src="./icon/bulb.png" width="30px" height="30px" style="vertical-align:middle;"> Tips for earning more points! <img src="./icon/bulb.png" width="30px" height="30px" style="vertical-align:middle;"></p> 
-        <img src="./icon/star.png" style="float:left; width:30px; height:30px; padding-left: 50px;" >
+        <p> <img src="../icon/bulb.png" width="30px" height="30px" style="vertical-align:middle;"> Tips for earning more points! <img src="../icon/bulb.png" width="30px" height="30px" style="vertical-align:middle;"></p> 
+        <img src="../icon/star.png" style="float:left; width:30px; height:30px; padding-left: 50px;" >
         <p style="text-align:left; padding-right: 40px;">Write posts on environment issues, rural areas, urban planning, etc. that are inline with SDG11's objectives, share them on the sticky wall, and earn points for every upvote you receive!</p>
     </div>
 </div>
-
 </body>
 <?php include 'footer.php'; ?>
 

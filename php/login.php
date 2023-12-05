@@ -4,10 +4,10 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <script src="./js/dropdown.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/dropdown.js"></script>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 
 <div class="container">
     <div class="left-container">
-        <img src="icon/user.png">
+        <img src="../icon/user.png">
         <p>
             <h2>Welcome back!</h2>
         </p>
@@ -30,7 +30,6 @@
         </div>
     </div>
 </div>
-
 <?php include 'footer.php'; ?>
 
 </body>

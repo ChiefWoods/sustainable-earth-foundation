@@ -4,10 +4,10 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile</title>
-    <link rel="stylesheet" href="./css/profile.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <script src="./js/dropdown.js"></script>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/dropdown.js"></script>
     <style>
         body{
             background-color: #A9B7FF;
@@ -22,7 +22,7 @@
     <div class="left-shadow">
     <div class="left-container">
         <br>
-        <img src="icon/user.png">
+        <img src="../icon/user.png">
         <br>
         <br>
         <p>

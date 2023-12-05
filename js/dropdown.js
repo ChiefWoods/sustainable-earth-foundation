@@ -8,7 +8,7 @@ function myFunction() {
     isDropdownVisible = !isDropdownVisible;
 
     // Set the image and display property based on the dropdown visibility
-    dropbtn.querySelector("img").src = isDropdownVisible ? "icon/clicked-bell.png" : "icon/bell.png";
+    dropbtn.querySelector("img").src = isDropdownVisible ? "../icon/clicked-bell.png" : "../icon/bell.png";
     dropdownContent.style.display = isDropdownVisible ? "block" : "none";
 }
 

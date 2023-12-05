@@ -1,6 +1,6 @@
 <footer>
     <div class="footerTop">
-        <a href=""><img src="pic/logoonly.png" alt="SEF Logo" width="90px" height="34px" style="float: left;"></a>
+        <a href=""><img src="../pic/logoonly.png" alt="SEF Logo" width="90px" height="34px" style="float: left;"></a>
     </div>
     <div class="footerLeft">
         <ul>
@@ -12,8 +12,8 @@
             <li><a href="">Purpose</a></li>
             <li><a href="">Events</a></li>
         </ul>
-        <p> Follow us <button><img src="icon/fb.png" alt="Facebook" width="44px" height="40px" style="vertical-align:middle;"></button>
-            <button><img src="icon/ig.png" alt="Instagram" width="40px" height="48px"></button></p>
+        <p> Follow us <button><img src="../icon/fb.png" alt="Facebook" width="44px" height="40px" style="vertical-align:middle;"></button>
+            <button><img src="../icon/ig.png" alt="Instagram" width="40px" height="48px"></button></p>
     </div>
     <div class="footerRight">
         <h2>Let's Stay Connected!</h2>

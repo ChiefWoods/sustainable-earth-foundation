@@ -1,0 +1,117 @@
+body {
+    background-image: url("../pic/admin-manage-bg.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    margin: 0;
+  }
+
+.container{
+    background-color: #ffffff;
+    position: relative;
+    margin: auto;
+    width: 900px; 
+    height: 600px;
+    border-radius: 30px;
+    margin-top: 150px;
+    overflow: hidden;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+}
+.container p{
+    font-size: 22px;
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 50px ;
+}
+
+.container input[type=text]{
+    height: 25px;
+    margin-left: 80px;
+    background-color:#ffffff ;
+    border:none;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    font-size: 10px;
+    width: 600px;
+    border-radius: 15px;
+    box-shadow:inset 0 3px 0px 0px rgba(0,0,0,0.2);
+}
+input:focus{
+    outline: none;
+}
+   
+.search-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #FF8D0B;
+    color: #ffffff;
+    float: right;
+    width: 100px;
+    margin-right: 80px;
+    padding:5px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.search-btn:hover{
+    background-color: #eb7d00;
+    color: rgb(255, 255, 255);
+  }
+
+.container table{
+   empty-cells: show;
+   width: 90%;
+   margin: auto; /* Center the table horizontally */
+   margin-top: 35px;
+   border-radius: 13px; 
+   overflow: hidden;
+   border-collapse: collapse !important;
+   border: none !important;
+   border-right: none;
+   box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.container table td {
+    border-bottom: 1px solid #969696;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #F4F4F4;
+    color: #454545;
+}
+
+.container table td:not(:last-child) {
+    border-right: 1px solid #969696;
+}
+
+.container table td.empty-cell {
+    padding: 20px; /* Adjust the desired padding value */
+}
+
+
+.container table tr th{
+    padding: 10px;
+    font-weight:normal;
+    text-align: center;
+    font-size: 16px;
+    background-color: #EDEAFF;
+    color: #454545;
+    
+}
+
+
+
+.container table th:first-child {
+    border-radius: 15px 0 0 0;
+}
+
+.container table th:last-child {
+    border-radius: 0 15px 0 0;
+}
+
+.container table td:first-child {
+    border-radius: 0 0 0 15px;
+}
