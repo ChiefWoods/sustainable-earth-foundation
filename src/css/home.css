@@ -221,7 +221,7 @@ main > div:nth-child(2) > * {
   font-size: var(--font-m);
 }
 
-.desc {
+.timeline .desc {
   font-size: var(--font-s);
 }
 
@@ -262,4 +262,78 @@ main > div:nth-child(2) > * {
 
 .purposes p {
   font-size: var(--font-m);
+}
+
+/* Upcoming */
+
+.upcoming {
+  margin: 70px;
+}
+
+.upcoming > h2 {
+  font-size: var(--font-xl);
+  font-weight: 400;
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  text-align: center;
+}
+
+.upcoming > ul {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.upcoming li {
+  list-style-type: none;
+  background: white;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 25px 10px;
+  cursor: pointer;
+}
+
+.upcoming .date {
+  font-size: var(--font-xxl);
+  text-align: center;
+  padding: 12px;
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  bottom: 30px;
+}
+
+.upcoming li:nth-child(1) > .date {
+  background: #b4ee6b;
+}
+
+.upcoming li:nth-child(2) > .date {
+  background: #83ff8f;
+}
+
+.upcoming li:nth-child(3) > .date {
+  background: #62d4ed;
+}
+
+.upcoming li:nth-child(4) > .date {
+  background: #699bf7;
+}
+
+.upcoming .desc {
+  font-size: var(--font-m);
+  margin-bottom: 20px;
+}
+
+.upcoming button {
+  background: transparent;
+  border: none;
+  margin-top: auto;
+}
+
+.upcoming img {
+  width: 30px;
 }
