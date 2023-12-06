@@ -113,6 +113,7 @@ footer {
   flex-direction: column;
   gap: 30px;
   background: var(--footer-beige);
+  z-index: 1;
 }
 
 footer > div:first-child {
