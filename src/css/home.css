@@ -1,6 +1,12 @@
+:root {
+  --targets-width: 55px;
+}
+
 main {
   background: var(--navy-blue);
 }
+
+/* Hero */
 
 .hero {
   background-image: url(../assets/backgrounds/home_bg.jpg);
@@ -11,8 +17,12 @@ main {
   gap: 25px;
 }
 
+.hero > div {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
 .hero span {
-  font-family: 'Libre Baskerville', serif;
   font-size: 4rem;
   color: white;
   padding: 10px 20px;
@@ -23,29 +33,103 @@ main {
   align-self: flex-start;
 }
 
-.hero > div {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-}
-
-.goals {
+.goal {
+  display: flex;
+  flex-direction: column;
   align-self: center;
 }
 
-.goals h2 {
-  font-family: 'Libre Baskerville', serif;
+.goal h2 {
   font-size: var(--font-xxl);
   color: white;
   margin-bottom: 10px;
 }
 
-.goals p {
-  font-family: 'Libre Baskerville', serif;
+.goal p {
   font-size: var(--font-l);
   color: white;
 }
 
 .hero img {
-  /* padding: 40px; */
   height: 700px;
+}
+
+main > div:nth-child(2) {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  padding: 70px;
+}
+
+main > div:nth-child(2) > * {
+  border-radius: 15px;
+  background: white;
+  padding: 30px;
+}
+
+/* Target */
+
+.target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.target h2 {
+  font-size: var(--font-xl);
+  white-space: nowrap;
+}
+
+.target p {
+  font-size: var(--font-s);
+}
+
+.target div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.target div span {
+  font-size: var(--font-m);
+  display: inline-block;
+  width: var(--targets-width);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: var(--targets-width);
+}
+
+.target div span:nth-child(3n + 1) {
+  background: var(--target-yellow);
+}
+
+.target div span:nth-child(3n + 2) {
+  background: var(--target-light-orange);
+}
+
+.target div span:nth-child(3n + 3) {
+  background: var(--target-dark-orange);
+}
+
+/* Interlinkage */
+
+.interlinkage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.interlinkage img {
+  max-height: 500px;
+}
+
+.interlinkage figcaption {
+  font-size: var(--font-m);
 }
