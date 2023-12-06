@@ -231,3 +231,35 @@ main > div:nth-child(2) > * {
   font-size: var(--font-m);
   padding: 30px;
 }
+
+/* Purposes */
+
+.purposes {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  margin: 70px;
+  padding: 30px;
+}
+
+.purposes > h2 {
+  font-size: var(--font-xl);
+}
+
+.purposes > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.purposes img {
+  width: 150px;
+  aspect-ratio: 1 / 1;
+}
+
+.purposes p {
+  font-size: var(--font-m);
+}
