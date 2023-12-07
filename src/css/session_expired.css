@@ -1,0 +1,51 @@
+:root {
+  --login-button-radius: 30px;
+}
+
+main {
+  background: var(--light-blue);
+}
+
+.expired {
+  background: url(../assets/backgrounds/session_bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 70px;
+  border-radius: 15px;
+  padding: 50px;
+}
+
+.expired > div {
+  background: white;
+  margin: 0 auto;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  gap: 25px;
+  border-radius: 15px;
+}
+
+.expired h2 {
+  font-size: var(--font-l);
+}
+
+.expired p {
+  font-size: var(--font-m);
+}
+
+.expired button {
+  background: var(--sdg-orange);
+  border: none;
+  font-size: var(--font-m);
+  color: white;
+  border-radius: var(--login-button-radius);
+  padding: 8px;
+  width: 150px;
+}
+
+.expired button:hover {
+  background: var(--button-hover-orange);
+}
