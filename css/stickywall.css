@@ -1,0 +1,291 @@
+body {
+    background-color: #D9D9D9;
+    margin: 0;
+  }
+
+.container{
+    background-image: url("../assets/images/stickywall-bg.jpg");
+    background-color: #ffffff;
+    background-size: contain;
+    background-repeat:no-repeat;
+    position: relative;
+    margin: auto;
+    width: 1200px; 
+    min-height: 600px;
+    border-radius: 30px;
+    margin-top: 150px;
+    overflow: hidden;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.window{
+    margin:350px 50px 50px 0px;
+    background-color: #ffffff;
+    position:relative;
+    width:1200px;
+    min-height: 600px;
+    border-radius: 20px;
+
+}
+
+
+.text h1, .text p{
+    color: #4A4A4A;
+    padding:5px 5px 5px 10px ;
+    text-align: left;
+    float: left;
+    font-weight: normal;
+}
+
+.add-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #FF8D0B;
+    color: #ffffff;
+    padding-top: 5px;
+    width: 140px;
+    margin-top: 5px;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    border: none;
+    float:right;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.add-btn:hover{
+    background-color: #eb7d00;
+    color: rgb(255, 255, 255);
+  }
+
+.add-btn a{
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: #ffffff;
+}
+/*popup window*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Set a high z-index value */
+}
+
+.modal-content {
+    background-image: url("../assets/images/addpost_bg.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    position: relative;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    margin: 10% auto;
+    width: 40%;
+    height: 56%;
+    z-index: 1001; /* Set a higher z-index value */
+}
+
+.modal-header{
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+
+.modal-header h1 {
+    padding-bottom: 5px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 3px 0px 0  #eb7d00;
+}
+.modal-middle{
+    
+    padding-top: 100px;
+}
+
+.modal form {
+    position: static;
+    text-align: left;
+    z-index: 1000; /* Set a lower z-index value than the modal content */
+}
+
+.modal form input, .modal form textarea {
+    border-radius: 5px;
+    border: none; 
+    outline: none;
+    background-color:#dddddd ;
+    box-shadow:inset 0px 3px 0px 0px rgba(0,0,0,0.2);
+}
+.modal form input{
+    height: 25px;
+}
+
+#postContent {
+    width: 80%; /* Set the width as a percentage or in pixels */
+    height: 200px; /* Set the height in pixels or any other unit */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+
+.close {
+    float: right;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+ .cancel-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #EAEAEA;
+    color: #000000;
+    padding-top: 5px;
+    width: 140px;
+    margin-top: 5px;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    border: none;
+    float: left;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+.submit-btn{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #ff8800;
+    color: #ffffff;
+    padding-top: 5px;
+    width: 140px;
+    margin-top: 5px;
+    margin-right: 25px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    border: none;
+    float: left;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.submit-btn:hover{
+    background-color: #eb7d00;
+    color: rgb(255, 255, 255);
+  }
+
+  .cancel-btn:hover{
+    background-color: #a3a3a3;
+    color: rgb(255, 255, 255); 
+  }
+
+.stickywall{
+    position: relative;
+    border-radius: 10px;
+    margin: 70px auto auto auto;
+    background-color: #ffffff;
+    width: 1200px;
+    min-height: 400px;
+
+}
+
+.pages-btn{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin:auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+.pages-btn:hover{
+    background-color: #888888;
+    color: white;
+}
+.stickywall table {
+    border-collapse: collapse;
+    width: 1200px; /* Adjust the total width of the table as needed */
+    margin: auto auto auto 40px; 
+    bottom: 5px;
+}
+
+.stickywall td {
+    width: 300px;
+    height: 300px;
+    padding: 3px; /* Optional: Add padding for better visual appearance */
+    box-sizing: border-box; /* Include padding in the total width and height */
+}
+
+/* for the sticky note*/
+
+.note{
+    position: relative;
+    width: 320px;
+    height: 240px;
+    background-color: #ECEE6B;
+    box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
+}
+
+.note-top{
+    color: #6D6D6D;
+}
+.text-content{
+    padding: 10px;
+}
+
+.username .date{
+    color: #6D6D6D;
+    font-size: 15px;
+}
+
+.upvote-downvote ,.date{
+    float: right;
+}
+
+.date{
+    left: 0;
+    margin-top: -35px;
+}
+.note{
+    float: left;
+}
+.upvote-downvote {
+    position: absolute;
+    bottom: 5px;
+    right: 5px; 
+}
+
+.upvote-downvote img {
+    margin-left: 10px;
+    color: #ffffff; 
+}
+
+.upvote-downvote button {
+    border: none; 
+    background: none;
+}
+.note-middle{
+   top:5px;
+
+}
+
+.content-container {
+    overflow-y: auto; 
+    max-height: 100px; 
+}
+
+.content {
+    max-height: 100px;   
+    overflow-y: auto;    
+    white-space: normal; 
+    word-wrap: break-word; 
+}
+
+
+
+

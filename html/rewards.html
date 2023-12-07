@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/dropdown.js"></script>
+    <script src="../js/popup.js"></script>
+    <script src="../js/comingsoon.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 
 </head>
@@ -20,7 +22,44 @@
         <p><img src="../assets/icons/star/star.png"  width="40px" height="40px" style="vertical-align:middle;">
         <img src="../assets/icons/star/star.png"  width="40px" height="40px" style="vertical-align:middle;">
         <img src="../assets/icons/star/star.png" width="40px" height="40px" style="vertical-align:middle;"></p>
-    <p><h1>Rewards Redemption <a><img src="../assets/icons/help/help.png" width="20px" height="20px" style="vertical-align:middle;"></a></h1></p>
+    <p><h1>Rewards Redemption <button class="help-button" onclick="openHelpModal()">
+        <img src="../assets/icons/help/help.png" width="20px" height="20px" style="vertical-align:middle;" alt="Help">
+    </button></h1></p>
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHelpModal()">&times;</span>
+            <h4>Accumulating a certain number of Likes will earn you corresponding points!</h4>
+            <!-- Add your table content here -->
+            <table>
+                <tr>
+                    <th>Likes</th>
+                    <th>Earned Points</th>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>150</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>200</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>250</td>
+                    <td>40</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+   
+   
     <div class="saved-points">
         <p>Saved Points</p>
         <form> <input type="text" id="points" name="points" placeholder=""></form>
@@ -64,7 +103,14 @@
     </div>
  <div class="more">
     <button class="more-btn" value="more">More..</button>
- </div>   
+ </div>  
+ <div id="comingSoonModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeComingSoonModal()">&times;</span>
+        <h2>Coming Soon!</h2>
+        <p>We're working on bringing you more rewards. Stay tuned!</p>
+    </div>
+</div> 
 </div>
 </div>
 </body>

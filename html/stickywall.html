@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Wall</title>
+    <link rel="stylesheet" href="../css/stickywall.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/upvote_downvote.js"></script>
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/create_post.js"></script>
+    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<?php include 'header.html'; ?>
+<div class="container">
+    <div class="window">
+        <div class="text">
+            <p>
+                <h1>Sticky Wall</h1>
+            </p>
+            <br>
+            <p>Write post to earn points!</p>
+            <button class="add-btn" id="createPostBtn" value="add">
+                <a href="#">
+                    <img src="../assets/icons/add_post/add_post_base.svg" width="30px" height="30px" style="vertical-align: middle; color: white;"> Create Post
+                </a>
+            </button>
+            <div id="postModal" class="modal">
+                <div class="modal-content">
+                   
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="modal-header">
+                        <h1>Create a Post</h1>
+                        
+                    </div>
+                   
+                    <div class="modal-middle">
+                    <form id="postForm">
+                        <label for="postTitle">Title:</label>
+                        <br>
+                        <input type="text" id="postTitle" name="postTitle" required>
+                        <br>
+                        <br>
+                        <label for="postContent">Content:</label>
+                        <br>
+                        <textarea id="postContent" name="postContent" rows="8" cols="50" required></textarea>
+                        <br>
+                        <br>
+                        <button class="submit-btn" type="button" onclick="submitPost()" style="  background-color: #ff8800;">Submit</button>
+                        <button class="cancel-btn" type="button" onclick="closeModal()">Cancel</button>
+                    </form>
+                </div>
+                </div>
+                </div>
+         
+        </div>
+        <div class="stickywall">
+            <table>
+        <tr>
+            <td>          
+                <div class="note">
+                <div class="text-content">
+                    <div class="note-top">
+                        <div class="username">
+                         <p>Username</p>
+                    </div>
+                <div class="date">
+                 18/12/2023
+                </div>
+                </div>
+                <div class="note-middle">
+                    <div class="title">
+                        <p>Title</p>
+                    </div>
+                    <div class="content-container">
+                        <div class="content">
+                            <p>
+                                Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                            </p>
+                        </div>
+                
+                
+                    </div>
+                </div>                
+                    <div class="upvote-downvote">
+                        <button class="upvote" id="upvote_1" onclick="handleVote('upvote', 1)">
+                            <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
+                        </button>
+                        <button class="downvote" id="downvote_1" onclick="handleVote('downvote', 1)">
+                            <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
+                        </button>    
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>          
+            <div class="note">
+            <div class="text-content">
+                <div class="note-top">
+                    <div class="username">
+                     <p>Username</p>
+                </div>
+            <div class="date">
+             18/12/2023
+            </div>
+            </div>
+            <div class="note-middle">
+                <div class="title">
+                    <p>Title</p>
+                </div>
+                <div class="content-container">
+                    <div class="content">
+                        <p>
+                            Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                        </p>
+                    </div>
+            
+            
+                </div>
+            </div>                
+                <div class="upvote-downvote">
+                    <button class="upvote" id="upvote_2" onclick="handleVote('upvote', 2)">
+                        <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
+                    </button>
+                    <button class="downvote" id="downvote_2" onclick="handleVote('downvote', 2)">
+                        <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </td>
+    <td>          
+        <div class="note">
+        <div class="text-content">
+            <div class="note-top">
+                <div class="username">
+                 <p>Username</p>
+            </div>
+        <div class="date">
+         18/12/2023
+        </div>
+        </div>
+        <div class="note-middle">
+            <div class="title">
+                <p>Title</p>
+            </div>
+            <div class="content-container">
+                <div class="content">
+                    <p>
+                        Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                    </p>
+                </div>
+        
+        
+            </div>
+        </div>                
+            <div class="upvote-downvote">
+                <button class="upvote" id="upvote_3" onclick="handleVote('upvote', 3)">
+                    <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
+                </button>
+                <button class="downvote" id="downvote_3" onclick="handleVote('downvote', 3)">
+                    <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
+                </button>
+            </div>
+        </div>
+    </div>
+</td>          
+                </tr>
+    </table>
+</div>
+</div>
+<div><button class="pages-btn" value="pages">1</button></div>
+</div>
+
+
+<?php include 'footer.html'; ?>
+
+</body>
+</html>

@@ -41,6 +41,7 @@
   height: 50px;
   margin-right: 5px; /* Adjust as needed */
   vertical-align:middle;
+  background-color: white;
 }
 
 .dropdown {
@@ -52,7 +53,7 @@
   cursor: pointer;
   border: none;
   outline: none;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'Times New Roman', Times, serif; 
   margin-top: -10px;
   /* Adjusted to match the height of the button */
