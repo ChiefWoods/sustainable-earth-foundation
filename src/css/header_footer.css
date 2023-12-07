@@ -44,8 +44,8 @@ header {
 
 .branding {
   display: flex;
-  gap: 20px;
-  cursor: pointer;
+  gap: 15px;
+  text-decoration: none;
 }
 
 .branding > h1 {
