@@ -32,8 +32,8 @@ CREATE TABLE tb_user (
 
 
 INSERT INTO tb_user VALUES (NULL, 1, 'admin1', 0123456789, 'admin1@gmail.com', '123456', '123456', 0);
-INSERT INTO tb_user VALUES (NULL, 2, 'user11', 0123456789, 'user1@gmail.com', '123456', '123456', 5000);
-INSERT INTO tb_user VALUES (NULL, 2, 'user12', 0123456789, 'user2@gmail.com', '123456', '123456', 0);
+INSERT INTO tb_user VALUES (NULL, 2, 'user1', 0123456789, 'user1@gmail.com', '123456', '123456', 5000);
+INSERT INTO tb_user VALUES (NULL, 2, 'user2', 0123456789, 'user2@gmail.com', '123456', '123456', 0);
 
 -- Create post table
 CREATE TABLE post (

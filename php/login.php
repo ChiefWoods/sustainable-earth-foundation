@@ -42,6 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $row = $stmt->fetch();
         $fn = $row['username'];
         $stored_password = $row['password'];
+        $user_role_id = $row['user_role_id'];
 
         $response['debug']['stored_password'] = $stored_password;
         $response['debug']['input_password'] = $pw_temp;
@@ -51,7 +52,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             session_start();
             $_SESSION['username'] = $fn;
             $response['success'] = true;
-            $response['redirect'] = '../html/profile.html';
+
+            // Redirect based on user_role_id
+            if ($user_role_id == 1) {
+                $response['redirect'] = '../html/admin-profile.html';
+            } elseif ($user_role_id == 2) {
+                $response['redirect'] = '../html/profile.html';
+            }
         } else {
             $response['error'] = 'Invalid username/password combination';
         }

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION['name'])) {
-    $name = htmlspecialchars($_SESSION['name']);
+if (isset($_SESSION['username'])) {
+    $name = htmlspecialchars($_SESSION['username']);
 
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300)) {
         destroy_session_and_data();
@@ -16,7 +16,7 @@ if (isset($_SESSION['name'])) {
 
 function destroy_session_and_data()
 {
-    unset($_SESSION['name']);
+    unset($_SESSION['username']);
     $_SESSION = array();
     session_unset();
     setcookie(session_name(), '', time() - 2592000, '/');
