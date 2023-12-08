@@ -1,0 +1,141 @@
+main {
+  background: var(--light-blue);
+}
+
+/* Profile */
+
+.profile {
+  padding: 70px;
+  display: flex;
+  gap: 30px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background: white;
+  border: 6px solid lightgrey;
+  border-radius: 15px;
+  padding: 30px;
+  width: 350px;
+}
+
+.user > img {
+  width: 70%;
+  aspect-ratio: 1/1;
+}
+
+.username,
+.points {
+  font-size: var(--font-m);
+}
+
+.info {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.info > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  background: white;
+  border: 6px solid lightgrey;
+  border-radius: 15px;
+  padding: 30px;
+  flex: 1;
+}
+
+.info h2 {
+  font-size: var(--font-l);
+}
+
+.email-phone,
+.password {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.info label {
+  font-size: var(--font-m);
+}
+
+.info input {
+  font-size: var(--font-m);
+  padding: 8px 5px;
+  border-radius: 5px;
+  border: 2px solid lightgrey;
+}
+
+.info input::placeholder {
+  color: black;
+}
+
+.info button {
+  width: fit-content;
+  align-self: flex-end;
+  background: var(--sdg-orange);
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+}
+
+.info button:hover {
+  background: var(--button-hover-orange);
+}
+
+/* History */
+
+.history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  margin: 0 70px 70px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #EDEDED;
+  border-radius: 12px;
+  table-layout: fixed;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+thead tr:first-child {
+  background: white;
+}
+
+.title {
+  font-size: var(--font-l);
+  padding: 20px;
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+th,
+td {
+  height: 50px;
+  border-bottom: 1px solid black;
+  font-size: var(--font-m);
+  font-weight: 400;
+}
+
+tr {
+  text-align: center;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
