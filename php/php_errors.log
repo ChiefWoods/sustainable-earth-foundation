@@ -1,0 +1,95 @@
+[08-Dec-2023 11:25:29 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:25:32 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:25:34 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:25:35 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:25:37 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:25:38 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:29:24 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:29:30 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:29:32 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:29:33 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:29:33 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mytb.userdb' doesn't exist in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM u...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:38:14 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:41:16 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:41:18 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:43:21 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:43:21 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:43:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:43:54 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33
+[08-Dec-2023 11:43:54 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'login' in 'where clause' in C:\xampp\htdocs\php\webProject\php\login.php:33
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\login.php(33): PDO->prepare('SELECT * FROM t...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\login.php on line 33

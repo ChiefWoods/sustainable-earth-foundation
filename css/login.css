@@ -1,56 +1,58 @@
 body {
     background-color: #6487BF;
     margin: 0;
-  }
+}
 
-.container{
+.container {
     background-image: url("../assets/images/login-bg.png");
-    background-size:cover;
+    background-size: cover;
     margin: auto;
-    width: 1000px; 
+    width: 1000px;
     height: 550px;
     border-radius: 30px;
     margin-top: 150px;
-
 }
 
-.left-container{
+.left-container {
     background-color: rgb(255, 255, 255);
-    width: 380px; 
+    width: 380px;
     height: 550px;
     border-radius: 30px;
     float: left;
     text-align: center;
-    
-}
-.content{
-    margin-top: 30px;
-}
-.left-container img{
-    padding-top: 30px;
-    width:100px;
-    height:100px;
 }
 
-.left-container input[type=text]{
+.content {
+    margin-top: 30px;
+}
+
+.left-container img {
+    padding-top: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.left-container form input[type=text],
+.left-container form input[type=password] {
     font-family: 'Times New Roman', Times, serif;
     padding-top: 20px;
     padding-bottom: 15px;
     color: #6D6D6D;
-    background-color:#ffffff ;
-    border:none;
+    background-color: #ffffff;
+    border: none;
     box-sizing: border-box;
     border-bottom: 1px solid #000000;
     font-size: 15px;
     width: 250px;
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
-   
 
-
-.login-btn ,.signup-btn ,.update-btn{
+.login-btn,
+.signup-btn,
+.update-btn {
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     background-color: #FF8D0B;
@@ -60,24 +62,55 @@ input:focus{
     padding: 10px;
     border-radius: 30px;
     border: none;
-    box-shadow: 0 5px 1px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 5px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
-.login-btn:hover ,.signup-btn:hover ,.update-btn:hover{
+.login-btn:hover,
+.signup-btn:hover,
+.update-btn:hover {
     background-color: #eb7d00;
     color: rgb(255, 255, 255);
-  }
-.left-container p{
+}
+
+.left-container p {
     padding: 0px;
     font-size: 14px;
 }
 
-.left-container a{
+.left-container a {
     color: #000000;
     text-decoration: none;
-    
 }
-.signup{
+
+.signup {
     padding-top: 10px;
 }
 
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: var(--success-color);
+}
+
+.form-control.error input {
+    border-color: var(--error-color);
+}
+
+.form-control small {
+    color: var(--error-color);
+    position: relative;
+    margin-top: 10px;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}

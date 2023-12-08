@@ -1,36 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <script src="../js/dropdown.js"></script>
-</head>
-<body>
+<?php
+// Enable error reporting for development
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-<?php include 'header.php'; ?>
+require_once 'SQL_login.php';
 
-<div class="container">
-    <div class="left-container">
-        <img src="../icon/user.png">
-        <p>
-            <h2>Welcome back!</h2>
-        </p>
-        <form>
-            <input type="text" id="username" name="username" placeholder="Username">
-            <input type="text" id="password" name="password" placeholder="Password">
-        </form>
-        <button class="login-btn" id="login" value="Login">Login</button>
-        <p>Forgot password? <a href="forgotpwd.php"><b>Click here</b></a></p>
-        <div class="signup">
-            <p>Don't have an account? <a href="signup.php"><b>Sign Up</b></a></p>
-        </div>
-    </div>
-</div>
-<?php include 'footer.php'; ?>
+// Log PHP errors to a file
+ini_set('log_errors', 1);
+ini_set('error_log', 'php_errors.log');
 
-</body>
-</html>
+header('Content-Type: application/json');
+
+$response = ['success' => false, 'debug' => []];
+
+try {
+    $pdo = new PDO($attr, $user, $pass, $opts);
+    $response['debug'][] = 'Database connection successful';
+} catch (\PDOException $e) {
+    $response['error'] = 'Database connection failed: ' . htmlspecialchars($e->getMessage());
+    echo json_encode($response);
+    exit();
+}
+
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $un_temp = $_POST['username'];
+    $pw_temp = $_POST['password'];
+
+    $response['debug']['username'] = $un_temp;
+    $response['debug']['password'] = $pw_temp;
+
+    $query = "SELECT * FROM tb_user WHERE username = :username";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':username', $un_temp, PDO::PARAM_STR);
+    if (!$stmt->execute()) {
+        $response['error'] = 'Query execution error: ' . print_r($stmt->errorInfo(), true);
+        echo json_encode($response);
+        exit();
+    }
+
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch();
+        $fn = $row['username'];
+        $stored_password = $row['password'];
+
+        $response['debug']['stored_password'] = $stored_password;
+        $response['debug']['input_password'] = $pw_temp;
+
+        // Compare passwords without using password hashing
+        if ($pw_temp === $stored_password) {
+            session_start();
+            $_SESSION['username'] = $fn;
+            $response['success'] = true;
+            $response['redirect'] = '../html/profile.html';
+        } else {
+            $response['error'] = 'Invalid username/password combination';
+        }
+    } else {
+        $response['error'] = 'User not found';
+    }
+} else {
+    $response['error'] = 'Please enter username and password';
+}
+
+// Log debug information to a file
+file_put_contents('debug_log.json', json_encode($response['debug'], JSON_PRETTY_PRINT));
+
+// Output the JSON response
+echo json_encode($response);
+?>
