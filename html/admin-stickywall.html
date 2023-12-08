@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Wall</title>
+    <link rel="stylesheet" href="../css/stickywall.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/edit-delete.js"></script>
+    <script src="../js/dropdown.js"></script>
+    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<?php include 'header.html'; ?>
+<div class="container">
+    <div class="window">
+        <div class="text">
+            <p>
+                <h1>Sticky Wall</h1>
+            </p>
+            <br>
+                      <!-- Edit Modal -->
+                      <div id="editModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeModal('editModal')">&times;</span>
+                            <div class="modal-header">
+                                <h1>Edit Post</h1>
+                            </div>
+                            <div class="modal-middle">
+                                <!-- Add your edit post form or content here -->
+                                <form id="editPostForm">
+                                    <label for="editPostTitle">Title:</label>
+                                    <br>
+                                    <input type="text" id="editPostTitle" name="editPostTitle" required>
+                                    <br>
+                                    <br>
+                                    <label for="editPostContent">Content:</label>
+                                    <br>
+                                    <textarea id="editPostContent" name="editPostContent" rows="8" cols="50" required></textarea>
+                                    <br>
+                                    <br>
+                                    <button class="submit-btn" type="button" onclick="submitEditedPost()" style="background-color: #ff8800;">Save Changes</button>
+                                    <button class="cancel-btn" type="button" onclick="closeModal('editModal')">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Delete Confirmation Modal -->
+                    <div id="deleteModal" class="modal">
+                        <div class="modal-content" style="width: 25%; height: 30%; background-image: url('../assets/images/delete_bg.jpg');">
+                            <span class="close" onclick="closeModal('deleteModal')">&times;</span>
+                            <div class="modal-header">
+                                <h1>Delete Post</h1>
+                            </div>
+                            <div class="modal-middle">
+                                <p>Do you want to delete the post?</p>
+                                <div class="modal-button">
+                                <button class="confirm-btn" onclick="confirmDelete()" >Confirm</button>
+                                <button class="cancel-btn" onclick="closeModal('deleteModal')">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+        <div class="stickywall">
+            <table>
+        <tr>
+            <td>          
+                <div class="note">
+                <div class="text-content">
+                    <div class="note-top">
+                        <div class="username">
+                         <p>Username</p>
+                    </div>
+                <div class="date">
+                 18/12/2023
+                </div>
+                </div>
+                <div class="note-middle">
+                    <div class="title">
+                        <p>Title</p>
+                    </div>
+                    <div class="content-container">
+                        <div class="content">
+                            <p>
+                                Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                            </p>
+                        </div>
+                
+                
+                    </div>
+                </div>                
+                    <div class="edit-delete">
+                        <button class="edit">
+                            <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
+                        </button>
+                        <button class="delete">
+                            <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
+                        </button>    
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>          
+            <div class="note">
+            <div class="text-content">
+                <div class="note-top">
+                    <div class="username">
+                     <p>Username</p>
+                </div>
+            <div class="date">
+             18/12/2023
+            </div>
+            </div>
+            <div class="note-middle">
+                <div class="title">
+                    <p>Title</p>
+                </div>
+                <div class="content-container">
+                    <div class="content">
+                        <p>
+                            Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                        </p>
+                    </div>
+            
+            
+                </div>
+            </div>                
+            <div class="edit-delete">
+                <button class="edit">
+                    <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
+                </button>
+                <button class="delete">
+                    <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
+                </button>    
+            </div>
+                </div>
+            </div>
+        </div>
+    </td>
+    <td>          
+        <div class="note">
+        <div class="text-content">
+            <div class="note-top">
+                <div class="username">
+                 <p>Username</p>
+            </div>
+        <div class="date">
+         18/12/2023
+        </div>
+        </div>
+        <div class="note-middle">
+            <div class="title">
+                <p>Title</p>
+            </div>
+            <div class="content-container">
+                <div class="content">
+                    <p>
+                        Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
+                    </p>
+                </div>
+        
+        
+            </div>
+        </div>                
+        <div class="edit-delete">
+            <button class="edit">
+                <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
+            </button>
+            <button class="delete">
+                <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
+            </button>    
+        </div>
+        </div>
+    </div>
+</td>          
+                </tr>
+    </table>
+</div>
+</div>
+<div><button class="pages-btn" value="pages">1</button></div>
+</div>
+
+
+<?php include 'footer.html'; ?>
+
+</body>
+</html>

@@ -32,7 +32,7 @@ body {
 
 .text h1, .text p{
     color: #4A4A4A;
-    padding:5px 5px 5px 10px ;
+    padding:5px 5px 0px 25px ;
     text-align: left;
     float: left;
     font-weight: normal;
@@ -85,7 +85,7 @@ body {
     border-radius: 15px;
     background-color: #ffffff;
     margin: 10% auto;
-    width: 40%;
+    width: 30%;
     height: 56%;
     z-index: 1001; /* Set a higher z-index value */
 }
@@ -157,7 +157,7 @@ body {
     float: left;
     box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
 }
-.submit-btn{
+.submit-btn, .confirm-btn{
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     background-color: #ff8800;
@@ -173,7 +173,7 @@ body {
     box-shadow: 0 3px 1px 0 rgba(0,0,0,0.2);
 }
 
-.submit-btn:hover{
+.submit-btn:hover,.confirm-btn:hover{
     background-color: #eb7d00;
     color: rgb(255, 255, 255);
   }
@@ -182,6 +182,12 @@ body {
     background-color: #a3a3a3;
     color: rgb(255, 255, 255); 
   }
+.modal-button{
+    margin-left: 0px;
+    margin-top: 80px;
+}
+
+/*Contents*/
 
 .stickywall{
     position: relative;
@@ -254,7 +260,7 @@ body {
 .note{
     float: left;
 }
-.upvote-downvote {
+.upvote-downvote, .edit-delete {
     position: absolute;
     bottom: 5px;
     right: 5px; 
@@ -265,7 +271,7 @@ body {
     color: #ffffff; 
 }
 
-.upvote-downvote button {
+.upvote-downvote button, .edit,.delete{
     border: none; 
     background: none;
 }
