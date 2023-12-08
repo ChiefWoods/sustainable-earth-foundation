@@ -1,0 +1,15 @@
+.edit-delete {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.edit-delete > button {
+  width: 22px;
+  background: transparent;
+  border: none;
+}
+
+.edit-delete > button:hover {
+  transform: scale(1.2);
+}
