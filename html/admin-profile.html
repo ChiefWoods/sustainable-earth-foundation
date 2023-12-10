@@ -1,7 +1,9 @@
+<?php include '../php/edit_profile.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile</title>
     <link rel="stylesheet" href="../css/profile.css">
@@ -9,64 +11,62 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <script src="../js/dropdown.js"></script>
+    <script src="../js/edit_profile.js"></script>
     <style>
-        body{
+        body {
             background-color: #A9B7FF;
         }
     </style>
 </head>
+
 <body>
 
 <?php include 'admin-header.html'; ?>
 
-<div class="container" style="margin-top: 150px;margin-bottom: 150px;">
-    <div class="left-shadow">
+
+<div class="container" style="margin-top: 150px; margin-bottom: 150px;">
+    
+    <!-- Left container HTML remains unchanged -->
     <div class="left-container">
         <br>
         <img src="../assets/icons/user.png">
         <br>
         <br>
-        <p>
-        Username:
-        </p>
-    
-</div>
-</div>
-<div class="right-shadow">
-<div class="right-container">
-<br>
-<p>Edit Profile</p>
-    <ul>
-        <li>Phone Number</li>
-        <li>Email Address</li>
-        <li>Password</li>
-    </ul>
-    <ul>
-        <form>
-        <li> <input type="text" id="phoneNum" name="phoneNum" ></li>
-        <li> <input type="text" id="email" name="email"></li>
-        <li> <input type="text" id="password" name="password"></li>
+        <p>Username: <?php echo isset($response['username']) ? $response['username'] : ''; ?></p>
+    </div>
+    <!-- Right container HTML remains unchanged -->
+    <div class="right-container">
+        <br>
+        <p>Edit Profile</p>
+        <form method="POST" action="" onsubmit="return validateForm()">
+            <!-- Form fields remain unchanged -->
+            <ul>
+                <li>Phone Number</li>
+                <li>Email Address</li>
+                <li>Password</li>
+            </ul>
+            <ul>
+                <li> <input type="text" id="phoneNum" name="phoneNum" value="<?php echo isset($response['userPhoneNum']) ? $response['userPhoneNum'] : ''; ?>" placeholder="Phone Number"></li>
+                <li> <input type="text" id="email" name="email" value="<?php echo isset($response['userEmail']) ? $response['userEmail'] : ''; ?>" placeholder="Email"></li>
+                <li> <input type="text" id="password" name="password"></li>
+            </ul>
+            <ul>
+                <li>Confirm Phone Number</li>
+                <li>Confirm Email Address</li>
+                <li>Confirm Password</li>
+            </ul>
+            <ul>
+                <li> <input type="text" id="comPhoneNum" name="comPhoneNum"></li>
+                <li> <input type="text" id="comEmail" name="comEmail"></li>
+                <li> <input type="text" id="comPassword" name="comPassword"></li>
+            </ul>
+            <!-- Form fields remain unchanged -->
+            <button class="updateInfo-btn" id="updateInfo" name="updateInfo" value="updateInfo">Update Info</button>
         </form>
-    </ul>
-    <ul>
-        <li>Comfirm Phone Number</li>
-        <li>Comfirm Email Address</li>
-        <li>Comfirm Password</li>
-    </ul>
-        <form>
-           <li> <input type="text" id="comPhoneNum" name="comPhoneNum" ></li>
-           <li> <input type="text" id="comEmail" name="comEmail"></li>
-           <li> <input type="text" id="comPassword" name="comPassword"></li>
-        </form>
-        <button class="updateInfo-btn" id="updateInfo" value="updateInfo">Update Info</button>
- 
-</div>
-</div>
+    </div>
 </div>
 
-
-</body>
 <?php include 'footer.html'; ?>
 
-
+</body>
 </html>

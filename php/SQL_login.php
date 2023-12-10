@@ -22,4 +22,3 @@ try {
     file_put_contents('debug_log.json', json_encode($response['debug'], JSON_PRETTY_PRINT));
     exit();
 }
-?>

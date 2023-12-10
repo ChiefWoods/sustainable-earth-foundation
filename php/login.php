@@ -3,7 +3,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Start a new session or resume the existing session
+session_start();
+
+ob_start(); // Start output buffering
+
 require_once 'SQL_login.php';
+
+
 
 // Log PHP errors to a file
 ini_set('log_errors', 1);
@@ -55,8 +62,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
             // Redirect based on user_role_id
             if ($user_role_id == 1) {
+                session_start();
                 $response['redirect'] = '../html/admin-profile.html';
             } elseif ($user_role_id == 2) {
+                session_start();
                 $response['redirect'] = '../html/profile.html';
             }
         } else {
@@ -72,6 +81,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 // Log debug information to a file
 file_put_contents('debug_log.json', json_encode($response['debug'], JSON_PRETTY_PRINT));
 
+ob_end_clean(); // Clean (discard) the buffer
+
 // Output the JSON response
+header('Content-Type: application/json');
 echo json_encode($response);
 ?>

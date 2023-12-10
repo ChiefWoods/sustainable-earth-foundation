@@ -1,3 +1,4 @@
+<?php include '../php/edit_profile.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,51 +8,51 @@
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/edit_profile.js"></script>
     <script src="../js/dropdown.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 </head>
 <body>
 
-<?php include 'header.html'; ?>
+<?php include 'user-header.html'; ?>
 <div class="container">
     <div class="left-shadow">
     <div class="left-container">
         <img src="../assets/icons/user.png">
         <br>
-        <p>
-          Username:
-        </p>
-        <p>Earned Points:</P>
+        <p>Username: <?php echo isset($response['username']) ? $response['username'] : ''; ?></p>
+        <p>Earned Points: <?php echo isset($response['earnedPoints']) ? $response['earnedPoints'] : ''; ?></p>
 </div>
 </div>
 <div class="right-shadow">
 <div class="right-container">
 <br>
 <p>Edit Profile</p>
+<form method="POST" action="" onsubmit="return validateForm()">
+    <!-- Form fields remain unchanged -->
     <ul>
         <li>Phone Number</li>
         <li>Email Address</li>
         <li>Password</li>
     </ul>
     <ul>
-        <form>
-        <li> <input type="text" id="phoneNum" name="phoneNum" ></li>
-        <li> <input type="text" id="email" name="email"></li>
+        <li> <input type="text" id="phoneNum" name="phoneNum" value="<?php echo isset($response['userPhoneNum']) ? $response['userPhoneNum'] : ''; ?>" placeholder="Phone Number"></li>
+        <li> <input type="text" id="email" name="email" value="<?php echo isset($response['userEmail']) ? $response['userEmail'] : ''; ?>" placeholder="Email"></li>
         <li> <input type="text" id="password" name="password"></li>
-        </form>
     </ul>
     <ul>
-        <li>Comfirm Phone Number</li>
-        <li>Comfirm Email Address</li>
-        <li>Comfirm Password</li>
+        <li>Confirm Phone Number</li>
+        <li>Confirm Email Address</li>
+        <li>Confirm Password</li>
     </ul>
-        <form>
-           <li> <input type="text" id="comPhoneNum" name="comPhoneNum" ></li>
-           <li> <input type="text" id="comEmail" name="comEmail"></li>
-           <li> <input type="text" id="comPassword" name="comPassword"></li>
-        </form>
-        <button class="updateInfo-btn" id="updateInfo" value="updateInfo">Update Info</button>
- 
+    <ul>
+        <li> <input type="text" id="comPhoneNum" name="comPhoneNum"></li>
+        <li> <input type="text" id="comEmail" name="comEmail"></li>
+        <li> <input type="text" id="comPassword" name="comPassword"></li>
+    </ul>
+    <!-- Form fields remain unchanged -->
+    <button class="updateInfo-btn" id="updateInfo" name="updateInfo" value="updateInfo">Update Info</button>
+</form>
 </div>
 </div>
 </div>

@@ -1,3 +1,54 @@
+<style>
+    /* Add this style to make the dropdown content appear on the right */
+.show {
+    display: flexbox;
+    right: 0; /* Set the right property to 0 to align with the right side of the button */
+    left: auto; /* Reset the left property */
+}
+
+    .dropdown-content.show {
+        display: block;
+        float: right;
+    }
+    /* Styles for the dropdown content */
+.dropdown-content {
+    margin-top: 38px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    border-radius: 5px;
+    overflow-x: initial;
+    overflow-y: auto;
+    max-height: 400px;
+    right: 0; /* Set the right property to 0 to align with the right side of the button */
+}
+
+
+</style>
+<script>
+    // Function to toggle the dropdown
+    function toggleDropdown() {
+        var dropdown = document.getElementById("myDropdown");
+        dropdown.classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
 <div class="nav">
     <div class="topnav">
         <a href=""><img src="../assets/images/logoonly.png" alt="SEF Logo" width="90px" height="34px"></a>
@@ -5,20 +56,33 @@
         <a href="" style="margin-top: 2px;"> Sustainable Earth Foundation</a>
     </div>
     <div class="topright">
-        <a href="admin-manage-user.html">Manage User</a>
-        <a href="admin-stickywall.html">Manage Posts</a>
-        <a href="admin-redeem-history.html">Redempytion History</a>
-        <a href="admin-profile.html">Admin Profile</a>
-        <a href=""style="background-color:#2B5292; padding: 5px 15px; color: white; border-radius: 5px;">Log out</a>
+        <a href="">Home</a>
+        <a href="stickywall.html">Sticky Wall</a>
+        <a href="rewards.html">Rewards</a>
         <div class="dropdown">
-            <button id="dropbtn" onclick="myFunction()" class="dropbtn">
-                <img src="../assets/icons/bell/bell.png" alt="Notification" width="30px" height="30px" style="vertical-align:middle; margin-top: -5px;">
-            </button>
+            <button id="dropbtn" onclick="toggleDropdown()" class="manage" style="margin-top: 5px;">Manage</button>
             <div id="myDropdown" class="dropdown-content">
-                <div class="notification-item">You have a new notification!</div>
-                <div class="notification-item">Another notification here.</div>
-                <div class="notification-item">Yet another notification.</div>
-            </div>
+                <div class="notification-item">
+                    <a href="admin-manage-user.html">
+                        <img src="../assets/icons/user.png" width="25px" height="25px" style="vertical-align:middle; margin-right: 10px;">
+                        Manage User
+                    </a>
+                </div>
+                <div class="notification-item">
+                    <a href="admin-redeem-history.html">
+                        <img src="../assets/icons/Present.png" width="25px" height="25px" style="vertical-align:middle; margin-right: 10px;">
+                        Manage Redemption
+                    </a>
+                </div>
+              </div>
+        </div>
+            
+            <a href="admin-profile.html"> <button class="btn">
+                <img src="../assets/icons/user.png" alt="Profile" width="30px" height="30px" style="vertical-align:middle; margin-top: 0px;">
+            </button></a>
+            <button class="btn" >
+                <img src="../assets/icons/logout/logout.png" alt="Notification" width="25px" height="25px" style="vertical-align:middle; margin-top: 0px;">
+            </button>
         </div>
     </div>
 </div>

@@ -29,7 +29,7 @@
   float: right;
 }
 
-.topright a {
+.topright a, .manage a{
   text-decoration: none;
   color: #000000;
   margin-right: 20px; /* Adjusted margin for better spacing */
@@ -43,7 +43,26 @@
   vertical-align:middle;
   background-color: white;
 }
-
+.manage{
+  color: #000000;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;  /* Remove the border */
+  outline: none;
+  background-color:rgb(255, 255, 255);
+  vertical-align:middle;
+  font-family: 'Times New Roman', Times, serif; 
+  float: right;
+}
+.btn {
+  font-size: 15px;
+  cursor: pointer;
+  border: none;  /* Remove the border */
+  outline: none;
+  background-color:rgb(255, 255, 255);
+  vertical-align:middle;
+  font-family: 'Times New Roman', Times, serif; 
+}
 .dropdown {
   float: right;
   overflow: hidden;
@@ -60,7 +79,7 @@
 
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus ,btn:focus{
   background-color: rgb(255, 255, 255);
 }
 
