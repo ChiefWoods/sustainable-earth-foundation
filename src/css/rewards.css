@@ -1,129 +1,131 @@
 main {
-  background: url(../assets/backgrounds/reward_bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url(../assets/backgrounds/reward_bg.jpg) center/cover no-repeat;
 }
 
-.rewards {
-  background: #EEF6FB;
-  padding: 40px 70px;
-  margin: 50px 20px;
+section {
+  margin: 70px;
   border-radius: 15px;
+  background: var(--bg-light-blue);
+  padding: 30px 50px;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 50px;
+  align-items: center;
 }
 
-.rewards > div:first-child {
+/* Top */
+
+section > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  gap: 30px;
+  gap: 20px;
+  width: 100%;
 }
 
-.title {
-  grid-column: 2 / 3;
+#head {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  grid-column: 2/3;
 }
 
-.points-icon {
-  width: 30px;
-  aspect-ratio: 1/1;
+#reward-icon {
+  width: 35px;
 }
 
-.head {
+#title {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
-.head > h2 {
+#title > h2 {
   font-size: var(--font-l);
   white-space: nowrap;
 }
 
-.head > button {
+#help-btn {
   background: transparent;
   border: none;
 }
 
-.help-icon {
+#help-icon {
   width: 20px;
 }
 
-.rewards .desc {
+#desc {
   font-size: var(--font-s);
-  text-align: center;
 }
 
-.saved-points {
-  grid-column: 3 / 4;
+#saved-points {
+  grid-column: 3/4;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
-}
-
-.saved-points > span {
-  font-size: var(--font-m);
-}
-
-.saved-points > span:nth-child(2) {
-  font-size: var(--font-s);
-  background: #fff6d4;
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-  width: 100px;
-  text-align: end;
-  padding: 5px;
-}
-
-.coupons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  justify-items: center;
-  gap: 30px;
-}
-
-.coupons > div {
-  background: white;
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.coupons > div > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 25px 25px 15px;
-  border-bottom: 2px dotted black;
 }
 
-.coupons h3 {
+#saved-points > span {
+  font-size: var(--font-s);
+}
+
+#user-points {
+  background: var(--footer-beige);
+  border: 2px solid lightgrey;
+  padding: 4px 8px;
+  width: 150px;
+  text-align: end;
+  border-radius: 15px;
+}
+
+/* Ul */
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+li {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 2px dotted black;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.name {
   font-size: var(--font-m);
 }
 
-.coupons p {
+.points {
   font-size: var(--font-s);
 }
 
 .redeem-btn {
-  background: var(--sdg-orange);
+  margin: 20px;
+  width: fit-content;
+  background: var(--btn-orange);
   border: none;
-  padding: 6px 14px;
-  border-radius: 12px;
-  margin: 15px 25px 25px;
   color: white;
+  font-size: var(--font-s);
 }
 
 .redeem-btn:hover {
-  background: var(--button-hover-orange);
+  background: var(--btn-hover-orange);
 }
