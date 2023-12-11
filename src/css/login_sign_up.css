@@ -1,0 +1,67 @@
+main#login {
+  background: url(../assets/backgrounds/login_bg.png) center/cover no-repeat;
+}
+
+main#sign-up {
+  background: url(../assets/backgrounds/sign_up_bg.jpg) center/cover no-repeat;
+}
+
+section {
+  padding: 70px;
+}
+
+main form {
+  width: 400px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 50px;
+  text-align: center;
+}
+
+main form > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+}
+
+main form > div > h2 {
+  font-size: var(--font-l);
+}
+
+main form > div > input {
+  padding-block: 10px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+main form > div > button {
+  background: var(--btn-orange);
+  width: 100%;
+  color: white;
+  width: 100%;
+  border: none;
+}
+
+main form > div > button:hover {
+  background: var(--btn-hover-orange);
+}
+
+main form > a {
+  font-size: var(--font-xs);
+  text-decoration: none;
+  color: black;
+}
+
+main form > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: bold;
+}
