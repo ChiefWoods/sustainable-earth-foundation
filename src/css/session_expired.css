@@ -1,0 +1,39 @@
+main {
+  background: url(../assets/backgrounds/session_bg.jpg) center/cover no-repeat;
+}
+
+section {
+  padding: 70px;
+}
+
+main div {
+  width: 400px;
+  background: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+main div > h2 {
+  font-size: var(--font-m);
+}
+
+main div > p {
+  font-size: var(--font-s);
+}
+
+main div > a {
+  background: var(--btn-orange);
+  color: white;
+  text-decoration: none;
+  font-size: var(--font-s);
+}
+
+main div > a:hover {
+  background: var(--btn-hover-orange);
+}

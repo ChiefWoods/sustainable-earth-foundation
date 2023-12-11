@@ -1,44 +1,191 @@
+<?php include '../php/manage_redemption.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redemption History</title>
     <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/dropdown.js"></script>
+<<<<<<< Updated upstream
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+=======
+    
+>>>>>>> Stashed changes
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <style>
-        body{
+        body {
             background-image: url("../assets/images/admin-redemption-bg.jpg");
         }
+        .edit-delete {
+            bottom: 5px;
+            right: 5px; 
+        }
+        .edit, .delete {
+            border: none; 
+            background: none;
+        }
     </style>
+<<<<<<< Updated upstream
+    <script>
+        $(document).ready(function(){
+         
+         load_data();
+        
+         function load_data(query1)
+         {
+          $.ajax({
+           url:"../php/search_user.php",
+           method:"POST",
+           data:{query:query1},
+           dataType:"json",
+           success:function(data)
+           {
+             $('#total_records').text(data.length);
+            var html = '';
+            if (data.length > 0) {
+                if (data.length > 0) {
+                  html += '<tr>';
+                  html += '<th>ID</th>';
+                  html += '<th>Username</th>';
+                  html += '<th>Used Points</th>';
+                  html += '<th>Rewards Code</th>';
+                  html += '<th>Redemption Date</th>';
+                  html += '</tr>';}
+             for (var count = 0; count < data.length; count++) {
+                 html += '<tr>';
+                 html += '<td>' + data[count].id + '</td>';
+                 html += '<td>' + data[count].username + '</td>';
+                 html += '<td>' + data[count].used_points + '</td>';
+                 html += '<td>' + data[count].reward_id + '</td>';
+                 html += '<td>' + data[count].redemption_date + '</td>';           
+                 html += '</tr>';
+             }
+            }
+            else
+            {
+             html = '<tr><td colspan="5">No Data Found</td></tr>';
+            }
+            $('tbody').html(html);
+           }
+          })
+         }
+        
+         $('#searchForm').submit(function (e) {
+           e.preventDefault();
+           var query1 = $('#tags').val();
+           load_data(query1);
+       });
+       
+         $('#search-btn').click(function () {
+             var query1 = $('#tags').val();
+             console.log('Search button clicked with query:', query1); // Add this line
+             load_data(query1);
+         });
+       
+         $("#tags").change(function () {
+             var query1 = $('#tags').val();
+             console.log('Input value changed to:', query1); // Add this line
+             load_data(query1);
+         });
+       });
+       
+       function htmlspecialchars(str) {
+       var map = {
+           '&': '&amp;',
+           '<': '&lt;',
+           '>': '&gt;',
+           '"': '&quot;',
+           "'": '&#039;'
+       };
+       return str.replace(/[&<>"']/g, function (m) {
+           return map[m];
+       });
+       }
+    </script>
+=======
+>>>>>>> Stashed changes
 </head>
 <body>
 
-<?php include 'admin-header.html'; ?>
-<div class="container">
-<p><img src="../assets/icons/Present.png" width="30px" height="30px" style="vertical-align:middle;"> Redemption History</p>
-<form> <input type="text" id="search" name="search" placeholder="">
-            <button class="search-btn" value="search">Search</button></form>
-<table>
-        <tr>
-            <th>Username</th>
-            <th>Used Points</th>
-            <th>Voucher Code</th>
-            <th>Redemption Date</th>
-            <th>Actions</th>
-
-        </tr>    
-        <tr>
-</tr>
-    </table>
-
-    
-</div>
+    <body>
+        <?php include 'admin-header.html'; ?>
+        <div class="container">
+            <p><img src="../assets/icons/Present.png" width="30px" height="30px" style="vertical-align:middle;"> Redemption History</p>
+<<<<<<< Updated upstream
+            <form method="post" id="searchForm">
+                <input type="text" id="tags" name="search" placeholder="" data-role="tagsinput">
+                <button type="submit" id="search-bth" class="search-btn">Search</button>
+             
+            </form>
+            <div style="float: right; margin-right: -100px; margin-top: -25px;" >
+                <p style="font-size: 15px;"><b>Total Records - <span id="total_records"></span></b></p>
+            </div>
+               <div class="table-responsive"></div>    
+               <table id="redemptionTable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Used Points</th>
+                        <th>Voucher Code</th>
+                        <th>Redemption Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (isset($redemptionResponse['redemptions'])): ?>
+=======
+            <form>
+                <input type="text" id="search" name="search" placeholder="">
+                <button class="search-btn" value="search">Search</button>
+            </form>
+            <table id="redemptionTable">
+                <tr>
+                    <th>Username</th>
+                    <th>Used Points</th>
+                    <th>Voucher Code</th>
+                    <th>Redemption Date</th>
+                    <th>Actions</th>
+                </tr>
+                <?php if (isset($redemptionResponse['redemptions'])): ?>
+>>>>>>> Stashed changes
+                    <?php foreach ($redemptionResponse['redemptions'] as $redemption): ?>
+                        <tr data-username="<?= isset($redemption['username']) ? $redemption['username'] : ''; ?>">
+                            <td><?= isset($redemption['username']) ? $redemption['username'] : ''; ?></td>
+                            <td><?= isset($redemption['used_points']) ? $redemption['used_points'] : ''; ?></td>
+                            <td><?= isset($redemption['reward_code']) ? $redemption['reward_code'] : ''; ?></td>
+                            <td><?= isset($redemption['redemption_date']) ? $redemption['redemption_date'] : ''; ?></td>
+                            <td>
+                                <div class="edit-delete">
+                                    <button alt="Remove Redemption" class="delete" data-username="<?= isset($redemption['username']) ? $redemption['username'] : ''; ?>">
+                                        <img src="../assets/icons/delete/delete_base.svg" width="20px" height="20px">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+<<<<<<< Updated upstream
+                        <tr>
+                            <td colspan="5">No redemptions found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+            <div style="clear:both"></div>
+        </div>
+        
+=======
+                    <tr>
+                        <td colspan="5">No redemptions found.</td>
+                    </tr>
+                <?php endif; ?>
+            </table>
+        </div>
+>>>>>>> Stashed changes
+        <script src="../js/manage_redemption.js"></script>
 </body>
 <?php include 'footer.html'; ?>
-
-
 </html>

@@ -1,0 +1,22 @@
+:root {
+  --footer-beige: #FFF8F1;
+  --sef-navy-blue: #2B5292;
+  --btn-orange: #FF8D0B;
+  --btn-hover-orange: #d78c00;
+  --tbl-header-manage-titan: #EDEAFF;
+  --tbl-row-lightgrey: #DFDEDE;
+  --bg-dark-blue: #6487BF;
+  --bg-light-blue: #77A0DE;
+  --bg-melrose: #A9B7FF;
+  --bg-light-blue: #EEF6FB;
+  --target-1: #FFC700;
+  --target-2: #FF9900;
+  --target-3: #FF7A00;
+  --timeline-1: #d4d4d4;
+  --timeline-2: #eeeeee;
+  --timeline-3: #f9e1e4;
+  --timeline-4: #f9d5de;
+  --timeline-5: #f2a4b6;
+  --timeline-6: #ea6987;
+  --timeline-num: #CC0033;
+}

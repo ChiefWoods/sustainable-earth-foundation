@@ -1,7 +1,12 @@
+<?php include '../php/manage_user.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage User</title>
     <link rel="stylesheet" href="../css/table.css">
@@ -9,29 +14,93 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <script src="../js/dropdown.js"></script>
+<<<<<<< Updated upstream
+    
+    
+=======
+>>>>>>> Stashed changes
+    <style>
+    .edit-delete {
+   
+    bottom: 5px;
+    right: 5px; 
+<<<<<<< Updated upstream
+    }
+    .edit,.delete{
+    border: none; 
+    background: none;
+    }
+
+    </style>
+
+
+=======
+}
+.edit,.delete{
+    border: none; 
+    background: none;
+}
+
+    </style>
+>>>>>>> Stashed changes
 </head>
+
 <body>
 
-<?php include 'admin-header.html'; ?>
-<div class="container">
-<p><img src="../assets/icons/account/account_base.svg" width="30px" height="30px" style="vertical-align:middle;"> Manage User</p>
-<form> <input type="text" id="search" name="search" placeholder="">
+    <?php include 'admin-header.html'; ?>
+    <div class="container">
+        <p><img src="../assets/icons/account/account_base.svg" width="30px" height="30px" style="vertical-align:middle;"> Manage User</p>
+<<<<<<< Updated upstream
+      
+=======
+        <form> <input type="text" id="search" name="search" placeholder="">
             <button class="search-btn" value="search">Search</button></form>
-<table>
-        <tr>
-            <th>Username</th>
-            <th>Phone Number</th>
-            <th>Email Address</th>
-            <th>Points</th>
-            <th>Actions</th>
+>>>>>>> Stashed changes
+        <table id="userTable">
+            <tr>
+                <th>Username</th>
+                <th>Phone Number</th>
+                <th>Email Address</th>
+                <th>Points</th>
+                <th>Actions</th>
+            </tr>
+<<<<<<< Updated upstream
+            
+=======
+>>>>>>> Stashed changes
+            <?php if (isset($userResponse['users'])): ?>
+            <?php foreach ($userResponse['users'] as $user): ?>
+                <tr data-username="<?= $user['username']; ?>">
+                    <td><?= isset($user['username']) ? $user['username'] : ''; ?></td>
+                    <td><?= isset($user['phone_num']) ? $user['phone_num'] : ''; ?></td>
+                    <td><?= isset($user['email']) ? $user['email'] : ''; ?></td>
+                    <td><?= isset($user['points']) ? $user['points'] : ''; ?></td>
+                    <td>
+                        <div class="edit-delete">
+                            <button alt="Remove User" class="delete" data-username="<?= isset($user['username']) ? $user['username'] : ''; ?>">
+                                <img src="../assets/icons/delete/delete_base.svg" width="20px" height="20px">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="5">No users found.</td>
+            </tr>
+        <?php endif; ?>
+            <script src="../js/manage_user.js"></script>
+<<<<<<< Updated upstream
+        
+        </table>
+    </div></div>
+    <div style="clear:both"></div>
+=======
+        </table>
+    </div>
+>>>>>>> Stashed changes
+    <?php include 'footer.html'; ?>
 
-        </tr>    
-
-    </table>
-    
-</div>
 </body>
-<?php include 'footer.html'; ?>
-
 
 </html>
