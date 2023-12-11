@@ -1,51 +1,39 @@
-:root {
-  --login-button-radius: 30px;
-}
-
 main {
-  background: var(--light-blue);
+  background: url(../assets/backgrounds/session_bg.jpg) center/cover no-repeat;
 }
 
-.expired {
-  background: url(../assets/backgrounds/session_bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 70px;
-  border-radius: 15px;
-  padding: 50px;
-}
-
-.expired > div {
-  background: white;
-  margin: 0 auto;
+section {
   padding: 70px;
+}
+
+main div {
+  width: 400px;
+  background: white;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
-  gap: 25px;
-  border-radius: 15px;
+  gap: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.expired h2 {
-  font-size: var(--font-l);
-}
-
-.expired p {
+main div > h2 {
   font-size: var(--font-m);
 }
 
-.expired button {
-  background: var(--sdg-orange);
-  border: none;
-  font-size: var(--font-m);
+main div > p {
+  font-size: var(--font-s);
+}
+
+main div > a {
+  background: var(--btn-orange);
   color: white;
-  border-radius: var(--login-button-radius);
-  padding: 8px;
-  width: 150px;
+  text-decoration: none;
+  font-size: var(--font-s);
 }
 
-.expired button:hover {
-  background: var(--button-hover-orange);
+main div > a:hover {
+  background: var(--btn-hover-orange);
 }
