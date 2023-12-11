@@ -1,0 +1,87 @@
+main#manage-users {
+  background: url(../assets/backgrounds/manage_users_bg.jpg) center/cover no-repeat;
+}
+
+main#manage-redemptions {
+  background: url(../assets/backgrounds/manage_redemptions_bg.jpg) center/cover no-repeat;
+}
+
+main > section {
+  margin: 70px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: white;
+  border-radius: 15px;
+}
+
+#head {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+#head > .icon {
+  width: 35px;
+  height: 35px;
+}
+
+#head > h2 {
+  font-size: var(--font-l);
+}
+
+#search-bar {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: flex-start;
+  border: none;
+  width: auto;
+}
+
+#search-input {
+  width: 400px;
+  border-radius: 15px;
+  border: 2px solid lightgrey;
+  outline: none;
+  padding: 5px 10px;
+  font-size: var(--font-s);
+}
+
+#search-btn {
+  background: var(--btn-orange);
+  border: none;
+  color: white;
+  font-weight: normal;
+}
+
+#search-btn:hover {
+  background: var(--btn-hover-orange);
+}
+
+.column > .table-col {
+  background: var(--tbl-header-manage-titan);
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.edit-delete > button {
+  background: transparent;
+  border: none;
+  height: fit-content;
+}
+
+.edit-delete > button:hover {
+  transform: scale(1.2);
+}
+
+.edit-delete .icon {
+  width: 25px;
+  height: 25px;
+}
