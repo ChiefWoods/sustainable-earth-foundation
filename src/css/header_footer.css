@@ -53,7 +53,7 @@ header > div {
   width: 125px;
 }
 
-.divider {
+.branding .divider {
   content: "";
   width: 2.5px;
   height: var(--font-xl);
@@ -119,6 +119,8 @@ nav > a {
   border: none;
 }
 
+/* Dropdown */
+
 .dropdown {
   list-style-type: none;
   flex-direction: column;
@@ -157,4 +159,176 @@ nav > a {
 
 .dropdown > li:hover .dropdown-content {
   font-weight: bold;
+}
+
+/* Footer */
+
+footer > div:first-child {
+  background: var(--footer-beige);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 25px 50px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Links-socials */
+
+#links-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#quick-links {
+  display: flex;
+  gap: 100px;
+}
+
+#quick-links > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+#quick-links > div > a {
+  font-size: var(--font-s);
+  text-decoration: none;
+  color: black;
+}
+
+#social-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#social-links > span {
+  font-size: var(--font-m);
+}
+
+.social-icon {
+  width: 35px;
+}
+
+img[alt="Instagram"] {
+  background: var(--sef-navy-blue);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+/* Newsletter */
+
+#newsletter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+#newsletter > span {
+  font-size: var(--font-xl);
+}
+
+form {
+  padding-block: 15px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+#email-input {
+  font-size: var(--font-m);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+  padding-left: 0;
+}
+
+#email-input::placeholder {
+  color: lightgrey;
+}
+
+form > button {
+  font-size: var(--font-s);
+  font-weight: bold;
+  background: transparent;
+  border: none;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* More-links */
+
+#more-links {
+  display: flex;
+  gap: 20px;
+}
+
+#more-links > a {
+  font-size: var(--font-s);
+  text-decoration: none;
+  color: black;
+}
+
+#more-links .divider {
+  content: "";
+  width: 2px;
+  height: var(--font-m);
+  background: black;
+}
+
+.bottom > span {
+  font-size: var(--font-xs);
+}
+
+/* Template */
+
+footer > div:last-child {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--github-black);
+  padding: 12px 3%;
+  height: 55px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+  z-index: 99;
+}
+
+.made-by,
+.github-link {
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  white-space: nowrap;
+}
+
+.made-by {
+  grid-column: 2;
+}
+
+.github-link {
+  grid-column: 3;
+  justify-self: end;
+  text-decoration: none;
+}
+
+.github-icon {
+  height: 25px;
 }
