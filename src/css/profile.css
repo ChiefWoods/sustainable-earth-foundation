@@ -1,21 +1,21 @@
 main {
-  background: var(--light-blue);
+  background: var(--bg-dark-blue);
 }
 
 /* Profile */
 
-.profile {
+#profile {
   padding: 70px;
   display: flex;
   gap: 30px;
 }
 
-.user {
+#user {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   background: white;
   border: 6px solid lightgrey;
   border-radius: 15px;
@@ -23,27 +23,33 @@ main {
   width: 350px;
 }
 
-.user > img {
-  width: 70%;
+#image-btn {
+  background: transparent;
+  border: none;
+  width: fit-content;
+}
+
+#profile-image {
+  width: 150px;
   aspect-ratio: 1/1;
 }
 
-.username,
-.points {
+#username,
+#points {
   font-size: var(--font-m);
 }
 
-.info {
+#info {
   display: flex;
   gap: 30px;
   width: 100%;
 }
 
-.info > form {
+#info > form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 30px;
+  gap: 20px;
   background: white;
   border: 6px solid lightgrey;
   border-radius: 15px;
@@ -51,50 +57,50 @@ main {
   flex: 1;
 }
 
-.info h2 {
+#info h2 {
   font-size: var(--font-l);
 }
 
-.email-phone,
-.password {
+form > div {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 20px;
   align-items: center;
 }
 
-.info label {
-  font-size: var(--font-m);
+#info label {
+  font-size: var(--font-s);
+  white-space: nowrap;
 }
 
-.info input {
-  font-size: var(--font-m);
+#info input {
+  font-size: var(--font-s);
   padding: 8px 5px;
   border-radius: 5px;
   border: 2px solid lightgrey;
 }
 
-.info input::placeholder {
+#info input::placeholder {
   color: black;
 }
 
-.info button {
+.update-btn {
   width: fit-content;
   align-self: flex-end;
-  background: var(--sdg-orange);
-  padding: 10px;
-  border-radius: 8px;
+  background: var(--btn-orange);
   border: none;
   color: white;
+  font-weight: normal;
+  font-size: var(--font-s);
 }
 
-.info button:hover {
-  background: var(--button-hover-orange);
+.update-btn:hover {
+  background: var(--btn-hover-orange);
 }
 
 /* History */
 
-.history {
+#history {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +122,7 @@ thead tr:first-child {
   background: white;
 }
 
-.title {
+#table-title{
   font-size: var(--font-l);
   padding: 20px;
   border-bottom: none;
@@ -128,12 +134,16 @@ th,
 td {
   height: 50px;
   border-bottom: 1px solid black;
-  font-size: var(--font-m);
+  font-size: var(--font-s);
   font-weight: 400;
 }
 
 tr {
   text-align: center;
+}
+
+.table-col {
+  font-weight: bold;
 }
 
 tbody tr:last-child td {
