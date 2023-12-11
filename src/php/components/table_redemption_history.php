@@ -1,10 +1,10 @@
 <section id="history">
   <table>
     <thead>
-      <tr>
+      <tr id="title-row">
         <th id="table-title" colspan="3">Redemption History</th>
       </tr>
-      <tr>
+      <tr class="column">
         <th class="table-col">Reward Code</th>
         <th class="table-col">Points Used</th>
         <th class="table-col">Date Redeemed</th>

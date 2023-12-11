@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#title-row {
+  background: white;
+}
+
+#table-title {
+  font-size: var(--font-l);
+  padding: 20px;
+  border-bottom: none;
+}
+
+th,
+td {
+  height: 50px;
+  border-bottom: 1px solid black;
+  font-size: var(--font-s);
+  font-weight: normal;
+}
+
+.column > th,
+td {
+  background: lightgrey;
+}
+
+.table-col {
+  font-weight: bold;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}

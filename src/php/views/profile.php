@@ -7,6 +7,7 @@
   <title>Profile | Sustainable Earth Foundation</title>
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/profile.css">
+  <link rel="stylesheet" href="../../css/table.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
 </head>
 
@@ -20,7 +21,7 @@
         <?php include '../components/change_password.php'; ?>
       </div>
     </section>
-    <?php include '../components/redemption_history.php'; ?>
+    <?php include '../components/table_redemption_history.php'; ?>
   </main>
   <?php include '../components/footer.php'; ?>
 </body>
