@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
-
 :root {
+  --font-xl: 3rem;
+  --font-l: 2.5rem;
+  --font-m: 2rem;
+  --font-s: 1.5rem;
   --font-xs: 1rem;
-  --font-s: 1.2rem;
-  --font-m: 1.5rem;
-  --font-l: 2rem;
-  --font-xl: 2.5rem;
-  --font-xxl: 3rem;
+}
+
+* {
+  font-family: 'Libre Baskerville', serif;
 }
