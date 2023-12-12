@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         if (response.success) {
                             alert('Login successful!');
+                            sessionStorage.setItem('user_role_id', response.user_role_id);
                             window.location.href = response.redirect;
                         } else {
                             if (response.error === 'User not found') {

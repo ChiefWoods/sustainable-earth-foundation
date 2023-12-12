@@ -58,6 +58,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         if ($pw_temp === $stored_password) {
             session_start();
             $_SESSION['username'] = $fn;
+            $_SESSION['user_role_id'] = $user_role_id;
             $response['success'] = true;
 
 

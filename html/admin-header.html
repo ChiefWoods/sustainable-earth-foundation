@@ -1,32 +1,62 @@
 <style>
-    /* Add this style to make the dropdown content appear on the right */
-.show {
-    display: flexbox;
-    right: 0; /* Set the right property to 0 to align with the right side of the button */
-    left: auto; /* Reset the left property */
-}
+ 
+     .show {
+        display: flexbox;
+        right: 0; /* Set the right property to 0 to align with the right side of the button */
+        left: auto; /* Reset the left property */
+    }
 
     .dropdown-content.show {
         display: block;
-        float: right;
+        right: 0; /* Set the right property to 0 to align with the right side of the button */
+        left: auto; /* Reset the left property */
     }
-    /* Styles for the dropdown content */
-.dropdown-content {
-    margin-top: 38px;
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    border-radius: 5px;
-    overflow-x: initial;
-    overflow-y: auto;
-    max-height: 400px;
-    right: 0; /* Set the right property to 0 to align with the right side of the button */
-}
 
+       /* Styles for the dropdown content */
+       .dropdown-content {
+        top: 67px;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        border-radius: 5px;
+        overflow-x: initial;
+        overflow-y: auto;
+        max-height: 400px;
+        right: 0;
+        left: auto;
+    }
 
+    /* Adjusted styles for horizontal alignment */
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .topnav {
+
+        display: flex;
+        align-items: center;
+    }
+
+    .topnav a {
+        margin: 0 10px;
+    }
+
+    .topright {
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown {
+        margin-top: -5px;
+        margin-right: 10px;
+    }
+
+    /* Rest of your existing styles... */
 </style>
 <script>
     // Function to toggle the dropdown
@@ -56,19 +86,25 @@
         <a href="" style="margin-top: 2px;"> Sustainable Earth Foundation</a>
     </div>
     <div class="topright">
+        <div>
         <a href="">Home</a>
+    </div>
+    <div>
         <a href="admin-stickywall.html">Sticky Wall</a>
+    </div>
+    <div>
         <a href="rewards.html">Rewards</a>
+        </div>
         <div class="dropdown">
             <button id="dropbtn" onclick="toggleDropdown()" class="manage" style="margin-top: 5px;">Manage</button>
             <div id="myDropdown" class="dropdown-content">
-                <div class="notification-item">
+                <div class="notification-item" id="notification-icon" >
                     <a href="admin-manage-user.html">
                         <img src="../assets/icons/user.png" width="25px" height="25px" style="vertical-align:middle; margin-right: 10px;">
                         Manage User
                     </a>
                 </div>
-                <div class="notification-item">
+                <div class="notification-item" id="notification-icon" >
                     <a href="admin-redeem-history.html">
                         <img src="../assets/icons/Present.png" width="25px" height="25px" style="vertical-align:middle; margin-right: 10px;">
                         Manage Redemption
@@ -76,13 +112,16 @@
                 </div>
               </div>
         </div>
-            
+        <div> 
             <a href="admin-profile.html"> <button class="btn">
                 <img src="../assets/icons/user.png" alt="Profile" width="30px" height="30px" style="vertical-align:middle; margin-top: 0px;">
             </button></a>
+        </div>  
+        <div>
             <button class="btn" >
                 <img src="../assets/icons/logout/logout.png" alt="Notification" width="25px" height="25px" style="vertical-align:middle; margin-top: 0px;">
             </button>
+        </div>
         </div>
     </div>
 </div>
