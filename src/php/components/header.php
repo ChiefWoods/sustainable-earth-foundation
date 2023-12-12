@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 include '../controllers/timeoutController.php';
 ?>
 
+<script src="../../js/header.js" defer></script>
 <header>
   <div>
     <a href="../views/index.php" class="branding">
