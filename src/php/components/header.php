@@ -5,50 +5,44 @@ if (session_status() == PHP_SESSION_NONE) {
 ?>
 
 <header>
-  <!-- Not logged in -->
-
-  <!-- <div>
+  <div>
     <a href="../views/index.php" class="branding">
       <img src="../../assets/images/logo.png" alt="Logo" class="logo">
       <div class="divider"></div>
       <h1>Sustainable Earth Foundation</h1>
     </a>
-    <nav>
-      <a href="../views/index.php" class="nav-link">Home</a>
-      <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
-      <a href="../views/rewards.php" class="nav-link">Rewards</a>
-      <a href="../views/login.php" id="login-btn" class="btn">Login</a>
-    </nav>
-  </div> -->
+    <?php session_start();
+    if (!isset($_SESSION['username'])) { ?>
+      <nav>
+        <a href="../views/index.php" class="nav-link">Home</a>
+        <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
+        <a href="../views/rewards.php" class="nav-link">Rewards</a>
+        <a href="../views/login.php" id="login-btn" class="btn">Login</a>
+      </nav>
+  </div>
+<?php } ?>
 
-  <!-- Logged in as user -->
-
-  <!-- <div>
-    <a href="../views/index.php" class="branding">
-      <img src="../../assets/images/logo.png" alt="Logo" class="logo">
-      <div class="divider"></div>
-      <h1>Sustainable Earth Foundation</h1>
+<?php if (isset($_SESSION['username']) && $_SESSION['is_admin'] == 0) { ?>
+  <nav>
+    <a href="../views/index.php" class="nav-link">Home</a>
+    <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
+    <a href="../views/rewards.php" class="nav-link">Rewards</a>
+    <a href="../views/profile.php" id="profile-btn">
+      <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile picture" class="icon" id="profile-icon">
     </a>
-    <nav>
-      <a href="../views/index.php" class="nav-link">Home</a>
-      <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
-      <a href="../views/rewards.php" class="nav-link">Rewards</a>
-      <a href="../views/profile.php" id="profile-btn">
-        <img src="../../assets/images/default_profile_picture.png" alt="Profile picture" class="icon" id="profile-icon">
-      </a>
-      <button id="notification-btn">
-        <img src="../../assets/icons/notification/notification_blue.svg" alt="Notification" class="icon" id="notification-icon">
-      </button>
-      <a href="../views/login.php" id="logout-btn">
-        <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
-      </a>
-    </nav>
+    <button id="notification-btn">
+      <img src="../../assets/icons/notification/notification_blue.svg" alt="Notification" class="icon" id="notification-icon">
+    </button>
+    <a href="../controllers/logoutController.php?logout=true" id="logout-btn">
+      <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
+    </a>
+  </nav>
   </div>
   <ul class="dropdown">
     <li>
       <a href="../views/sticky_wall.php">
         <img src="../../assets/icons/upvote/upvote_selected_blue.svg" alt="Upvoted" class="icon upvote-icon">
-        <span class="dropdown-content">Amy has upvoted your post 'Post A'!</span>
+        <span class="dropdown-content">Amy has upvoted your post Post A!</span>
       </a>
     </li>
     <li>
@@ -63,27 +57,21 @@ if (session_status() == PHP_SESSION_NONE) {
         <span class="dropdown-content">You have collected enough points to redeem Reward A.</span>
       </a>
     </li>
-  </ul> -->
+  </ul>
+<?php } ?>
 
-  <!-- Logged in as admin -->
-
-  <div>
-    <a href="../views/index.php" class="branding">
-      <img src="../../assets/images/logo.png" alt="Logo" class="logo">
-      <div class="divider"></div>
-      <h1>Sustainable Earth Foundation</h1>
+<?php if (isset($_SESSION['username']) && $_SESSION['is_admin'] == 1) { ?>
+  <nav>
+    <a href="../views/index.php" class="nav-link">Home</a>
+    <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
+    <a id="manage-btn" class="nav-link">Manage</a>
+    <a href="../views/profile.php" id="profile-btn">
+      <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile picture" class="icon" id="profile-icon">
     </a>
-    <nav>
-      <a href="../views/index.php" class="nav-link">Home</a>
-      <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
-      <a id="manage-btn" class="nav-link">Manage</a>
-      <a href="../views/profile.php" id="profile-btn">
-        <img src="../../assets/images/default_profile_picture.png" alt="Profile picture" class="icon" id="profile-icon">
-      </a>
-      <a href="../views/login.php" id="logout-btn">
-        <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
-      </a>
-    </nav>
+    <a href="../controllers/logoutController.php?logout=true" id="logout-btn">
+      <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
+    </a>
+  </nav>
   </div>
   <ul class="dropdown">
     <li>
@@ -99,5 +87,6 @@ if (session_status() == PHP_SESSION_NONE) {
       </a>
     </li>
   </ul>
+<?php } ?>
 
 </header>

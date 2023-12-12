@@ -21,11 +21,11 @@ function validateUser($pdo)
       session_start();
 
       $_SESSION['username'] = $username;
+      $_SESSION['is_admin'] = $row['is_admin'];
+      $_SESSION['profile_picture'] = $row['profile_picture'];
 
       header("location:../views/index.php");
     } else {
-      echo $password . "<br>";
-      echo $hash . "<br>";
       $errors[] = "Incorrect password";
     }
   }

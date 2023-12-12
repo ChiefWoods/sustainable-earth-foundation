@@ -48,10 +48,12 @@ function validateForm($pdo)
   if (empty($errors)) {
     $phone = $phone == 'NULL' ? "" : $phone;
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $is_admin = 0;
+    $profile_picture = '../../assets/profile_pictures/default_profile_picture.png';
 
     $query = "
       INSERT INTO user (username, email, phone_number, password, profile_picture, points, is_admin)
-      VALUES ('$username', '$email', '$phone', '$password', '../../assets/profile_pictures/default_profile_picture.png', 0, FALSE)  
+      VALUES ('$username', '$email', '$phone', '$password', '$profile_picture', $is_admin, FALSE)  
     ";
     $result = $pdo->query($query);
 
@@ -62,6 +64,8 @@ function validateForm($pdo)
     session_start();
 
     $_SESSION['username'] = $username;
+    $_SESSION['is_admin'] = $is_admin;
+    $_SESSION['profile_picture'] = $profile_picture;
 
     header("location:../../php/views/profile.php");
   } else {
