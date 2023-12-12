@@ -7,11 +7,11 @@ if (isset($_SESSION['username'])) {
     destroy_session_and_data();
 
     // Redirect to the home page
-    header("Location: index.php");
+    header("Location: ../html/SessionEnd.html");
     exit();
 } else {
     // Redirect to the home page if not logged in
-    header("Location: index.php");
+    header("Location: ../html/SessionEnd.html");
     exit();
 }
 

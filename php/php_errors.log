@@ -323,3 +323,13 @@ Stack trace:
 [12-Dec-2023 15:39:27 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
 [12-Dec-2023 15:42:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
 [12-Dec-2023 16:05:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:12:53 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:13:09 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:14:02 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:14:37 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:15:42 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:22:07 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:24:16 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:25:20 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:36:40 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 16:53:21 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
