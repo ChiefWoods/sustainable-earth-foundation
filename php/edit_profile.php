@@ -1,8 +1,9 @@
 <?php
 include_once 'SQL_login.php';
 
-// Start or resume the session
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Initialize response array
 $response = [];
@@ -19,7 +20,7 @@ if (isset($_SESSION['username'])) {
         $stmt->bindParam(1, $username);
         $stmt->execute();
 
-        if (!$stmt->errno) {
+        if (!$stmt->errorInfo()[1]) {
             $stmt->bindColumn('phone_num', $userPhoneNum);
             $stmt->bindColumn('email', $userEmail);
             $stmt->bindColumn('points', $earnedPoints);

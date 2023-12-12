@@ -1,6 +1,6 @@
 <?php include '../php/edit_profile.php'; ?>
 <?php include '../php/profile_redemption.php'; ?>
-
+<?php include '../php/login_header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +16,9 @@
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 </head>
 <body>
-
-<?php include 'user-header.html'; ?>
+    <?php include
+    $header_file = 'user-header.html'; // Set a default value or define based on your logic
+    ?>
 <div class="container">
     <div class="left-shadow">
     <div class="left-container">
@@ -60,6 +61,7 @@
 </div>
 </div>
 <div class="bottom-container">
+    <table>
     <table id="redemptionTable">
         <tr>
             <th></th>
@@ -67,6 +69,7 @@
             <th></th>
         </tr> 
         <tr>
+            <td>Voucher Code</td>
             <td>Reward Code</td>
             <td>Used Points</td>
             <td>Redeemption Date</td>

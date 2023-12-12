@@ -1,9 +1,9 @@
 <?php
 include_once 'SQL_login.php';
 
-// Start or resume the session
-session_start();
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // Initialize response array for fetching redemption data
 $redemptionResponse = [];
 

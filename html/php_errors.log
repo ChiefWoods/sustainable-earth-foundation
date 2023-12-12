@@ -1,0 +1,20 @@
+[12-Dec-2023 06:26:54 Europe/Berlin] PHP Warning:  Undefined variable $header_file in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:26:54 Europe/Berlin] PHP Fatal error:  Uncaught ValueError: Path cannot be empty in C:\xampp\htdocs\php\webProject\html\profile.html:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:23 Europe/Berlin] PHP Warning:  Undefined variable $header_file in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:23 Europe/Berlin] PHP Fatal error:  Uncaught ValueError: Path cannot be empty in C:\xampp\htdocs\php\webProject\html\profile.html:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:25 Europe/Berlin] PHP Warning:  Undefined variable $header_file in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:25 Europe/Berlin] PHP Fatal error:  Uncaught ValueError: Path cannot be empty in C:\xampp\htdocs\php\webProject\html\profile.html:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:30 Europe/Berlin] PHP Warning:  Undefined variable $header_file in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
+[12-Dec-2023 06:29:30 Europe/Berlin] PHP Fatal error:  Uncaught ValueError: Path cannot be empty in C:\xampp\htdocs\php\webProject\html\profile.html:20
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\php\webProject\html\profile.html on line 20
