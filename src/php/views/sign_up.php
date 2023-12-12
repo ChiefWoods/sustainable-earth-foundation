@@ -14,7 +14,7 @@
   <?php include '../components/header.php'; ?>
   <main id="sign-up">
     <section>
-      <form action="" id="signup-form">
+      <form action="../controllers/signupController.php" method="post" id="signup-form">
         <div>
           <h2>Join us today!</h2>
           <input type="text" name="username" placeholder="Username">

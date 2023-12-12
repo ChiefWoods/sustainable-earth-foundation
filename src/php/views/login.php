@@ -14,7 +14,7 @@
   <?php include '../components/header.php'; ?>
   <main id="login">
     <section>
-      <form action="" id="login-form">
+      <form action="../controllers/loginController.php" method="post" id="login-form">
         <div>
           <h2>Welcome back!</h2>
           <input type="text" name="username" placeholder="Username">
