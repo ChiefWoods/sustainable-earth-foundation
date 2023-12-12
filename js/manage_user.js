@@ -33,7 +33,6 @@ function updateTable(users) {
     });
 }
 
-
 async function removeFromTable(username, row) {
     try {
         // Remove the row from the table immediately
@@ -50,13 +49,22 @@ async function removeFromTable(username, row) {
         });
 
         if (response.ok) {
-            const updatedUsersData = await response.json();
+            const data = await response.text();
+            if (data === 'success') {
+                console.log('User removed from the database.');
 
-            if (updatedUsersData.success) {
-                // Update the table with the latest user data
-                updateTable(updatedUsersData.users);
+                // Fetch updated user data and call updateTable
+                const updatedUsersResponse = await fetch('../php/manage_user.php');
+                const updatedUsersData = await updatedUsersResponse.json();
+
+                if (updatedUsersData.success) {
+                    // Update the table with the latest user data
+                    updateTable(updatedUsersData.users);
+                } else {
+                    console.error('Error updating user data:', updatedUsersData.error);
+                }
             } else {
-                console.error('Error updating user data:', updatedUsersData.error);
+                console.error('Error removing user from the database:', data);
             }
         } else {
             console.error('Failed to remove user. HTTP status:', response.status);

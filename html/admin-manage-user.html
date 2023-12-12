@@ -1,6 +1,7 @@
-<?php include '../php/profile_redemption.php'; ?>
+<?php include '../php/manage_user.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,21 @@
     <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <script src="../js/dropdown.js"></script>
-    
-    
     <style>
     .edit-delete {
    
     bottom: 5px;
     right: 5px; 
-    }
-    .edit,.delete{
+}
+.edit,.delete{
     border: none; 
     background: none;
-    }
+}
 
     </style>
-
-
 </head>
 
 <body>
@@ -33,7 +31,7 @@
     <?php include 'admin-header.html'; ?>
     <div class="container">
         <p><img src="../assets/icons/account/account_base.svg" width="30px" height="30px" style="vertical-align:middle;"> Manage User</p>
-      
+
         <table id="userTable">
             <tr>
                 <th>Username</th>
@@ -42,7 +40,6 @@
                 <th>Points</th>
                 <th>Actions</th>
             </tr>
-            
             <?php if (isset($userResponse['users'])): ?>
             <?php foreach ($userResponse['users'] as $user): ?>
                 <tr data-username="<?= $user['username']; ?>">
@@ -65,10 +62,8 @@
             </tr>
         <?php endif; ?>
             <script src="../js/manage_user.js"></script>
-        
         </table>
-    </div></div>
-    <div style="clear:both"></div>
+    </div>
     <?php include 'footer.html'; ?>
 
 </body>

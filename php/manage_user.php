@@ -1,7 +1,6 @@
 <?php
 include_once 'SQL_login.php';
 
-
 // Start or resume the session
 session_start();
 
@@ -51,8 +50,34 @@ if (isset($_SESSION['username'])) {
         $deleteUsername = $_POST['delete_username'];
 
         // Perform deletion in the database
-        $deleteUserQuery = "DELETE FROM tb_user WHERE username = :username";
-        $deleteUserStmt = $pdo->prepare($deleteUserQuery);
+        $deleteUserQuery1 = "DELETE FROM redemption WHERE username = :username";
+        $deleteUserQuery2 = "DELETE FROM tb_user WHERE username = :username";
+        
+        $pdo->beginTransaction();
+        
+        try {
+            $deleteUserStmt1 = $pdo->prepare($deleteUserQuery1);
+            $deleteUserStmt1->bindParam(':username', $deleteUsername, PDO::PARAM_STR);
+            
+            $deleteUserStmt2 = $pdo->prepare($deleteUserQuery2);
+            $deleteUserStmt2->bindParam(':username', $deleteUsername, PDO::PARAM_STR);
+        
+            // Check if the statements are successfully prepared
+            if ($deleteUserStmt1 !== false && $deleteUserStmt2 !== false) {
+                $deleteUserStmt1->execute();
+                $deleteUserStmt2->execute();
+                $pdo->commit();
+                $deleteResponse = 'success';
+            } else {
+                throw new PDOException('Error preparing DELETE statements.');
+            }
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            $deleteResponse = 'Error deleting user from the database: ' . $e->getMessage();
+        }
+        
+
+      /*  $deleteUserStmt = $pdo->prepare($deleteUserQuery);
         $deleteUserStmt->bindParam(':username', $deleteUsername, PDO::PARAM_STR);
 
         if ($deleteUserStmt->execute()) {
@@ -65,11 +90,11 @@ if (isset($_SESSION['username'])) {
     } else {
         // Output an error message if delete_username is missing
         $deleteResponse = 'Missing delete_username parameter.';
-    }
+    }*/
 } else {
     // Output an error message if the user is not logged in
     $deleteResponse = 'User not logged in.';
-}
+}}
 
 // Output the response for delete operation
 echo $deleteResponse;

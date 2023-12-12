@@ -70,8 +70,9 @@ CREATE TABLE redemption (
     reward_id INT,
     reward_code VARCHAR(20),
     redemption_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (username) REFERENCES tb_user(username),
+    FOREIGN KEY (username) REFERENCES tb_user(username) ON DELETE SET NULL,
     FOREIGN KEY (reward_id, reward_code) REFERENCES reward(id, reward_code)
+    
 );
 
 INSERT INTO redemption (username, used_points, reward_id, reward_code)
