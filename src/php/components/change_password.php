@@ -1,4 +1,4 @@
-<form action="">
+<form action="../controllers/userController.php" method="post">
   <h2>Change Password</h2>
   <div>
     <label for="current">Current Password</label>

@@ -1,7 +1,7 @@
 <div id="user">
   <button id="image-btn">
-    <img src="../../assets/images/default_profile_picture.png" alt="Profile picture" id="profile-image">
+    <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile picture" id="profile-image">
   </button>
-  <span id="username">Username: </span>
-  <span id="points">Points: </span>
+  <span id="username">Username: <?php echo $_SESSION['username']; ?></span>
+  <span id="points">Points: <?php echo getPoints($pdo); ?></span>
 </div>

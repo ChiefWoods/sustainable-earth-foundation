@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="../../css/profile.css">
   <link rel="stylesheet" href="../../css/table.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <?php
+  include '../controllers/connect.php';
+  include '../models/userModel.php';
+  ?>
 </head>
 
 <body>
