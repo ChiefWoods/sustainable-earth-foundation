@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <script src="../js/dropdown.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
+    <script src="../js/signup.js"></script>
 <style>
     .container{
         background-image: url("../assets/images/register-bg.jpg");
@@ -28,14 +28,34 @@
             <h1>Join us today!</h1>
         </p>
         <p>Sign up now to become a member</p>
-        <form>
+        <form id="signupForm">
+            <div class="form-control">
             <input type="text" id="username" name="username" placeholder="Username">
+            <br>
+            <small class="error-message"></small>
+            </div>
+            <div class="form-control">
             <input type="text" id="phoneNum" name="phoneNum" placeholder="Phone Number">
+            <br>
+            <small class="error-message"></small>
+            </div>
+            <div class="form-control">
             <input type="text" id="Email" name="Email" placeholder="Email">
-            <input type="text" id="password" name="password" placeholder="Password">
-            <input type="text" id="comPassword" name="comPassword" placeholder="Comfirm Password">
+            <br>
+            <small class="error-message"></small>
+            </div>
+            <div class="form-control">
+            <input type="password" id="password" name="password" placeholder="Password">
+            <br>
+            <small class="error-message"></small>
+            </div>
+            <div class="form-control">
+            <input type="password" id="comPassword" name="comPassword" placeholder="Confirm Password">
+            <br>
+            <small class="error-message"></small>
+            </div>
+            <button class="signup-btn" type="submit">Sign Up</button>
         </form>
-        <button class="signup-btn" id="login" value="Sign Up">Sign Up</button>
         <p>Already have an account? <a href="login.html"><b>Login</b></a></p>
     </div>
     </div>

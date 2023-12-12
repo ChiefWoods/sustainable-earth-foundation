@@ -266,3 +266,15 @@ Stack trace:
 [12-Dec-2023 02:57:52 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\forgot_pwd.php on line 75
 [12-Dec-2023 03:03:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
 [12-Dec-2023 03:03:01 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 68
+[12-Dec-2023 03:19:36 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'phoneNum' in 'field list' in C:\xampp\htdocs\php\webProject\php\signup.php:54
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\signup.php(54): PDO->prepare('INSERT INTO tb_...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\signup.php on line 54
+[12-Dec-2023 03:19:37 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'phoneNum' in 'field list' in C:\xampp\htdocs\php\webProject\php\signup.php:54
+Stack trace:
+#0 C:\xampp\htdocs\php\webProject\php\signup.php(54): PDO->prepare('INSERT INTO tb_...')
+#1 {main}
+  thrown in C:\xampp\htdocs\php\webProject\php\signup.php on line 54
+[12-Dec-2023 03:30:42 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 59
+[12-Dec-2023 03:30:42 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\php\webProject\php\login.php on line 68
