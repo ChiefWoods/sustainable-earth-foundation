@@ -2,6 +2,22 @@
 
 session_start();
 
+function getPassword($pdo) {
+  $username = $_SESSION['username'];
+  $query = "SELECT password FROM user WHERE username = '$username'";
+  $statement = $pdo->query($query);
+  $user = $statement->fetch();
+  return $user['password'];
+}
+
+function getProfilePicture($pdo) {
+  $username = $_SESSION['username'];
+  $query = "SELECT profile_picture FROM user WHERE username = '$username'";
+  $statement = $pdo->query($query);
+  $user = $statement->fetch();
+  return $user['profile_picture'];
+}
+
 function getPoints($pdo) {
   $username = $_SESSION['username'];
   $query = "SELECT points FROM user WHERE username = '$username'";
@@ -19,6 +35,12 @@ function getProfileInfo($pdo) {
     $user['phone_number'] = "";
   }
   return $user;
+}
+
+function updateProfilePicture($pdo, $path) {
+  $username = $_SESSION['username'];
+  $query = "UPDATE user SET profile_picture = '$path' WHERE username = '$username'";
+  $pdo->query($query);
 }
 
 function updateProfileInfo($pdo, $email, $phone) {

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../css/profile.css">
   <link rel="stylesheet" href="../../css/table.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <script src="../../js/profile.js" defer></script>
   <?php
   include '../controllers/connect.php';
   include '../models/userModel.php';
@@ -19,10 +20,37 @@
   <?php include '../components/header.php'; ?>
   <main>
     <section id="profile">
-      <?php include '../components/user_profile.php'; ?>
+      <form action="../controllers/userController.php" method="post" enctype="multipart/form-data" id="user">
+        <div id="image-btn">
+          <img src="<?php echo getProfilePicture($pdo); ?>" alt="Profile picture" id="profile-image">
+          <input type="file" name="profile_picture" id="profile-picture">
+        </div>
+        <span id="username">Username: <?php echo $_SESSION['username']; ?></span>
+        <span id="points">Points: <?php echo getPoints($pdo); ?></span>
+      </form>
       <div id="info">
-        <?php include '../components/profile_info.php'; ?>
-        <?php include '../components/change_password.php'; ?>
+        <form action="../controllers/userController.php" method="post">
+          <h2>Profile Info</h2>
+          <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value="<?php echo getProfileInfo($pdo)['email']; ?>">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" value="<?php echo getProfileInfo($pdo)['phone_number']; ?>">
+          </div>
+          <button type="submit" class="btn update-btn">Update Info</button>
+        </form>
+        <form action="../controllers/userController.php" method="post">
+          <h2>Change Password</h2>
+          <div>
+            <label for="current">Current Password</label>
+            <input type="password" name="current" id="current">
+            <label for="new">New Password</label>
+            <input type="password" name="new" id="new">
+            <label for="confirm">Confirm Password</label>
+            <input type="password" name="confirm" id="confirm">
+          </div>
+          <button type="submit" class="btn update-btn">Update Password</button>
+        </form>
       </div>
     </section>
     <?php include '../components/table_redemption_history.php'; ?>

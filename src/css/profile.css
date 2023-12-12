@@ -27,11 +27,26 @@ main {
   background: transparent;
   border: none;
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #profile-image {
   width: 150px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 5px solid var(--bg-dark-blue);
+}
+
+input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 150px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  background: red;
 }
 
 #username,

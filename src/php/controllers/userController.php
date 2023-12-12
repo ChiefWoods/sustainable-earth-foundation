@@ -24,4 +24,30 @@ if (isset($_POST['email']) && isset($_POST['phone'])) {
     echo "Password updated";
     exit;
   }
+} else if (isset($_FILES['profile_picture'])) {
+  $uploadInfo = $_FILES['profile_picture'];
+
+  switch ($uploadInfo['error']) {
+    case UPLOAD_ERR_OK:
+      $name = $uploadInfo['tmp_name'];
+      $content_type = mime_content_type($name); 
+      $data = base64_encode(file_get_contents($name));
+      $path = 'data: ' . $content_type . ';base64,' . $data;
+      updateProfilePicture($pdo, $path);
+      $_SESSION['profile_picture'] = $path;
+      header("location:../views/profile.php");
+      exit;
+    case UPLOAD_ERR_INI_SIZE:
+      echo "The uploaded file is too large";
+      break;
+    case UPLOAD_ERR_PARTIAL:
+      echo "The uploaded file was only partially uploaded";
+      break;
+    case UPLOAD_ERR_EXTENSION:
+      echo "File upload stopped by extension";
+      break;
+    default:
+      echo "Unknown upload error";
+      break;
+  }
 }

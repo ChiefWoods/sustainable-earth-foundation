@@ -40,6 +40,7 @@ header > div {
   display: flex;
   justify-content: space-between;
   background: white;
+  gap: 30px;
 }
 
 .branding {
@@ -111,6 +112,7 @@ nav > a {
 .icon {
   height: 30px;
   aspect-ratio: 1/1;
+  border-radius: 50%;
 }
 
 #notification-btn {
