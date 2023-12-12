@@ -1,3 +1,4 @@
+<script src="../../js/footer.js" defer></script>
 <footer>
   <div>
     <div class="head">
@@ -27,8 +28,8 @@
       <div id="newsletter">
         <span>Let's Stay Connected!</span>
         <form>
-          <input type="text" id="email-input" placeholder="Your Email">
-          <button>Submit</button>
+          <input type="email" id="email-input" placeholder="Your Email">
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>
