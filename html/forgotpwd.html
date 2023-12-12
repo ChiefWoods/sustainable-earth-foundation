@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <script src="../js/dropdown.js"></script>
+    <script src="../js/forgot_pwd.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 <style>
     .container{
@@ -30,16 +30,27 @@
         <br>
         <p><h1>Forgot Password</h1></p>
         <br>
-        <form>
-            <input type="text" id="oldpassword" name="oldpassword" placeholder="Old Password">
-            
-            <input type="text" id="newpassword" name="newpassword" placeholder="New Password">
-            <input type="text" id="comNewpassword" name="comNewpassword" placeholder="Comfirm New Password">
-
+        <form action="../php/forgot_pwd.php" method="post" id="passwordForm">
+            <div class="form-control">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <small class="error-message"></small>
+                <br>
+            </div>
+            <div class="form-control">
+                <input type="password" id="newPassword" name="newPassword" placeholder="New Password">
+            <small class="error-message"></small>
+            <br>
+        </div>
+        <div class="form-control"> 
+            <input type="password" id="comNewPassword" name="comNewPassword" placeholder="Confirm New Password">
+            <small class="error-message"></small>
+            <br>
+        </div>
+        <button type="submit"  class="update-btn" >Update</button>
         </form>
         <br>
        
-        <button class="update-btn" id="update" value="Update">Update</button>
+  
         <p>Click here to <a href="login.html"><b>Login</b></a></p>
  
     </div>

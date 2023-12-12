@@ -81,7 +81,7 @@ body {
   
   }
 
-.right-container input[type=text]{
+.right-container input[type=text],.right-container input[type=password]{
     background-color:#ffffff ;
     border:none;
     box-sizing: border-box;

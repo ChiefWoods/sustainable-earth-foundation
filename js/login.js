@@ -17,19 +17,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         resetErrorMessages();
 
-        if (!usernameValue || !passwordValue) {
-            alert('Please enter username and password');
-        } else {
-            // Additional validation logic
-            if (usernameValue.length < 5) {
-                showError('Username must be at least 5 characters', username);
-                return; // Stop execution if there's an error
-            }
+       // Show alert for missing username and password
+    if (!usernameValue && !newPasswordValue) {
+        alert('Please enter username and password');
+        return;
+    }
 
-            if (passwordValue.length < 6) {
-                showError('Password must be at least 6 characters', password);
-                return; // Stop execution if there's an error
-            }
+    // Additional validation logic for individual fields
+    if (usernameValue.length < 5) {
+        showError('Username must be at least 5 characters', username);
+        return;
+    }
+
+    if (newPasswordValue.length < 6) {
+        showError('New Password must be at least 6 characters', newPassword);
+        return;
+    }
+
+    if (comNewPasswordValue.length < 6) {
+        showError('Confirm New Password must be at least 6 characters', comNewPassword);
+        return;
+    }
+
 
             // Create a new XMLHttpRequest object
             const xhr = new XMLHttpRequest();
@@ -58,13 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     } catch (e) {
                         console.error('Error parsing JSON:', e);
                     }
-                }
             };
 
-            // Prepare data and send the XMLHttpRequest
-            const data = new URLSearchParams(new FormData(form));
-            xhr.send(data);
-        }
+        // Append username to the form data
+        const data = new URLSearchParams(new FormData(form));
+        data.append('username', usernameValue);
+    
+        xhr.send(data);
+    }
     }
 
     function showError(message, inputField = null) {

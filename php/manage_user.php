@@ -1,10 +1,7 @@
 <?php
 include_once 'SQL_login.php';
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 // Start or resume the session
 session_start();
 

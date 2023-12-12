@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/dropdown.js"></script>
-<<<<<<< Updated upstream
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-=======
-    
->>>>>>> Stashed changes
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <style>
         body {
@@ -28,7 +24,6 @@
             background: none;
         }
     </style>
-<<<<<<< Updated upstream
     <script>
         $(document).ready(function(){
          
@@ -105,8 +100,6 @@
        });
        }
     </script>
-=======
->>>>>>> Stashed changes
 </head>
 <body>
 
@@ -114,7 +107,6 @@
         <?php include 'admin-header.html'; ?>
         <div class="container">
             <p><img src="../assets/icons/Present.png" width="30px" height="30px" style="vertical-align:middle;"> Redemption History</p>
-<<<<<<< Updated upstream
             <form method="post" id="searchForm">
                 <input type="text" id="tags" name="search" placeholder="" data-role="tagsinput">
                 <button type="submit" id="search-bth" class="search-btn">Search</button>
@@ -136,21 +128,6 @@
                 </thead>
                 <tbody>
                     <?php if (isset($redemptionResponse['redemptions'])): ?>
-=======
-            <form>
-                <input type="text" id="search" name="search" placeholder="">
-                <button class="search-btn" value="search">Search</button>
-            </form>
-            <table id="redemptionTable">
-                <tr>
-                    <th>Username</th>
-                    <th>Used Points</th>
-                    <th>Voucher Code</th>
-                    <th>Redemption Date</th>
-                    <th>Actions</th>
-                </tr>
-                <?php if (isset($redemptionResponse['redemptions'])): ?>
->>>>>>> Stashed changes
                     <?php foreach ($redemptionResponse['redemptions'] as $redemption): ?>
                         <tr data-username="<?= isset($redemption['username']) ? $redemption['username'] : ''; ?>">
                             <td><?= isset($redemption['username']) ? $redemption['username'] : ''; ?></td>
@@ -167,7 +144,6 @@
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-<<<<<<< Updated upstream
                         <tr>
                             <td colspan="5">No redemptions found.</td>
                         </tr>
@@ -177,14 +153,6 @@
             <div style="clear:both"></div>
         </div>
         
-=======
-                    <tr>
-                        <td colspan="5">No redemptions found.</td>
-                    </tr>
-                <?php endif; ?>
-            </table>
-        </div>
->>>>>>> Stashed changes
         <script src="../js/manage_redemption.js"></script>
 </body>
 <?php include 'footer.html'; ?>

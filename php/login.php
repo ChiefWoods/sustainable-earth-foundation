@@ -54,7 +54,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $response['debug']['stored_password'] = $stored_password;
         $response['debug']['input_password'] = $pw_temp;
 
-        // Compare passwords without using password hashing
+
         if ($pw_temp === $stored_password) {
             session_start();
             $_SESSION['username'] = $fn;

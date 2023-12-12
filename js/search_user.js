@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 $(document).ready(function(){
          
   load_data();
@@ -300,56 +299,3 @@ function htmlspecialchars(str) {
       return map[m];
   });
 }*/
-=======
-$(document).ready(function () {
-    load_data();
-
-    function load_data(query1) {
-        $.ajax({
-            url: "../php/search_user.php",
-            method: "POST",
-            data: { search: query1 },
-            dataType: "json",
-            success: function (data) {
-                const tableBody = $('#userTable tbody');
-                const totalRecords = $('#total_records');
-
-                totalRecords.text(data.length);
-
-                if (data.length > 0) {
-                    const html = data.map(user => `
-                        <tr>
-                            <td>${user.username}</td>
-                            <td>${user.phone_num}</td>
-                            <td>${user.email}</td>
-                            <td>${user.points}</td>
-                            <td>
-                                <div class="edit-delete">
-                                    <button class="delete" data-username="${user.username}">
-                                        <img src="../assets/icons/delete/delete_base.svg" width="20px" height="20px">
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    `).join('');
-
-                    tableBody.html(html);
-                } else {
-                    tableBody.html('<tr><td colspan="5">No Data Found</td></tr>');
-                }
-            }
-        });
-    }
-
-    $('#searchForm').submit(function (e) {
-        e.preventDefault();
-        var query1 = $('#search').val();
-        load_data(query1);
-    });
-
-    $('#search').click(function () {
-        var query1 = $('#search').val();
-        load_data(query1);
-    });
-});
->>>>>>> Stashed changes

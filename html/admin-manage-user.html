@@ -1,10 +1,6 @@
 <?php include '../php/manage_user.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +10,13 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
     <script src="../js/dropdown.js"></script>
-<<<<<<< Updated upstream
     
     
-=======
->>>>>>> Stashed changes
     <style>
     .edit-delete {
    
     bottom: 5px;
     right: 5px; 
-<<<<<<< Updated upstream
     }
     .edit,.delete{
     border: none; 
@@ -34,15 +26,6 @@
     </style>
 
 
-=======
-}
-.edit,.delete{
-    border: none; 
-    background: none;
-}
-
-    </style>
->>>>>>> Stashed changes
 </head>
 
 <body>
@@ -50,12 +33,7 @@
     <?php include 'admin-header.html'; ?>
     <div class="container">
         <p><img src="../assets/icons/account/account_base.svg" width="30px" height="30px" style="vertical-align:middle;"> Manage User</p>
-<<<<<<< Updated upstream
       
-=======
-        <form> <input type="text" id="search" name="search" placeholder="">
-            <button class="search-btn" value="search">Search</button></form>
->>>>>>> Stashed changes
         <table id="userTable">
             <tr>
                 <th>Username</th>
@@ -64,10 +42,7 @@
                 <th>Points</th>
                 <th>Actions</th>
             </tr>
-<<<<<<< Updated upstream
             
-=======
->>>>>>> Stashed changes
             <?php if (isset($userResponse['users'])): ?>
             <?php foreach ($userResponse['users'] as $user): ?>
                 <tr data-username="<?= $user['username']; ?>">
@@ -90,15 +65,10 @@
             </tr>
         <?php endif; ?>
             <script src="../js/manage_user.js"></script>
-<<<<<<< Updated upstream
         
         </table>
     </div></div>
     <div style="clear:both"></div>
-=======
-        </table>
-    </div>
->>>>>>> Stashed changes
     <?php include 'footer.html'; ?>
 
 </body>

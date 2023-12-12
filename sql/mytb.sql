@@ -82,10 +82,7 @@ INSERT INTO redemption (username, used_points, reward_id)
 VALUES ('admin1', 500, 1);
 INSERT INTO redemption (username, used_points, reward_id) 
 VALUES ('admin1', 500, 1);
-<<<<<<< Updated upstream
 INSERT INTO redemption (username, used_points, reward_id) 
 VALUES ('user1', 500, 1);
 INSERT INTO redemption (username, used_points, reward_id) 
 VALUES ('user2', 500, 1);
-=======
->>>>>>> Stashed changes
