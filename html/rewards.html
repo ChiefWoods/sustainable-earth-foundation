@@ -13,6 +13,63 @@
     <script src="../js/comingsoon.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+    // Function to handle the redeem button click event
+    $(document).ready(function () {
+    $(".redeem-btn").click(function () {
+        var rewardId = $(this).data("reward-id");
+        var rewardName = $(this).siblings("h4").text();
+        var pointsNeeded = parseInt($(this).siblings("p").text());
+
+        // Fetch user's current points using an AJAX request
+        $.ajax({
+            type: "POST",
+            url: "../php/get_user_points.php",
+            success: function (userPointsResponse) {
+                var userPoints = parseInt(userPointsResponse);
+
+                if (!isNaN(userPoints) && userPoints >= pointsNeeded) {
+                    // Fetch the reward code from the user before making the redemption request
+                    var rewardCode = prompt("Please enter the reward code($5.00OFF/$10.00OFF/$15.00OFF/$20.00OFF):"); 
+                    // Prompt the user for the reward code
+
+                    // Check if the user provided a reward code
+                    if (rewardCode) {
+                        $.ajax({
+                            type: "POST",
+                            url: "../php/redeem_reward.php",
+                            data: { rewardCode: rewardCode, rewardId: rewardId, rewardName: rewardName, pointsNeeded: pointsNeeded },
+                            success: function (response) {
+                                // Check if the response indicates success
+                                if (response.toLowerCase().includes('success')) {
+                                    // Update user's saved points and show a success message
+                                    var updatedPoints = userPoints - pointsNeeded;
+                                    $("#points").val(updatedPoints);
+                                    alert("Redemption successful! You can check out your redemption in your profile!");
+                                } else {
+                                    alert("Error redeeming reward: " + response);
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                console.error("Error:", error);
+                            }
+                        });
+                    } else {
+                        alert("Invalid redemption. No reward code provided.");
+                    }
+                } else {
+                    alert("Invalid redemption. Insufficient points.");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error fetching user points:", error);
+            }
+        });
+    });
+});
+
+</script>
 </head>
 <body>
 
@@ -65,6 +122,26 @@
         <p>Saved Points</p>
         <form> <input type="text" id="points" name="points" placeholder="<?php echo isset($response['earnedPoints']) ? $response['earnedPoints'] : ''; ?>" style="text-align: right;"> </form>
     </div>
+    <script>
+        // Fetch and display user's points using an AJAX request
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "../php/get_user_points.php",
+                success: function (userPointsResponse) {
+                    var userPoints = parseInt(userPointsResponse);
+                    if (!isNaN(userPoints)) {
+                        $("#points").val(userPoints);
+                    } else {
+                        $("#points").val("Error fetching points");
+                    }
+                },
+                error: function () {
+                    $("#points").val("Error fetching points");
+                }
+            });
+        });
+    </script>
     <p style="color: #6D6D6D">
     Redeeming your hard earned points is easy! 
     <br>
@@ -75,7 +152,7 @@
             <h4>$5.00 OFF</h4>
             <p>500 points</p>
             <p style="color: #aaaaaa; font-size: 20px; margin-top: 0px;">----------------------</p>
-            <button class="redeem-btn" value="redeem">Redeem</button>
+            <button class="redeem-btn" data-reward-id="1">Redeem</button>
         </div>
     </div>
     <div class="rewards-container">
@@ -83,7 +160,7 @@
             <h4>$10.00 OFF</h4>
             <p>1000 points</p>
             <p style="color: #aaaaaa; font-size: 20px; margin-top: 0px;">----------------------</p>
-            <button class="redeem-btn" value="redeem">Redeem</button>
+            <button class="redeem-btn" data-reward-id="2">Redeem</button>
         </div>
     </div>
     <div class="rewards-container">
@@ -91,7 +168,7 @@
             <h4>$15.00 OFF</h4>
             <p>1500 points</p>
             <p style="color: #aaaaaa; font-size: 20px; margin-top: 0px;">----------------------</p>
-            <button class="redeem-btn" value="redeem">Redeem</button>
+            <button class="redeem-btn" value="redeem" data-reward-id="3">Redeem</button>
         </div>
     </div>
     <div class="rewards-container">
@@ -99,7 +176,7 @@
             <h4>$20.00 OFF</h4>
             <p>2000 points</p>
             <p style="color: #aaaaaa; font-size: 20px; margin-top: 0px;">----------------------</p>
-            <button class="redeem-btn" value="redeem">Redeem</button>
+            <button class="redeem-btn" value="redeem" data-reward-id="4">Redeem</button>
         </div>
     </div>
  <div class="more">
