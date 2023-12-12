@@ -66,6 +66,7 @@ function validateForm($pdo)
     $_SESSION['username'] = $username;
     $_SESSION['is_admin'] = $is_admin;
     $_SESSION['profile_picture'] = $profile_picture;
+    $_SESSION['last_activity'] = time();
 
     header("location:../../php/views/profile.php");
   } else {

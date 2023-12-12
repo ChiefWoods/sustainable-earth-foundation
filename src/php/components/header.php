@@ -2,6 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
+
+include '../controllers/timeoutController.php';
 ?>
 
 <header>
@@ -11,8 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="divider"></div>
       <h1>Sustainable Earth Foundation</h1>
     </a>
-    <?php session_start();
-    if (!isset($_SESSION['username'])) { ?>
+    <?php if (!isset($_SESSION['username'])) { ?>
       <nav>
         <a href="../views/index.php" class="nav-link">Home</a>
         <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>

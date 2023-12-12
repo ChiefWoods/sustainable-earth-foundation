@@ -23,6 +23,7 @@ function validateUser($pdo)
       $_SESSION['username'] = $username;
       $_SESSION['is_admin'] = $row['is_admin'];
       $_SESSION['profile_picture'] = $row['profile_picture'];
+      $_SESSION['last_activity'] = time();
 
       header("location:../views/index.php");
     } else {
