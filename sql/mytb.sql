@@ -48,13 +48,14 @@ CREATE TABLE post (
 
 INSERT INTO post (username, date, title, content, upvote, downvote)VALUES ('admin1', CURRENT_TIMESTAMP, 'Notice', 'Hi, welcome to SEF!', 0, 0);
 
--- Create reward table
 CREATE TABLE reward (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT,
     reward_code VARCHAR(20),
     points INT,
+    PRIMARY KEY (id, reward_code),
     INDEX idx_reward (reward_code, points)
 );
+
 
 INSERT INTO reward VALUES (1, '$5.00OFF', 500);
 INSERT INTO reward VALUES (2, '$10.00OFF', 1000);
@@ -67,22 +68,44 @@ CREATE TABLE redemption (
     username VARCHAR(20),
     used_points INT,
     reward_id INT,
+    reward_code VARCHAR(20),
     redemption_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (username) REFERENCES tb_user(username),
-    FOREIGN KEY (reward_id) REFERENCES reward(id)
+    FOREIGN KEY (reward_id, reward_code) REFERENCES reward(id, reward_code)
 );
 
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('admin1', 1000, 2);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('admin1', 2000, 4);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('admin1', 1500, 3);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('admin1', 500, 1);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('admin1', 500, 1);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('user1', 500, 1);
-INSERT INTO redemption (username, used_points, reward_id) 
-VALUES ('user2', 500, 1);
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'admin1', 1000, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 2;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'admin1', 2000, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 4;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'admin1', 1500, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 3;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'admin1', 500, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 1;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'admin1', 500, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 1;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'user1', 500, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 1;
+
+INSERT INTO redemption (username, used_points, reward_id, reward_code)
+SELECT 'user2', 500, reward.id, reward.reward_code
+FROM reward
+WHERE reward.id = 1;
+

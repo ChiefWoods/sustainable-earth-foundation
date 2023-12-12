@@ -1,4 +1,6 @@
 <?php include '../php/edit_profile.php'; ?>
+<?php include '../php/profile_redemption.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/edit_profile.js"></script>
+    <script src="../js/profile_redemption.js"></script>
     <script src="../js/dropdown.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 </head>
@@ -57,18 +60,31 @@
 </div>
 </div>
 <div class="bottom-container">
-    <table>
+    <table id="redemptionTable">
         <tr>
             <th></th>
             <th>Redeem History</th>
             <th></th>
-        </tr>    
+        </tr> 
         <tr>
-            <td>Voucher Code</td>
+            <td>Reward Code</td>
             <td>Used Points</td>
             <td>Redeemption Date</td>
-        </tr>    
- 
+        </tr>   
+  
+    <?php if (isset($userResponse['redemptions'])): ?>
+    <?php foreach ($userResponse['redemptions'] as $user): ?>
+        <tr data-username="<?= $user['username']; ?>">
+            <td><?= isset($redemption['used_points']) ? $redemption['used_points'] : ''; ?></td>
+            <td><?= isset($redemption['reward_code']) ? $redemption['reward_code'] : ''; ?></td>
+            <td><?= isset($redemption['redemption_date']) ? $redemption['redemption_date'] : ''; ?></td>
+        </tr>
+    <?php endforeach; ?>
+<?php else: ?>
+    <tr>
+        <td colspan="5">No records found.</td>
+    </tr>
+<?php endif; ?>
     </table>
     <div class="tip">
         <p> <img src="../assets/icons/bulb/bulb.png" width="30px" height="30px" style="vertical-align:middle;"> Tips for earning more points! <img src="../assets/icons/bulb/bulb.png" width="30px" height="30px" style="vertical-align:middle;"></p> 
@@ -76,6 +92,7 @@
         <p style="text-align:left; padding-right: 40px;">Write posts on environment issues, rural areas, urban planning, etc. that are inline with SDG11's objectives, share them on the sticky wall, and earn points for every upvote you receive!</p>
     </div>
 </div>
+
 </body>
 <?php include 'footer.html'; ?>
 
