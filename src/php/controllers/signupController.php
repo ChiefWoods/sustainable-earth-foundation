@@ -7,7 +7,7 @@ function validateForm($pdo)
   $errors = [];
   $username = str_replace("'", "", sanitise($pdo, $_POST['username']));
   $email = str_replace("'", "", sanitise($pdo, $_POST['email']));
-  $phone = empty($_POST['phone']) ? "NULL" : sanitise($pdo, $_POST['phone']);
+  $phone = str_replace("'", "", sanitise($pdo, $_POST['phone']));
   $password = $_POST['password'];
   $confirm = $_POST['confirm'];
 
@@ -33,7 +33,7 @@ function validateForm($pdo)
     }
   }
 
-  if ($phone != 'NULL' && !preg_match("/^[0-9]{10}$/", $phone)) {
+  if ($phone != '' && !preg_match("/^[0-9]{10}$/", $phone)) {
     $errors[] = "Invalid phone number";
   }
 
@@ -46,14 +46,13 @@ function validateForm($pdo)
   }
 
   if (empty($errors)) {
-    $phone = $phone == 'NULL' ? "" : $phone;
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $is_admin = 0;
     $profile_picture = '../../assets/profile_pictures/default_profile_picture.png';
 
     $query = "
-      INSERT INTO user (username, email, phone_number, password, profile_picture, points, is_admin)
-      VALUES ('$username', '$email', '$phone', '$password', '$profile_picture', $is_admin, FALSE)  
+      INSERT INTO user (username, email, phone_number, password, profile_picture, user_points, is_admin)
+      VALUES ('$username', '$email', '$phone', '$password', '$profile_picture', 0, $is_admin)  
     ";
     $result = $pdo->query($query);
 

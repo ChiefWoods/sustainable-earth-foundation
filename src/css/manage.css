@@ -25,6 +25,7 @@ main > section {
 #head > .icon {
   width: 35px;
   height: 35px;
+  border-radius: 0;
 }
 
 #head > h2 {

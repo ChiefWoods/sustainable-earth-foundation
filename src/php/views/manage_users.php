@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="../../css/manage.css">
   <link rel="stylesheet" href="../../css/table.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <?php
+  include '../controllers/connect.php';
+  include '../controllers/userController.php';
+  ?>
 </head>
 
 <body>
@@ -23,7 +27,7 @@
         <input type="text" name="search" id="search-input">
         <button type="submit" id="search-btn" class="btn">Search</button>
       </form>
-      <?php include '../components/table_manage_users.php'; ?>
+      <?php generateUsersTable($pdo); ?>
     </section>
   </main>
   <?php include '../components/footer.php'; ?>

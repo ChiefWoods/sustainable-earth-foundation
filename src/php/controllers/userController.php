@@ -3,6 +3,64 @@
 include '../controllers/connect.php';
 include '../models/userModel.php';
 
+function generateUsersTable($pdo)
+{
+  echo <<<HTML
+  <table>
+    <thead>
+      <tr class="column">
+        <th class="table-col">Username</th>
+        <th class="table-col">Email</th>
+        <th class="table-col">Phone Number</th>
+        <th class="table-col">Points</th>
+        <th class="table-col"></th>
+      </tr>
+    </thead>
+    <tbody>
+  HTML;
+
+  $allUsers = getAllUsers($pdo);
+
+  $users = array_filter($allUsers, function ($user) {
+    return $user['is_admin'] == 0;
+  });
+
+  if (count($users) > 0) {
+    foreach ($users as $user) {
+      if ($user['phone_number'] == "") {
+        $user['phone_number'] = "-";
+      }
+
+      echo <<<HTML
+      <tr>
+        <td>{$user['username']}</td>
+        <td>{$user['email']}</td>
+        <td>{$user['phone_number']}</td>
+        <td>{$user['user_points']}</td>
+        <td class="edit-delete">
+          <button id="edit-btn">
+            <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
+          </button>
+          <button id="delete-btn">
+            <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
+          </button>
+        </td>
+      </tr>
+      HTML;
+    }
+  } else {
+    echo <<<HTML
+    <tr>
+      <td colspan="5" class="no-results">No results found</td>
+    </tr>
+    HTML;
+  }
+  echo <<<HTML
+    </tbody>
+  </table>
+  HTML;
+}
+
 if (isset($_POST['email']) && isset($_POST['phone'])) {
   updateProfileInfo($pdo, $_POST['email'], $_POST['phone']);
   header("location:../views/profile.php");
@@ -30,7 +88,7 @@ if (isset($_POST['email']) && isset($_POST['phone'])) {
   switch ($uploadInfo['error']) {
     case UPLOAD_ERR_OK:
       $name = $uploadInfo['tmp_name'];
-      $content_type = mime_content_type($name); 
+      $content_type = mime_content_type($name);
       $data = base64_encode(file_get_contents($name));
       $path = 'data: ' . $content_type . ';base64,' . $data;
       updateProfilePicture($pdo, $path);
