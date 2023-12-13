@@ -86,7 +86,7 @@ body {
     background-color: #ffffff;
     margin: 10% auto;
     width: 30%;
-    height: 56%;
+    height: 60%;
     z-index: 1001; /* Set a higher z-index value */
 }
 
@@ -293,5 +293,41 @@ body {
 }
 
 
+/* Add these color classes */
+.color-1 {
+    background-color: #FFC700;
+}
+
+.color-2 {
+    background-color: #ECEE6B;
+}
+
+.color-3 {
+    background-color: #83DAFF;
+}
+
+.color-4 {
+    background-color: #FF8D0B;
+}
+
+.color-5 {
+    background-color: #B4EE6B;
+}
+
+.color-6 {
+    background-color: #77A0DE;
+}
+
+.color-7 {
+    background-color: #FF8577;
+}
+
+.color-8 {
+    background-color: #83FF8F;
+}
+
+.color-9 {
+    background-color: #7782DE;
+}
 
 

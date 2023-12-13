@@ -1,4 +1,24 @@
 <?php include '../php/login_header.php'; ?>
+<?php include '../php/update_vote.php'; ?>
+<?php include '../php/create_post.php'; ?>
+<?php
+include_once '../php/SQL_login.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$query = "SELECT * FROM post";
+try {
+    $stmt = $pdo->query($query);
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (\PDOException $e) {
+    // Handle the error here
+    echo "Error: " . $e->getMessage();
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +31,12 @@
     <script src="../js/upvote_downvote.js"></script>
     <script src="../js/dropdown.js"></script>
     <script src="../js/create_post.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
+
 </head>
 <body>
 
-    <?php include
-    $header_file = 'header.html'; // Set a default value or define based on your logic
-    ?>
 <div class="container">
     <div class="window">
         <div class="text">
@@ -62,117 +81,61 @@
         </div>
         <div class="stickywall">
             <table>
-        <tr>
-            <td>          
-                <div class="note">
-                <div class="text-content">
-                    <div class="note-top">
-                        <div class="username">
-                         <p>Username</p>
-                    </div>
-                <div class="date">
-                 18/12/2023
-                </div>
-                </div>
-                <div class="note-middle">
-                    <div class="title">
-                        <p>Title</p>
-                    </div>
-                    <div class="content-container">
-                        <div class="content">
-                            <p>
-                                Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                            </p>
+                <?php
+                $row_num = 0;
+
+                foreach ($posts as $index => $row) {
+                    $color_index = $row_num % 9 + 1; // Adjust the modulo to the number of colors you have
+                
+                    if ($row_num % 3 === 0) {
+                        echo '<tr>';
+                            }
+                    ?>
+                    <td>
+                        <div class="note color-<?php echo $color_index; ?>" >
+                            <div class="text-content">
+                                <div class="note-top">
+                                    <div class="username">
+                                        <p><?php echo $row['username']; ?></p>
+                                    </div>
+                                    <div class="date">
+                                        <?php echo $row['date']; ?>
+                                    </div>
+                                </div>
+                                <div class="note-middle">
+                                    <div class="title">
+                                        <p><?php echo $row['title']; ?></p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="content">
+                                            <p><?php echo $row['content']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="upvote-downvote">
+                                    <button id="upvote_<?php echo $row['id']; ?>" class="upvote" onclick="handleVoteAndToggle('upvote', <?php echo $row['id']; ?>)">
+                                        <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
+                                    </button>
+                                    
+                                    <button id="downvote_<?php echo $row['id']; ?>" class="downvote" onclick="handleVoteAndToggle('downvote', <?php echo $row['id']; ?>)">
+                                        <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+                    </td>
+                    <?php
+                    if ($row_num % 3 === 2 || $index === count($posts) - 1) {
+                        echo '</tr>'; // End the row after every 3 notes
+                    }
                 
+                    $row_num++;
+                }
+                ?>
                 
-                    </div>
-                </div>                
-                    <div class="upvote-downvote">
-                        <button class="upvote" id="upvote_1" onclick="handleVote('upvote', 1)">
-                            <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
-                        </button>
-                        <button class="downvote" id="downvote_1" onclick="handleVote('downvote', 1)">
-                            <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
-                        </button>    
-                    </div>
-                </div>
-            </div>
-        </td>
-        <td>          
-            <div class="note">
-            <div class="text-content">
-                <div class="note-top">
-                    <div class="username">
-                     <p>Username</p>
-                </div>
-            <div class="date">
-             18/12/2023
-            </div>
-            </div>
-            <div class="note-middle">
-                <div class="title">
-                    <p>Title</p>
-                </div>
-                <div class="content-container">
-                    <div class="content">
-                        <p>
-                            Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                        </p>
-                    </div>
+            </table>
+          
             
-            
-                </div>
-            </div>                
-                <div class="upvote-downvote">
-                    <button class="upvote" id="upvote_2" onclick="handleVote('upvote', 2)">
-                        <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
-                    </button>
-                    <button class="downvote" id="downvote_2" onclick="handleVote('downvote', 2)">
-                        <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
-                    </button> 
-                </div>
-            </div>
-        </div>
-    </td>
-    <td>          
-        <div class="note">
-        <div class="text-content">
-            <div class="note-top">
-                <div class="username">
-                 <p>Username</p>
-            </div>
-        <div class="date">
-         18/12/2023
-        </div>
-        </div>
-        <div class="note-middle">
-            <div class="title">
-                <p>Title</p>
-            </div>
-            <div class="content-container">
-                <div class="content">
-                    <p>
-                        Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                    </p>
-                </div>
-        
-        
-            </div>
-        </div>                
-            <div class="upvote-downvote">
-                <button class="upvote" id="upvote_3" onclick="handleVote('upvote', 3)">
-                    <img src="../assets/icons/upvote/upvote_base.svg" width="30px" height="30px">
-                </button>
-                <button class="downvote" id="downvote_3" onclick="handleVote('downvote', 3)">
-                    <img src="../assets/icons/downvote/downvote_base.svg" width="30px" height="30px">
-                </button>
-            </div>
-        </div>
-    </div>
-</td>          
-                </tr>
-    </table>
 </div>
 </div>
 <div><button class="pages-btn" value="pages">1</button></div>

@@ -69,15 +69,8 @@ if (isset($_POST['username']) && isset($_POST['newPassword']) && isset($_POST['c
             } else {
                 $response['success'] = true;
                 $response['message'] = 'Password updated successfully';
+                $response['redirect'] = '../html/login.html';
 
-                // Redirect based on user_role_id
-                if ($user_role_id == 1) {
-                    session_start();
-                    $response['redirect'] = '../html/admin-profile.html';
-                } elseif ($user_role_id == 2) {
-                    session_start();
-                    $response['redirect'] = '../html/profile.html';
-                }
             }
         }
     } else {

@@ -42,7 +42,8 @@
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
-
+    
     function isInteger(value) {
         return /^\d+$/.test(value);
     }
+    

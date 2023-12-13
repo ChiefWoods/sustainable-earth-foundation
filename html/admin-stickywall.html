@@ -1,4 +1,24 @@
 <?php include '../php/login_header.php'; ?>
+<?php include '../php/get_post_data.php'; ?>
+<?php include '../php/update_post.php'; ?>
+<?php
+include_once '../php/SQL_login.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$query = "SELECT * FROM post";
+try {
+    $stmt = $pdo->query($query);
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (\PDOException $e) {
+    // Handle the error here
+    echo "Error: " . $e->getMessage();
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +28,9 @@
     <link rel="stylesheet" href="../css/stickywall.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <script src="../js/edit-delete.js"></script>
     <script src="../js/dropdown.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/edit-delete.js"></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
 </head>
 <body>
@@ -40,12 +61,13 @@
                                     <textarea id="editPostContent" name="editPostContent" rows="8" cols="50" required></textarea>
                                     <br>
                                     <br>
-                                    <button class="submit-btn" type="button" onclick="submitEditedPost()" style="background-color: #ff8800;">Save Changes</button>
+                                   <button id="saveChangesBtn" class="submit-btn" type="button" style="background-color: #ff8800;">Save Changes</button>
                                     <button class="cancel-btn" type="button" onclick="closeModal('editModal')">Cancel</button>
                                 </form>
                             </div>
                         </div>
                     </div>
+                    
         
                     <!-- Delete Confirmation Modal -->
                     <div id="deleteModal" class="modal">
@@ -57,7 +79,7 @@
                             <div class="modal-middle">
                                 <p>Do you want to delete the post?</p>
                                 <div class="modal-button">
-                                <button class="confirm-btn" onclick="confirmDelete()" >Confirm</button>
+                                    <button class="confirm-btn" data-post-id="<?php echo $row['id']; ?>">Confirm</button>
                                 <button class="cancel-btn" onclick="closeModal('deleteModal')">Cancel</button>
                                 </div>
                             </div>
@@ -67,117 +89,58 @@
                  
         <div class="stickywall">
             <table>
-        <tr>
-            <td>          
-                <div class="note">
-                <div class="text-content">
-                    <div class="note-top">
-                        <div class="username">
-                         <p>Username</p>
-                    </div>
-                <div class="date">
-                 18/12/2023
-                </div>
-                </div>
-                <div class="note-middle">
-                    <div class="title">
-                        <p>Title</p>
-                    </div>
-                    <div class="content-container">
-                        <div class="content">
-                            <p>
-                                Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                            </p>
+                <?php
+                $row_num = 0;
+
+                foreach ($posts as $index => $row) {
+                    $color_index = $row_num % 9 + 1; // Adjust the modulo to the number of colors you have
+                
+                    if ($row_num % 3 === 0) {
+                        echo '<tr>';
+                            }
+                    ?>
+                    <td>
+                        <div class="note color-<?php echo $color_index; ?>" data-post-id="<?php echo $row['id']; ?>">
+                            <div class="text-content">
+                                <div class="note-top">
+                                    <div class="username">
+                                        <p><?php echo $row['username']; ?></p>
+                                    </div>
+                                    <div class="date">
+                                        <?php echo $row['date']; ?>
+                                    </div>
+                                </div>
+                                <div class="note-middle">
+                                    <div class="title">
+                                        <p><?php echo $row['title']; ?></p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="content">
+                                            <p><?php echo $row['content']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="edit-delete">
+                                    <button class="edit">
+                                        <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
+                                    </button>
+                                    <button class="delete">
+                                        <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
+                                    </button>    
+                                </div>
+                            </div>
                         </div>
+                    </td>
+                    <?php
+                    if ($row_num % 3 === 2 || $index === count($posts) - 1) {
+                        echo '</tr>'; // End the row after every 3 notes
+                    }
                 
+                    $row_num++;
+                }
+                ?>
                 
-                    </div>
-                </div>                
-                    <div class="edit-delete">
-                        <button class="edit">
-                            <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
-                        </button>
-                        <button class="delete">
-                            <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
-                        </button>    
-                    </div>
-                </div>
-            </div>
-        </td>
-        <td>          
-            <div class="note">
-            <div class="text-content">
-                <div class="note-top">
-                    <div class="username">
-                     <p>Username</p>
-                </div>
-            <div class="date">
-             18/12/2023
-            </div>
-            </div>
-            <div class="note-middle">
-                <div class="title">
-                    <p>Title</p>
-                </div>
-                <div class="content-container">
-                    <div class="content">
-                        <p>
-                            Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                        </p>
-                    </div>
-            
-            
-                </div>
-            </div>                
-            <div class="edit-delete">
-                <button class="edit">
-                    <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
-                </button>
-                <button class="delete">
-                    <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
-                </button>    
-            </div>
-                </div>
-            </div>
-        </div>
-    </td>
-    <td>          
-        <div class="note">
-        <div class="text-content">
-            <div class="note-top">
-                <div class="username">
-                 <p>Username</p>
-            </div>
-        <div class="date">
-         18/12/2023
-        </div>
-        </div>
-        <div class="note-middle">
-            <div class="title">
-                <p>Title</p>
-            </div>
-            <div class="content-container">
-                <div class="content">
-                    <p>
-                        Content shdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshkhdkjshkdhkjadhakjhdksjhkajhdksjhskdjahkhskjhdkhskhjhkhkjkdjklsjkslajldshjsakjdkahkdjhsjdshksh
-                    </p>
-                </div>
-        
-        
-            </div>
-        </div>                
-        <div class="edit-delete">
-            <button class="edit">
-                <img src="../assets/icons/edit/edit_base.svg" width="30px" height="30px">
-            </button>
-            <button class="delete">
-                <img src="../assets/icons/delete/delete_base.svg" width="30px" height="30px">
-            </button>    
-        </div>
-        </div>
-    </div>
-</td>          
-                </tr>
+       
     </table>
 </div>
 </div>
