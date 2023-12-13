@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add your logic to handle the post submission here
         console.log('Post submitted!');
         closeModal();  // Close the modal after submission
+        
+        
     }
 
     document.getElementById('createPostBtn').addEventListener('click', function () {

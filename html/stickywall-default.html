@@ -1,0 +1,110 @@
+<?php include '../php/login_header.php'; ?>
+<?php include '../php/update_vote.php'; ?>
+<?php include '../php/create_post.php'; ?>
+<?php
+include_once '../php/SQL_login.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$query = "SELECT * FROM post";
+try {
+    $stmt = $pdo->query($query);
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (\PDOException $e) {
+    // Handle the error here
+    echo "Error: " . $e->getMessage();
+    exit();
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Wall</title>
+    <link rel="stylesheet" href="../css/stickywall.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/upvote_downvote.js"></script>
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/create_post.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="shortcut icon" href="../assets/icons/favicon.png" type="image/x-icon">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="window">
+        <div class="text">
+            <p>
+                <h1>Sticky Wall</h1>
+            </p>
+            <br>
+            <p>Write post to earn points!</p>
+         
+       
+         
+        </div>
+        <div class="stickywall">
+            <table>
+                <?php
+                $row_num = 0;
+
+                foreach ($posts as $index => $row) {
+                    $color_index = $row_num % 9 + 1; // Adjust the modulo to the number of colors you have
+                
+                    if ($row_num % 3 === 0) {
+                        echo '<tr>';
+                            }
+                    ?>
+                    <td>
+                        <div class="note color-<?php echo $color_index; ?>" >
+                            <div class="text-content">
+                                <div class="note-top">
+                                    <div class="username">
+                                        <p><?php echo $row['username']; ?></p>
+                                    </div>
+                                    <div class="date">
+                                        <?php echo $row['date']; ?>
+                                    </div>
+                                </div>
+                                <div class="note-middle">
+                                    <div class="title">
+                                        <p><?php echo $row['title']; ?></p>
+                                    </div>
+                                    <div class="content-container">
+                                        <div class="content">
+                                            <p><?php echo $row['content']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </td>
+                    <?php
+                    if ($row_num % 3 === 2 || $index === count($posts) - 1) {
+                        echo '</tr>'; // End the row after every 3 notes
+                    }
+                
+                    $row_num++;
+                }
+                ?>
+                
+            </table>
+          
+            
+</div>
+</div>
+<div><button class="pages-btn" value="pages">1</button></div>
+</div>
+
+
+<?php include 'footer.html'; ?>
+
+</body>
+</html>

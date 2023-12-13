@@ -48,7 +48,6 @@
                                     var updatedPoints = userPoints - pointsNeeded;
                                     $("#points").val(updatedPoints);
                                     alert("Redemption successful! You can check out your redemption in your profile!");
-                                    window.location.reload();
                                 } else {
                                     alert("Error redeeming reward: " + response);
                                 }
@@ -118,8 +117,32 @@
             </table>
         </div>
     </div>
-
    
+   
+    <div class="saved-points">
+        <p>Saved Points</p>
+        <form> <input type="text" id="points" name="points" placeholder="<?php echo isset($response['earnedPoints']) ? $response['earnedPoints'] : ''; ?>" style="text-align: right;"> </form>
+    </div>
+    <script>
+        // Fetch and display user's points using an AJAX request
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "../php/get_user_points.php",
+                success: function (userPointsResponse) {
+                    var userPoints = parseInt(userPointsResponse);
+                    if (!isNaN(userPoints)) {
+                        $("#points").val(userPoints);
+                    } else {
+                        $("#points").val("Error fetching points");
+                    }
+                },
+                error: function () {
+                    $("#points").val("Error fetching points");
+                }
+            });
+        });
+    </script>
     <p style="color: #6D6D6D">
     Redeeming your hard earned points is easy! 
     <br>

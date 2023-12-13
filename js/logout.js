@@ -11,7 +11,7 @@ function handleLogout() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Redirect to the home page after successful logout
-            window.location.href = 'SessionEnd.html';
+            window.location.href = 'index.html';
         }
     };
 
