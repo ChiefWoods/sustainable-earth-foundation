@@ -13,6 +13,8 @@
   <?php
   include '../controllers/connect.php';
   include '../models/userModel.php';
+  include '../models/redemptionModel.php';
+  include '../models/rewardModel.php';
   ?>
 </head>
 
@@ -53,7 +55,44 @@
         </form>
       </div>
     </section>
-    <?php include '../components/table_redemption_history.php'; ?>
+    <section id="history">
+      <table>
+        <thead>
+          <tr id="title-row">
+            <th id="table-title" colspan="3">Redemption History</th>
+          </tr>
+          <tr class="column">
+            <th class="table-col">Redemption Code</th>
+            <th class="table-col">Points Used</th>
+            <th class="table-col">Date Redeemed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $redemptions = getAllRedemptions($pdo);
+
+          if (count($redemptions) > 0) {
+            foreach ($redemptions as $redemption) {
+              $reward_points = getRewardPoints($pdo, $redemption['reward_id']);
+              echo <<<HTML
+          <tr>
+            <td>$redemption[redemption_code]</td>
+            <td>$reward_points</td>
+            <td>$redemption[date_redeemed]</td>
+          </tr>
+          HTML;
+            }
+          } else {
+            echo <<<HTML
+        <tr>
+          <td colspan="3" class="no-rewards">No rewards redeemed</td>
+        </tr>
+        HTML;
+          }
+          ?>
+        </tbody>
+      </table>
+    </section>
   </main>
   <?php include '../components/footer.php'; ?>
 </body>
