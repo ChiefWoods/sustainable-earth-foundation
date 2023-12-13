@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/sticky_wall.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <?php require_once '../components/session.php'; ?>
 </head>
 
 <body>
-  <?php include '../components/header.php'; ?>
+  <?php require_once '../components/header.php'; ?>
   <main>
     <img src="../../assets/backgrounds/sticky_wall_bg.jpg" alt="Groups of people smiling">
     <section id="sticky-wall">
@@ -26,11 +27,11 @@
         </button>
       </div>
       <div id="wall">
-        <?php include '../components/post.php'; ?>
+        <?php require_once '../components/post.php'; ?>
       </div>
     </section>
   </main>
-  <?php include '../components/footer.php'; ?>
+  <?php require_once '../components/footer.php'; ?>
 </body>
 
 </html>

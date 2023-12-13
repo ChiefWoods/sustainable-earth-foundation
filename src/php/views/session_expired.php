@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/session_expired.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <?php require_once '../components/session.php'; ?>
 </head>
 
 <body>
-<?php include '../components/header.php'; ?>
+  <?php require_once '../components/header.php'; ?>
   <main>
     <section>
       <div>
@@ -21,7 +22,7 @@
       </div>
     </section>
   </main>
-  <?php include '../components/footer.php'; ?>
+  <?php require_once '../components/footer.php'; ?>
 </body>
 
 </html>

@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/home.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <?php require_once '../components/session.php'; ?>
 </head>
 
 <body>
-  <?php include '../components/header.php'; ?>
+  <?php require_once '../components/header.php'; ?>
   <main>
     <section id="hero">
       <div>
@@ -68,7 +69,7 @@
         <li class="achievement">
           <span class="timeline-num">3</span>
           <h3 class="timeline-year">2015</h3>
-          <p class="timeline-desc">The United Nations General Assembly formally adopted the 2030 Agenda for Sustainable Development, which included the 17 Sustainable Development Goals, along with 169 targets and 232 indicators. </p>
+          <p class="timeline-desc">The United Nations General Assembly formally adopted the 2030 Agenda for Sustainable Development, which require_onced the 17 Sustainable Development Goals, along with 169 targets and 232 indicators. </p>
         </li>
         <li class="achievement">
           <span class="timeline-num">4</span>
@@ -133,7 +134,7 @@
       </ul>
     </section>
   </main>
-  <?php include '../components/footer.php'; ?>
+  <?php require_once '../components/footer.php'; ?>
 </body>
 
 </html>

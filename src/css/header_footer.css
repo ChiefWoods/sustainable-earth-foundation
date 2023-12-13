@@ -136,6 +136,7 @@ nav > a {
   border: 2px solid var(--sef-navy-blue);
   border-top: none;
   display: none;
+  gap: 0;
 }
 
 .dropdown > li {
@@ -153,6 +154,10 @@ nav > a {
 
 .dropdown > li:hover {
   background: var(--bg-light-blue);
+}
+
+.dropdown .icon {
+  border-radius: 0;
 }
 
 .dropdown-content {

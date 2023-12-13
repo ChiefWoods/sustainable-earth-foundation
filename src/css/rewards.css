@@ -80,26 +80,28 @@ section > div {
   border-radius: 15px;
 }
 
-/* Ul */
+/* Reward-list */
 
-ul {
+.reward-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 40px;
   width: 100%;
   justify-content: space-between;
+  justify-items: center;
 }
 
-li {
+.reward-list > li {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 225px;
 }
 
-li > div {
+.reward-list > li > div {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -109,11 +111,11 @@ li > div {
   width: 100%;
 }
 
-.name {
+.reward-name {
   font-size: var(--font-m);
 }
 
-.points {
+.reward-points {
   font-size: var(--font-s);
 }
 

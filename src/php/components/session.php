@@ -1,13 +1,12 @@
 <?php
-
 session_start();
 
 if (isset($_GET['logout']) && $_GET['logout'] == true) {
   session_destroy();
   header("location:../views/login.php");
-  exit;
-} else if (isset($_GET['expired']) && $_GET['expired'] == true) {
+} elseif (isset($_SESSION['username']) && isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 300)) {
   session_destroy();
   header("location:../../php/views/session_expired.php");
-  exit;
+} else {
+  $_SESSION['last_activity'] = time();
 }

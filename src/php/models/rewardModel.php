@@ -1,14 +1,35 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-
-function getRewardPoints($pdo, $reward_id)
+class RewardModel
 {
-  $query = "SELECT reward_points FROM reward WHERE reward_id = $reward_id";
-  $statement = $pdo->query($query);
-  $reward = $statement->fetch();
-  return $reward['reward_points'];
+  private $pdo;
 
+  public function __construct($pdo)
+  {
+    $this->pdo = $pdo;
+  }
+
+  public function getRewardId($reward_name)
+  {
+    $query = "SELECT reward_id FROM reward WHERE reward_name = '$reward_name'";
+    $statement = $this->pdo->query($query);
+    $reward = $statement->fetch();
+    return $reward['reward_id'];
+  }
+
+  public function getRewardPoints($reward_id)
+  {
+    $query = "SELECT reward_points FROM reward WHERE reward_id = $reward_id";
+    $statement = $this->pdo->query($query);
+    $reward = $statement->fetch();
+    return $reward['reward_points'];
+  }
+
+  public function getAllRewards()
+  {
+    $query = "SELECT * FROM reward";
+    $statement = $this->pdo->query($query);
+    $rewards = $statement->fetchAll();
+    return $rewards;
+  }
 }

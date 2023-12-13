@@ -1,9 +1,10 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
+require_once '../components/connect.php';
+require_once '../controllers/NotificationController.php';
+require_once '../models/UserModel.php';
+require_once '../models/NotificationModel.php';
 
-include '../controllers/timeoutController.php';
+$notificationController = new NotificationController($pdo, new UserModel($pdo), new NotificationModel($pdo));
 ?>
 
 <script src="../../js/header.js" defer></script>
@@ -24,7 +25,7 @@ include '../controllers/timeoutController.php';
   </div>
 <?php } ?>
 
-<?php if (isset($_SESSION['username']) && $_SESSION['is_admin'] == 0) { ?>
+<?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0) { ?>
   <nav>
     <a href="../views/index.php" class="nav-link">Home</a>
     <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
@@ -35,34 +36,17 @@ include '../controllers/timeoutController.php';
     <button id="notification-btn">
       <img src="../../assets/icons/notification/notification_blue.svg" alt="Notification" class="icon" id="notification-icon">
     </button>
-    <a href="../controllers/logoutController.php?logout=true" id="logout-btn">
+    <a href="../components/session.php?logout=true" id="logout-btn">
       <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
     </a>
   </nav>
   </div>
   <ul class="dropdown">
-    <li>
-      <a href="../views/sticky_wall.php">
-        <img src="../../assets/icons/upvote/upvote_selected_blue.svg" alt="Upvoted" class="icon upvote-icon">
-        <span class="dropdown-content">Amy has upvoted your post Post A!</span>
-      </a>
-    </li>
-    <li>
-      <a href="../views/profile.php">
-        <img src="../../assets/icons/reward/reward_blue.svg" alt="Reward" class="icon reward-icon">
-        <span class="dropdown-content">Reward A redeemed using 500 points.</span>
-      </a>
-    </li>
-    <li>
-      <a href="../views/rewards.php">
-        <img src="../../assets/icons/points/points_blue.svg" alt="Points" class="icon points-icon">
-        <span class="dropdown-content">You have collected enough points to redeem Reward A.</span>
-      </a>
-    </li>
+    <?php $notificationController->generateNotificationLi(); ?>
   </ul>
 <?php } ?>
 
-<?php if (isset($_SESSION['username']) && $_SESSION['is_admin'] == 1) { ?>
+<?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) { ?>
   <nav>
     <a href="../views/index.php" class="nav-link">Home</a>
     <a href="../views/sticky_wall.php" class="nav-link">Sticky Wall</a>
@@ -70,7 +54,7 @@ include '../controllers/timeoutController.php';
     <a href="../views/profile.php" id="profile-btn">
       <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile picture" class="icon" id="profile-icon">
     </a>
-    <a href="../controllers/logoutController.php?logout=true" id="logout-btn">
+    <a href="../components/session.php?logout=true" id="logout-btn">
       <img src="../../assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
     </a>
   </nav>

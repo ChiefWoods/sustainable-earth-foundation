@@ -8,10 +8,22 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/rewards.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <script src="../../js/rewards.js" defer></script>
+  <?php
+  require_once '../components/session.php';
+  require_once '../components/connect.php';
+  require_once '../controllers/RewardController.php';
+  require_once '../models/UserModel.php';
+  require_once '../models/RewardModel.php';
+  require_once '../models/RedemptionModel.php';
+  require_once '../models/NotificationModel.php';
+
+  $rewardController = new RewardController($pdo, new UserModel($pdo), new RewardModel($pdo), new RedemptionModel($pdo), new NotificationModel($pdo));
+  ?>
 </head>
 
 <body>
-  <?php include '../components/header.php'; ?>
+  <?php require_once '../components/header.php'; ?>
   <main>
     <section>
       <div>
@@ -25,44 +37,12 @@
           </div>
           <p id="desc">Redeeming your hard earned points is easy!<br>Choose a voucher code below.</p>
         </div>
-        <div id="saved-points">
-          <span>Saved Points</span>
-          <span id="user-points">4567 points</span>
-        </div>
+        <?php isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0 ? $rewardController->generateSavedPointsDiv() : ""; ?>
       </div>
-      <ul>
-        <li>
-          <div>
-            <h3 class="name">$5.00 OFF</h3>
-            <p class="points">500 points</p>
-          </div>
-          <button class="btn redeem-btn">Redeem</button>
-        </li>
-        <li>
-          <div>
-            <h3 class="name">$10.00 OFF</h3>
-            <p class="points">900 points</p>
-          </div>
-          <button class="btn redeem-btn">Redeem</button>
-        </li>
-        <li>
-          <div>
-            <h3 class="name">$15.00 OFF</h3>
-            <p class="points">1300 points</p>
-          </div>
-          <button class="btn redeem-btn">Redeem</button>
-        </li>
-        <li>
-          <div>
-            <h3 class="name">$20.00 OFF</h3>
-            <p class="points">1700 points</p>
-          </div>
-          <button class="btn redeem-btn">Redeem</button>
-        </li>
-      </ul>
+      <?php $rewardController->generateRewardListUl(); ?>
     </section>
   </main>
-  <?php include '../components/footer.php'; ?>
+  <?php require_once '../components/footer.php'; ?>
 </body>
 
 </html>

@@ -11,90 +11,67 @@
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
   <script src="../../js/profile.js" defer></script>
   <?php
-  include '../controllers/connect.php';
-  include '../models/userModel.php';
-  include '../models/redemptionModel.php';
-  include '../models/rewardModel.php';
+  require_once '../components/session.php';
+  require_once '../components/connect.php';
+  require_once '../controllers/UserController.php';
+  require_once '../models/UserModel.php';
+  require_once '../models/RewardModel.php';
+  require_once '../models/RedemptionModel.php';
+
+  $userController = new UserController($pdo, new UserModel($pdo), new RewardModel($pdo), new RedemptionModel($pdo));
+
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_FILES['profile_picture'])) {
+      $userController->updateProfilePicture($_FILES['profile_picture']);
+    } elseif (isset($_POST['email']) && isset($_POST['phone'])) {
+      $userController->updateProfileInfo($_POST['email'], $_POST['phone']);
+    } elseif (isset($_POST['current']) && isset($_POST['new']) && isset($_POST['confirm'])) {
+      $userController->updatePassword($_POST['current'], $_POST['new'], $_POST['confirm']);
+    }
+  }
   ?>
 </head>
 
 <body>
-  <?php include '../components/header.php'; ?>
+  <?php require_once '../components/header.php'; ?>
   <main>
     <section id="profile">
-      <form action="../controllers/userController.php" method="post" enctype="multipart/form-data" id="user">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="user">
         <div id="image-btn">
-          <img src="<?php echo getProfilePicture($pdo); ?>" alt="Profile picture" id="profile-image">
+          <img src="<?php echo $userController->getProfilePicture(); ?>" alt="Profile Picture" id="profile-image">
           <input type="file" name="profile_picture" id="profile-picture">
         </div>
         <span id="username">Username: <?php echo $_SESSION['username']; ?></span>
-        <span id="points">Points: <?php echo getPoints($pdo); ?></span>
+        <span id="points">Points: <?php echo $userController->getUserPoints(); ?></span>
       </form>
       <div id="info">
-        <form action="../controllers/userController.php" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <h2>Profile Info</h2>
           <div>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="<?php echo getProfileInfo($pdo)['email']; ?>">
+            <input type="text" id="email" name="email" value="<?php echo $userController->getEmail(); ?>">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo getProfileInfo($pdo)['phone_number']; ?>">
+            <input type="tel" id="phone" name="phone" value="<?php echo $userController->getPhoneNumber(); ?>" pattern="^[0-9]{10}$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
           </div>
           <button type="submit" class="btn update-btn">Update Info</button>
         </form>
-        <form action="../controllers/userController.php" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <h2>Change Password</h2>
           <div>
             <label for="current">Current Password</label>
-            <input type="password" name="current" id="current">
+            <input type="password" name="current" id="current" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" oninvalid="setCustomValidity('Password needs to be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter.')">
             <label for="new">New Password</label>
-            <input type="password" name="new" id="new">
+            <input type="password" name="new" id="new" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" oninvalid="setCustomValidity('Password needs to be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter.')">
             <label for="confirm">Confirm Password</label>
-            <input type="password" name="confirm" id="confirm">
+            <input type="password" name="confirm" id="confirm" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" oninvalid="setCustomValidity('Password needs to be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter.')">
           </div>
           <button type="submit" class="btn update-btn">Update Password</button>
         </form>
       </div>
     </section>
-    <section id="history">
-      <table>
-        <thead>
-          <tr id="title-row">
-            <th id="table-title" colspan="3">Redemption History</th>
-          </tr>
-          <tr class="column">
-            <th class="table-col">Redemption Code</th>
-            <th class="table-col">Points Used</th>
-            <th class="table-col">Date Redeemed</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $redemptions = getAllRedemptions($pdo);
-
-          if (count($redemptions) > 0) {
-            foreach ($redemptions as $redemption) {
-              $reward_points = getRewardPoints($pdo, $redemption['reward_id']);
-              echo <<<HTML
-          <tr>
-            <td>$redemption[redemption_code]</td>
-            <td>$reward_points</td>
-            <td>$redemption[date_redeemed]</td>
-          </tr>
-          HTML;
-            }
-          } else {
-            echo <<<HTML
-        <tr>
-          <td colspan="3" class="no-rewards">No rewards redeemed</td>
-        </tr>
-        HTML;
-          }
-          ?>
-        </tbody>
-      </table>
-    </section>
+    <?php echo $_SESSION['is_admin'] == 0 ? $userController->generateUserRedemptionSection() : ""; ?>
   </main>
-  <?php include '../components/footer.php'; ?>
+  <?php require_once '../components/footer.php'; ?>
 </body>
 
 </html>

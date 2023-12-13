@@ -293,6 +293,7 @@ div#targets-grid {
   flex-direction: column;
   gap: 15px;
   cursor: pointer;
+  width: 250px;
 }
 
 .event-date {
