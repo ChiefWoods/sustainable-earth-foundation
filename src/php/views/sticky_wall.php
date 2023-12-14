@@ -8,7 +8,15 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/sticky_wall.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
-  <?php require_once '../components/session.php'; ?>
+  <?php
+  require_once '../components/session.php';
+  require_once '../components/connect.php';
+  require_once '../controllers/PostController.php';
+  require_once '../models/PostModel.php';
+  require_once '../models/UserModel.php';
+
+  $postController = new PostController($pdo, new PostModel($pdo), new UserModel($pdo));
+  ?>
 </head>
 
 <body>
@@ -21,14 +29,9 @@
           <img src="../../assets/icons/bulletin_board/bulletin_board.svg" alt="Sticky Wall">
           <h2>Sticky Wall</h2>
         </div>
-        <button id="create-post-btn" class="btn">
-          <img src="../../assets/icons/add_post/add_post_white.svg" alt="Create Post">
-          <span>Create Post</span>
-        </button>
+        <?php echo $_SESSION['is_admin'] == 0 ? $postController->generateCreatePostBtn() : ""; ?>
       </div>
-      <div id="wall">
-        <?php require_once '../components/post.php'; ?>
-      </div>
+      <?php $postController->generateWall(); ?>
     </section>
   </main>
   <?php require_once '../components/footer.php'; ?>
