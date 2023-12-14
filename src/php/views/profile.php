@@ -19,16 +19,6 @@
   require_once '../models/RedemptionModel.php';
 
   $userController = new UserController($pdo, new UserModel($pdo), new RewardModel($pdo), new RedemptionModel($pdo));
-
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_FILES['profile_picture'])) {
-      $userController->updateProfilePicture($_FILES['profile_picture']);
-    } elseif (isset($_POST['email']) && isset($_POST['phone'])) {
-      $userController->updateProfileInfo($_POST['email'], $_POST['phone']);
-    } elseif (isset($_POST['current']) && isset($_POST['new']) && isset($_POST['confirm'])) {
-      $userController->updatePassword($_POST['current'], $_POST['new'], $_POST['confirm']);
-    }
-  }
   ?>
 </head>
 
@@ -36,7 +26,7 @@
   <?php require_once '../components/header.php'; ?>
   <main>
     <section id="profile">
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" id="user">
+      <form action="../components/requestHandler.php" method="post" enctype="multipart/form-data" id="user">
         <div id="image-btn">
           <img src="<?php echo $userController->getProfilePicture(); ?>" alt="Profile Picture" id="profile-image">
           <input type="file" name="profile_picture" id="profile-picture">
@@ -45,7 +35,7 @@
         <span id="points">Points: <?php echo $userController->getUserPoints(); ?></span>
       </form>
       <div id="info">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="../components/requestHandler.php" method="post">
           <h2>Profile Info</h2>
           <div>
             <label for="email">Email</label>
@@ -55,7 +45,7 @@
           </div>
           <button type="submit" class="btn update-btn">Update Info</button>
         </form>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="../components/requestHandler.php" method="post">
           <h2>Change Password</h2>
           <div>
             <label for="current">Current Password</label>

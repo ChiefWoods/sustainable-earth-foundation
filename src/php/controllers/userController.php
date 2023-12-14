@@ -139,6 +139,7 @@ class UserController
 
   public function updateProfilePicture($uploadInfo)
   {
+    session_start();
     switch ($uploadInfo['error']) {
       case UPLOAD_ERR_OK:
         $name = $uploadInfo['tmp_name'];
@@ -166,6 +167,7 @@ class UserController
 
   public function updateProfileInfo($email, $phone)
   {
+    session_start();
     $this->userModel->updateProfileInfo($email, $phone);
     header("location:../views/profile.php");
     echo "Profile info updated";
@@ -174,6 +176,7 @@ class UserController
 
   public function updatePassword($current, $new, $confirm)
   {
+    session_start();
     $hash = $this->userModel->getPassword();
 
     if (!password_verify($current, $hash)) {
@@ -194,17 +197,17 @@ class UserController
 
   public function getEmail()
   {
-    return $this->userModel->getEmail();
+    return $this->userModel->getEmail($_SESSION['username']);
   }
 
   public function getPhoneNumber()
   {
-    return $this->userModel->getPhoneNumber();
+    return $this->userModel->getPhoneNumber($_SESSION['username']);
   }
 
   public function getProfilePicture()
   {
-    return $this->userModel->getProfilePicture();
+    return $this->userModel->getProfilePicture($_SESSION['username']);
   }
 
   public function getUserPoints()
