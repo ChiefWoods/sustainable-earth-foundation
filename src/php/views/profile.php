@@ -28,7 +28,7 @@
     <section id="profile">
       <form action="../components/requestHandler.php" method="post" enctype="multipart/form-data" id="user">
         <div id="image-btn">
-          <img src="<?php echo $userController->getProfilePicture(); ?>" alt="Profile Picture" id="profile-image">
+          <img src="<?php echo $userController->getProfilePicture($_SESSION['username']); ?>" alt="Profile Picture" id="profile-image">
           <input type="file" name="profile_picture" id="profile-picture">
         </div>
         <span id="username">Username: <?php echo $_SESSION['username']; ?></span>
@@ -39,9 +39,9 @@
           <h2>Profile Info</h2>
           <div>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="<?php echo $userController->getEmail(); ?>">
+            <input type="text" id="email" name="email" value="<?php echo $userController->getEmail($_SESSION['username']); ?>">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo $userController->getPhoneNumber(); ?>" pattern="^[0-9]{10}$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
+            <input type="tel" id="phone" name="phone" value="<?php echo $userController->getPhoneNumber($_SESSION['username']); ?>" pattern="^[0-9]{10}$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
           </div>
           <button type="submit" class="btn update-btn">Update Info</button>
         </form>

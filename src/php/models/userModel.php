@@ -33,27 +33,24 @@ class UserModel
     return $user['username'];
   }
 
-  public function getEmail()
+  public function getEmail($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT email FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();
     return $user['email'];
   }
 
-  public function getPhoneNumber()
+  public function getPhoneNumber($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT phone_number FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();
     return $user['phone_number'];
   }
 
-  public function getPassword()
+  public function getPassword($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT password FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();

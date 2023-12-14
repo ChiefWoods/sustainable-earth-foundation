@@ -177,7 +177,7 @@ class UserController
   public function updatePassword($current, $new, $confirm)
   {
     session_start();
-    $hash = $this->userModel->getPassword();
+    $hash = $this->userModel->getPassword($_SESSION['username']);
 
     if (!password_verify($current, $hash)) {
       header("location:../views/profile.php");
