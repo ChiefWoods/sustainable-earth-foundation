@@ -1,8 +1,16 @@
 <?php
 require_once '../components/connect.php';
+require_once '../controllers/RewardController.php';
 require_once '../models/UserModel.php';
+require_once '../models/RewardModel.php';
+require_once '../models/RedemptionModel.php';
+require_once '../models/NotificationModel.php';
 
 $userModel = new UserModel($pdo);
+$rewardModel = new RewardModel($pdo);
+$redemptionModel = new RedemptionModel($pdo);
+$notificationModel = new NotificationModel($pdo);
+$rewardController = new RewardController($pdo, $userModel, $rewardModel, $redemptionModel, $notificationModel);
 
 function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $userModel)
 {
@@ -101,5 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     validateSignUp($pdo, $_POST['username'], $_POST['email'], $_POST['phone'], $_POST['password'], $_POST['confirm'], $userModel);
   } elseif (isset($_POST['username']) && isset($_POST['password'])) {
     verifyUser($pdo, $_POST['username'], $_POST['password'], $userModel);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'redeem') {
+    $rewardController->redeemReward($_POST['reward_name'], $_POST['reward_points']);
   }
 }

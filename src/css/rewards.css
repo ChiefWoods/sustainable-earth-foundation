@@ -84,7 +84,7 @@ section > div {
 
 .reward-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
   width: 100%;
   justify-content: space-between;
@@ -130,4 +130,9 @@ section > div {
 
 .redeem-btn:hover {
   background: var(--btn-hover-orange);
+}
+
+#no-rewards {
+  font-size: var(--font-m);
+  text-align: center;
 }

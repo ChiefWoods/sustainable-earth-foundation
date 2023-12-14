@@ -35,15 +35,21 @@ class RewardController
 
     $rewards = $this->rewardModel->getAllRewards();
 
-    foreach ($rewards as $reward) {
+    if (count($rewards) > 0) {
+      foreach ($rewards as $reward) {
+        echo <<<HTML
+          <li>
+            <div>
+              <h3 class="reward-name">$reward[reward_name]</h3>
+              <p class="reward-points">$reward[reward_points] points</p>
+            </div>
+            <button href="../views/rewards.php" class="btn redeem-btn">Redeem</button>
+          </li>
+        HTML;
+      }  
+    } else {
       echo <<<HTML
-        <li>
-          <div>
-            <h3 class="reward-name">$reward[reward_name]</h3>
-            <p class="reward-points">$reward[reward_points] points</p>
-          </div>
-          <button href="../views/rewards.php" class="btn redeem-btn">Redeem</button>
-        </li>
+        <span id="no-rewards">No rewards available. Come back another time!</span>
       HTML;
     }
 
@@ -73,28 +79,26 @@ class RewardController
     HTML;
   }
 
-  public function redeemReward()
+  public function redeemReward($rewardName, $rewardPoints)
   {
-    if ($this->userModel->getUserPoints() >= $_POST['reward_points']) {
-      $this->userModel->deductPoints($_POST['reward_points']);
+    session_start();
+    if ($this->userModel->getUserPoints() >= $rewardPoints) {
+      $this->userModel->deductPoints($rewardPoints);
 
-      $reward_id = $this->rewardModel->getRewardId($_POST['reward_name']);
+      $reward_id = $this->rewardModel->getRewardId($rewardName);
 
       $data = [
-        'reward_name' => $_POST['reward_name'],
-        'reward_points' => $_POST['reward_points']
+        'reward_name' => $rewardName,
+        'reward_points' => $rewardPoints,
       ];
 
       $this->redemptionModel->createRedemption($this->userModel->getUserId(), $reward_id);
       $this->notificationModel->createNotification($this->userModel->getUserId(), 'reward', $data);
 
-      echo "<script>console.log('Reward redeemed successfully!')</script>";
-      header("location:../views/rewards.php");
-      exit;
+      $userPoints = $this->userModel->getUserPoints();
+      echo json_encode(['status' => 'success', 'message' => 'Reward redeemed successfully!', 'userPoints' => $userPoints]);
     } else {
-      echo "<script>alert('You do not have enough points to redeem this reward.')</script>";
-      header("location:../views/rewards.php");
-      exit;
+      echo json_encode(['status' => 'error', 'message' => 'You do not have enough points to redeem this reward.']);
     }
   }
 }
