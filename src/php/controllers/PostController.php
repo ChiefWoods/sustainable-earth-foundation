@@ -145,4 +145,12 @@ class PostController
       </dialog>
     HTML;
   }
+
+  public function createPost($title, $postText)
+  {
+    session_start();
+    $user_id = $this->userModel->getUserId();
+    $this->postModel->createPost($user_id, $title, $postText);
+    echo json_encode(['status' => 'success', 'message' => 'Post created successfully!']);
+  }
 }

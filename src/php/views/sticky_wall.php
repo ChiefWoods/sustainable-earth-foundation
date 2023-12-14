@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../../css/sticky_wall.css">
   <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <script src="../../js/sticky_wall.js" defer></script>
   <?php
   require_once '../components/session.php';
   require_once '../components/connect.php';

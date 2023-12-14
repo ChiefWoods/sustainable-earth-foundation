@@ -16,4 +16,11 @@ class PostModel
     $posts = $statement->fetchAll();
     return $posts;
   }
+
+  public function createPost($user_id, $title, $post_text)
+  {
+    $date = date("Y-m-d");
+    $query = "INSERT INTO post (user_id, title, post_text, date_posted) VALUES ($user_id, '$title', '$post_text', '$date')";
+    $statement = $this->pdo->query($query);
+  }
 }

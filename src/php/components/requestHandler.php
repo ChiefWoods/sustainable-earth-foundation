@@ -2,17 +2,21 @@
 require_once '../components/connect.php';
 require_once '../controllers/UserController.php';
 require_once '../controllers/RewardController.php';
+require_once '../controllers/PostController.php';
 require_once '../models/UserModel.php';
 require_once '../models/RewardModel.php';
 require_once '../models/RedemptionModel.php';
 require_once '../models/NotificationModel.php';
+require_once '../models/PostModel.php';
 
 $userModel = new UserModel($pdo);
 $rewardModel = new RewardModel($pdo);
 $redemptionModel = new RedemptionModel($pdo);
 $notificationModel = new NotificationModel($pdo);
+$postModel = new PostModel($pdo);
 $userController = new UserController($pdo, $userModel, $rewardModel, $redemptionModel);
 $rewardController = new RewardController($pdo, $userModel, $rewardModel, $redemptionModel, $notificationModel);
+$postController = new PostController($pdo, $postModel, $userModel);
 
 function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $userModel)
 {
@@ -119,5 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userController->updatePassword($_POST['current'], $_POST['new'], $_POST['confirm']);
   } elseif (isset($_POST['action']) && $_POST['action'] === 'redeem') {
     $rewardController->redeemReward($_POST['reward_name'], $_POST['reward_points']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'create_post') {
+    $postController->createPost($_POST['title'], $_POST['post_text']);
   }
 }
