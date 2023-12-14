@@ -22,7 +22,7 @@ class RewardController
     echo <<<HTML
       <div id="saved-points">
         <span>Saved Points</span>
-        <span id="user-points">{$this->userModel->getUserPoints()}</span>
+        <span id="user-points">{$this->userModel->getUserPoints($_SESSION['username'])}</span>
       </div>
     HTML;
   }
@@ -82,8 +82,10 @@ class RewardController
   public function redeemReward($rewardName, $rewardPoints)
   {
     session_start();
-    if ($this->userModel->getUserPoints() >= $rewardPoints) {
-      $this->userModel->deductPoints($rewardPoints);
+    $username = $_SESSION['username'];
+
+    if ($this->userModel->getUserPoints($username) >= $rewardPoints) {
+      $this->userModel->deductPoints($rewardPoints, $username);
 
       $reward_id = $this->rewardModel->getRewardId($rewardName);
 
@@ -92,10 +94,11 @@ class RewardController
         'reward_points' => $rewardPoints,
       ];
 
-      $this->redemptionModel->createRedemption($this->userModel->getUserId(), $reward_id);
-      $this->notificationModel->createNotification($this->userModel->getUserId(), 'reward', $data);
-
-      $userPoints = $this->userModel->getUserPoints();
+      $user_id = $this->userModel->getUserId($username);
+      $this->redemptionModel->createRedemption($user_id, $reward_id);
+      $this->notificationModel->createNotification($user_id, 'reward', $data);
+      $userPoints = $this->userModel->getUserPoints($username);
+      
       echo json_encode(['status' => 'success', 'message' => 'Reward redeemed successfully!', 'userPoints' => $userPoints]);
     } else {
       echo json_encode(['status' => 'error', 'message' => 'You do not have enough points to redeem this reward.']);

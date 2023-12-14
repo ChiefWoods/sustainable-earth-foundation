@@ -11,14 +11,12 @@ class UserModel
 
   public function createUser($username, $email, $phone, $password)
   {
-    $password = password_hash($password, PASSWORD_DEFAULT);
     $query = "INSERT INTO user (username, email, phone_number, password, profile_picture, user_points) VALUES ('$username', '$email', '$phone', '$password', '../../assets/images/default_profile_picture.png', 0)";
     $this->pdo->query($query);
   }
 
-  public function getUserId()
+  public function getUserId($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT user_id FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();
@@ -57,18 +55,16 @@ class UserModel
     return $user['password'];
   }
 
-  public function getProfilePicture()
+  public function getProfilePicture($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT profile_picture FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();
     return $user['profile_picture'];
   }
 
-  public function getUserPoints()
+  public function getUserPoints($username)
   {
-    $username = $_SESSION['username'];
     $query = "SELECT user_points FROM user WHERE username = '$username'";
     $statement = $this->pdo->query($query);
     $user = $statement->fetch();
@@ -97,31 +93,26 @@ class UserModel
     return $statement;
   }
 
-  public function updateProfilePicture($path)
+  public function updateProfilePicture($path, $username)
   {
-    $username = $_SESSION['username'];
     $query = "UPDATE user SET profile_picture = '$path' WHERE username = '$username'";
     $this->pdo->query($query);
   }
 
-  public function updateProfileInfo($email, $phone)
+  public function updateProfileInfo($email, $phone, $username)
   {
-    $username = $_SESSION['username'];
     $query = "UPDATE user SET email = '$email', phone_number = '$phone' WHERE username = '$username'";
     $this->pdo->query($query);
   }
 
-  public function updatePassword($password)
+  public function updatePassword($password, $username)
   {
-    $username = $_SESSION['username'];
-    $password = password_hash($password, PASSWORD_DEFAULT);
     $query = "UPDATE user SET password = '$password' WHERE username = '$username'";
     $this->pdo->query($query);
   }
 
-  public function deductPoints($points)
+  public function deductPoints($points, $username)
   {
-    $username = $_SESSION['username'];
     $query = "UPDATE user SET user_points = user_points - $points WHERE username = '$username'";
     $this->pdo->query($query);
   }

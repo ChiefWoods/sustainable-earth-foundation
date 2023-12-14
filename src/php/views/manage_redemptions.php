@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../css/table.css">
   <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <script src="../../js/manage.js" defer></script>
   <?php
   require_once '../components/session.php';
   require_once '../components/connect.php';
@@ -44,14 +45,14 @@
           <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
         </button>
       </div>
-      <form class="dialog-bottom">
+      <form class="dialog-bottom" id="edit-redemptions">
         <div id="user-input">
           <label for="username">Username:</label>
           <label for="reward-points">Points Used:</label>
           <label for="reward-code">Phone Number:</label>
           <label for="date-redeemed">Date Redeemed:</label>
-          <input type="text" name="username" id="username">
-          <input type="number" name="reward-points" id="reward-points">
+          <input type="text" name="username" id="username" disabled>
+          <input type="number" name="reward-points" id="reward-points" disabled>
           <input type="text" name="reward-code" id="reward-code">
           <input type="date" name="date-redeemed" id="date-redeemed">
         </div>

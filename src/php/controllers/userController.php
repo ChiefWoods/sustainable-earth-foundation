@@ -45,15 +45,15 @@ class UserController
 
         echo <<<HTML
           <tr>
-            <td>{$user['username']}</td>
-            <td>{$user['email']}</td>
-            <td>{$user['phone_number']}</td>
-            <td>{$user['user_points']}</td>
+            <td class="user-username">{$user['username']}</td>
+            <td class="user-email">{$user['email']}</td>
+            <td class="user-phone">{$user['phone_number']}</td>
+            <td class="user-points">{$user['user_points']}</td>
             <td class="edit-delete">
-              <button id="edit-btn">
+              <button class="action-btn edit-btn">
                 <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
               </button>
-              <button id="delete-btn">
+              <button class="action-btn delete-btn">
                 <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
               </button>
             </td>
@@ -105,7 +105,7 @@ class UserController
       <tbody>
     HTML;
 
-    $user_id = $this->userModel->getUserId();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
     $redemptions = $this->redemptionModel->getAllRedemptions();
 
     $userRedemptions = array_filter($redemptions, function ($redemption) use ($user_id) {
@@ -140,13 +140,15 @@ class UserController
   public function updateProfilePicture($uploadInfo)
   {
     session_start();
+    $username = $_SESSION['username'];
+
     switch ($uploadInfo['error']) {
       case UPLOAD_ERR_OK:
         $name = $uploadInfo['tmp_name'];
         $content_type = mime_content_type($name);
         $data = base64_encode(file_get_contents($name));
         $path = 'data: ' . $content_type . ';base64,' . $data;
-        $this->userModel->updateProfilePicture($path);
+        $this->userModel->updateProfilePicture($path, $username);
         $_SESSION['profile_picture'] = $path;
         header("location:../views/profile.php");
         break;
@@ -168,30 +170,29 @@ class UserController
   public function updateProfileInfo($email, $phone)
   {
     session_start();
-    $this->userModel->updateProfileInfo($email, $phone);
+    $username = $_SESSION['username'];
+    $this->userModel->updateProfileInfo($email, $phone, $username);
     header("location:../views/profile.php");
     echo "Profile info updated";
-    exit;
   }
 
   public function updatePassword($current, $new, $confirm)
   {
     session_start();
-    $hash = $this->userModel->getPassword($_SESSION['username']);
+    $username = $_SESSION['username'];
+    $hash = $this->userModel->getPassword($username);
 
     if (!password_verify($current, $hash)) {
       header("location:../views/profile.php");
       echo "Incorrect password";
-      exit;
     } elseif ($new != $confirm) {
       header("location:../views/profile.php");
       echo "New passwords do not match";
-      exit;
     } else {
-      $this->userModel->updatePassword($new);
+      $new = password_hash($new, PASSWORD_DEFAULT);
+      $this->userModel->updatePassword($new, $username);
       header("location:../views/profile.php");
       echo "Password updated";
-      exit;
     }
   }
 
@@ -205,13 +206,13 @@ class UserController
     return $this->userModel->getPhoneNumber($_SESSION['username']);
   }
 
-  public function getProfilePicture()
+  public function getProfilePicture($username)
   {
-    return $this->userModel->getProfilePicture($_SESSION['username']);
+    return $this->userModel->getProfilePicture($username);
   }
 
-  public function getUserPoints()
+  public function getUserPoints($username)
   {
-    return $this->userModel->getUserPoints();
+    return $this->userModel->getUserPoints($username);
   }
 }

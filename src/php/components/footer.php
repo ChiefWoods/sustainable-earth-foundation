@@ -28,7 +28,7 @@
       <div id="newsletter">
         <span>Let's Stay Connected!</span>
         <form>
-          <input type="email" id="email-input" placeholder="Your Email">
+          <input type="email" id="newsletter-input" placeholder="Your Email">
           <button type="submit">Submit</button>
         </form>
       </div>

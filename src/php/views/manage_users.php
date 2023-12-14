@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../css/table.css">
   <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <script src="../../js/manage.js" defer></script>
   <?php
   require_once '../components/session.php';
   require_once '../components/connect.php';
@@ -44,16 +45,16 @@
           <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
         </button>
       </div>
-      <form class="dialog-bottom">
+      <form class="dialog-bottom" id="edit-users">
         <div id="user-input">
           <label for="username">Username:</label>
           <label for="email">Email:</label>
           <label for="phone">Phone Number:</label>
           <label for="user-points">Points:</label>
           <input type="text" name="username" id="username">
-          <input type="email" name="email" id="email">
-          <input type="text" name="phone" id="phone">
-          <input type="number" name="user-points" id="user-points">
+          <input type="email" name="email" id="email" disabled>
+          <input type="text" name="phone" id="phone" pattern="^[0-9]{10}$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
+          <input type="number" name="user-points" id="user-points" min="0">
         </div>
         <div class="dialog-options">
           <button type="submit" id="edit-btn" class="confirmation-btn option-btn">Edit</button>

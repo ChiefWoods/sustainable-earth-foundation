@@ -3,6 +3,7 @@ require_once '../components/connect.php';
 require_once '../controllers/UserController.php';
 require_once '../controllers/RewardController.php';
 require_once '../controllers/PostController.php';
+require_once '../controllers/RedemptionController.php';
 require_once '../models/UserModel.php';
 require_once '../models/RewardModel.php';
 require_once '../models/RedemptionModel.php';
@@ -17,6 +18,7 @@ $postModel = new PostModel($pdo);
 $userController = new UserController($pdo, $userModel, $rewardModel, $redemptionModel);
 $rewardController = new RewardController($pdo, $userModel, $rewardModel, $redemptionModel, $notificationModel);
 $postController = new PostController($pdo, $postModel, $userModel);
+$redemptionController = new RedemptionController($pdo, $redemptionModel, $userModel, $rewardModel);
 
 function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $userModel)
 {
@@ -68,6 +70,9 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
 
     session_start();
 
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $userModel->createUser($username, $email, $phone, $password);
+
     $_SESSION['username'] = $username;
     $_SESSION['is_admin'] = 0;
     $_SESSION['profile_picture'] = '../../assets/images/default_profile_picture.png';
@@ -101,6 +106,7 @@ function verifyUser($pdo, $username, $password, $userModel)
       header("location:../views/index.php");
     } else {
       echo "Incorrect password<br>";
+      echo "<a href='../views/login.php'>Go back to login page.</a>";
     }
   }
 }

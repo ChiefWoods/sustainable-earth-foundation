@@ -25,7 +25,6 @@ class PostController
 
   public function generateWall()
   {
-    session_start();
     echo <<<HTML
       <div id="wall">
     HTML;
@@ -61,9 +60,9 @@ class PostController
               </div>
             HTML
           : <<<HTML
-                <div class="tools">
+                <div class="actions">
                   <button class="edit-btn">
-                    <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="tool-icon">
+                    <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="action-icon">
                   </button>
                   <button class="delete-btn">
                     <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
@@ -149,7 +148,7 @@ class PostController
   public function createPost($title, $postText)
   {
     session_start();
-    $user_id = $this->userModel->getUserId();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
     $this->postModel->createPost($user_id, $title, $postText);
     echo json_encode(['status' => 'success', 'message' => 'Post created successfully!']);
   }

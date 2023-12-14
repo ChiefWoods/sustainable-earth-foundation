@@ -40,15 +40,15 @@ class RedemptionController
 
         echo <<<HTML
           <tr>
-            <td>$username</td>
-            <td>$reward_points</td>
-            <td>$redemption[redemption_code]</td>
-            <td>$redemption[date_redeemed]</td>
+            <td class="redemption-username">$username</td>
+            <td class="redemption-points">$reward_points</td>
+            <td class="redemption-code">$redemption[redemption_code]</td>
+            <td class="redemption-date">$redemption[date_redeemed]</td>
             <td class="edit-delete">
-              <button id="edit-btn">
+              <button class="action-btn edit-btn">
                 <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
               </button>
-              <button id="delete-btn">
+              <button class="action-btn delete-btn">
                 <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
               </button>
             </td>

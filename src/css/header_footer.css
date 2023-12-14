@@ -250,7 +250,7 @@ form {
   width: 400px;
 }
 
-#email-input {
+#newsletter-input {
   font-size: var(--font-m);
   background: transparent;
   border: none;
@@ -259,7 +259,7 @@ form {
   padding-left: 0;
 }
 
-#email-input::placeholder {
+#newsletter-input::placeholder {
   color: lightgrey;
 }
 

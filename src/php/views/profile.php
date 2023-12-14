@@ -32,7 +32,7 @@
           <input type="file" name="profile_picture" id="profile-picture">
         </div>
         <span id="username">Username: <?php echo $_SESSION['username']; ?></span>
-        <span id="points">Points: <?php echo $userController->getUserPoints(); ?></span>
+        <span id="points">Points: <?php echo $userController->getUserPoints($_SESSION['username']); ?></span>
       </form>
       <div id="info">
         <form action="../components/requestHandler.php" method="post">

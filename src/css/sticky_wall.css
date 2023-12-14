@@ -103,9 +103,9 @@ main > img {
   font-weight: bold;
 }
 
-/* Votes */
+/* Actions */
 
-.votes {
+.actions {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -113,16 +113,16 @@ main > img {
   margin-top: auto;
 }
 
-.votes > button {
+.actions > button {
   background: transparent;
   border: none;
 }
 
-.votes > button:hover {
+.actions > button:hover {
   transform: scale(1.2);
 }
 
-.vote-icon, .tool-icon {
+.action-icon {
   width: 20px;
 }
 

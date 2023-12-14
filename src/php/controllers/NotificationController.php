@@ -15,7 +15,7 @@ class NotificationController
 
   public function generateNotificationLi()
   {
-    $user_id = $this->userModel->getUserId();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
     $notifications = $this->notificationModel->getLatestNotifications($user_id);
 
     foreach ($notifications as $notification) {
