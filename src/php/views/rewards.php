@@ -7,6 +7,7 @@
   <title>Rewards | Sustainable Earth Foundation</title>
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/rewards.css">
+  <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
   <script src="../../js/rewards.js" defer></script>
   <?php
@@ -41,6 +42,26 @@
       </div>
       <?php $rewardController->generateRewardListUl(); ?>
     </section>
+    <div class="overlay"></div>
+    <dialog id="help-dialog">
+      <div class="dialog-top">
+        <h3 class="dialog-title">How does this work?</h3>
+        <button class="close-btn">
+          <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+        </button>
+      </div>
+      <div class="dialog-bottom">
+        <p>Create posts, collect points by being upvoted, and redeem rewards!</p>
+        <div>
+          <span>1</span>
+          <img src="../../assets/icons/upvote/upvote_selected.svg" alt="Upvote" class="dialog-icon">
+          <span>=</span>
+          <span>1</span>
+          <img src="../../assets/icons/points/points.svg" alt="Point" class="dialog-icon">
+        </div>
+      </div>
+    </dialog>
+    <?php isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0 ? $rewardController->generateRewardDialogs() : ""; ?>
   </main>
   <?php require_once '../components/footer.php'; ?>
 </body>

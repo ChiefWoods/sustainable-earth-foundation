@@ -25,6 +25,7 @@ class PostController
 
   public function generateWall()
   {
+    session_start();
     echo <<<HTML
       <div id="wall">
     HTML;
@@ -45,21 +46,103 @@ class PostController
               <h3 class="post-title">$post[title]</h3>
               <p class="post-content">$post[post_text]</p>
             </div>
-            <div class="votes">
-              <button id="upvote-btn">
-                <img src="../../assets/icons/upvote/upvote.svg" alt="Upvote" class="vote-icon">
-              </button>
-              <button id="downvote-btn">
-                <img src="../../assets/icons/downvote/downvote.svg" alt="Downvote" class="vote-icon">
-              </button>
-            </div>
-          </div>
         HTML;
+
+        echo isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0
+          ? <<<HTML
+                <div class="actions">
+                  <button class="upvote-btn">
+                    <img src="../../assets/icons/upvote/upvote.svg" alt="Upvote" class="action-icon">
+                  </button>
+                  <button class="downvote-btn">
+                    <img src="../../assets/icons/downvote/downvote.svg" alt="Downvote" class="action-icon">
+                  </button>
+                </div>
+              </div>
+            HTML
+          : <<<HTML
+                <div class="tools">
+                  <button class="edit-btn">
+                    <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="tool-icon">
+                  </button>
+                  <button class="delete-btn">
+                    <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
+                  </button>
+                </div>
+              </div>
+            HTML;
       }
     }
 
     echo <<<HTML
       </div>
+    HTML;
+  }
+
+  public function generateCreateDialog()
+  {
+    echo <<<HTML
+      <dialog id="create-dialog">
+        <div class="dialog-top">
+          <h3 class="dialog-title">Create Post</h3>
+          <button class="close-btn">
+            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+          </button>
+        </div>
+        <form class="dialog-bottom">
+          <div class="post-input">
+            <input type="text" name="title" placeholder="Title" id="post-title">
+            <textarea name="post-text" id="post-text" placeholder="Content"></textarea>
+          </div>
+          <div class="dialog-options">
+            <button type="submit" id="post-btn" class="confirmation-btn option-btn">Post</button>
+          </div>
+        </form>
+      </dialog>
+    HTML;
+  }
+
+  public function generateEditDialog()
+  {
+    echo <<<HTML
+      <dialog id="edit-dialog">
+        <div class="dialog-top">
+          <h3 class="dialog-title">Edit Post</h3>
+          <button class="close-btn">
+            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+          </button>
+        </div>
+        <form class="dialog-bottom">
+          <div class="post-input">
+            <input type="text" name="title" placeholder="Title" id="post-title">
+            <textarea name="post-text" id="post-text" placeholder="Content"></textarea>
+          </div>
+          <div class="dialog-options">
+            <button type="submit" id="edit-btn" class="confirmation-btn option-btn">Edit</button>
+          </div>
+        </form>
+      </dialog>
+    HTML;
+  }
+
+  public function generateDeleteDialog()
+  {
+    echo <<<HTML
+      <dialog id="delete-dialog">
+        <div class="dialog-top">
+          <h3 class="dialog-title">Delete Post</h3>
+          <button class="close-btn">
+            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+          </button>
+        </div>
+        <div class="dialog-bottom">
+          <p>Delete this post?</p>
+          <div class="dialog-options">
+            <button id="cancel-btn" class="option-btn">Cancel</button>
+            <button id="delete-btn" class="confirmation-btn option-btn">Delete</button>
+          </div>
+        </div>
+      </dialog>
     HTML;
   }
 }

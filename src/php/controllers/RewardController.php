@@ -20,10 +20,10 @@ class RewardController
   public function generateSavedPointsDiv()
   {
     echo <<<HTML
-    <div id="saved-points">
-      <span>Saved Points</span>
-      <span id="user-points">{$this->userModel->getUserPoints()}</span>
-    </div>
+      <div id="saved-points">
+        <span>Saved Points</span>
+        <span id="user-points">{$this->userModel->getUserPoints()}</span>
+      </div>
     HTML;
   }
 
@@ -37,18 +37,39 @@ class RewardController
 
     foreach ($rewards as $reward) {
       echo <<<HTML
-      <li>
-        <div>
-          <h3 class="reward-name">$reward[reward_name]</h3>
-          <p class="reward-points">$reward[reward_points] points</p>
-        </div>
-        <button href="../views/rewards.php" class="btn redeem-btn">Redeem</button>
-      </li>
+        <li>
+          <div>
+            <h3 class="reward-name">$reward[reward_name]</h3>
+            <p class="reward-points">$reward[reward_points] points</p>
+          </div>
+          <button href="../views/rewards.php" class="btn redeem-btn">Redeem</button>
+        </li>
       HTML;
     }
 
     echo <<<HTML
       </ul>
+    HTML;
+  }
+
+  public function generateRewardDialogs()
+  {
+    echo <<<HTML
+      <dialog id="redeem-dialog">
+        <div class="dialog-top">
+          <h3 class="dialog-title">Redeem Reward</h3>
+          <button class="close-btn">
+            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+          </button>
+        </div>
+        <div class="dialog-bottom">
+          <p>Redeem this reward?</p>
+          <div class="dialog-options">
+            <button id="cancel-btn" class="option-btn">Cancel</button>
+            <button id="yes-btn" class="confirmation-btn option-btn">Yes</button>
+          </div>
+        </div>
+      </dialog>
     HTML;
   }
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/manage.css">
   <link rel="stylesheet" href="../../css/table.css">
+  <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
   <?php
   require_once '../components/session.php';
@@ -35,6 +36,45 @@
       </form>
       <?php $userController->generateUsersTable(); ?>
     </section>
+    <div class="overlay"></div>
+    <dialog id="edit-dialog"> 
+      <div class="dialog-top">
+        <h3 class="dialog-title">Edit User</h3>
+        <button class="close-btn">
+          <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+        </button>
+      </div>
+      <form class="dialog-bottom">
+        <div id="user-input">
+          <label for="username">Username:</label>
+          <label for="email">Email:</label>
+          <label for="phone">Phone Number:</label>
+          <label for="user-points">Points:</label>
+          <input type="text" name="username" id="username">
+          <input type="email" name="email" id="email">
+          <input type="text" name="phone" id="phone">
+          <input type="number" name="user-points" id="user-points">
+        </div>
+        <div class="dialog-options">
+          <button type="submit" id="edit-btn" class="confirmation-btn option-btn">Edit</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="delete-dialog">
+      <div class="dialog-top">
+        <h3 class="dialog-title">Delete User</h3>
+        <button class="close-btn">
+          <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+        </button>
+      </div>
+      <div class="dialog-bottom">
+        <p>Delete this user?</p>
+        <div class="dialog-options">
+          <button id="cancel-btn" class="option-btn">Cancel</button>
+          <button id="delete-btn" class="confirmation-btn option-btn">Delete</button>
+        </div>
+      </div>
+    </dialog>
   </main>
   <?php require_once '../components/footer.php'; ?>
 </body>

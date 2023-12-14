@@ -5,7 +5,7 @@ main {
 section {
   margin: 70px;
   border-radius: 15px;
-  background: var(--bg-light-blue);
+  background: var(--bg-sky-blue);
   padding: 30px 50px;
   display: flex;
   flex-direction: column;

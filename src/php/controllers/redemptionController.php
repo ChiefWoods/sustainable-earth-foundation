@@ -18,17 +18,17 @@ class RedemptionController
   public function generateRedemptionsTable()
   {
     echo <<<HTML
-    <table>
-    <thead>
-      <tr class="column">
-        <th class="table-col">Username</th>
-        <th class="table-col">Points Used</th>
-        <th class="table-col">Redemption Code</th>
-        <th class="table-col">Date Redeemed</th>
-        <th class="table-col"></th>
-      </tr>
-    </thead>
-    <tbody>
+      <table>
+      <thead>
+        <tr class="column">
+          <th class="table-col">Username</th>
+          <th class="table-col">Points Used</th>
+          <th class="table-col">Redemption Code</th>
+          <th class="table-col">Date Redeemed</th>
+          <th class="table-col"></th>
+        </tr>
+      </thead>
+      <tbody>
     HTML;
 
     $redemptions = $this->redemptionModel->getAllRedemptions();
@@ -39,32 +39,32 @@ class RedemptionController
         $reward_points = $this->rewardModel->getRewardPoints($redemption['reward_id']);
 
         echo <<<HTML
-        <tr>
-          <td>$username</td>
-          <td>$reward_points</td>
-          <td>$redemption[redemption_code]</td>
-          <td>$redemption[date_redeemed]</td>
-          <td class="edit-delete">
-            <button id="edit-btn">
-              <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
-            </button>
-            <button id="delete-btn">
-              <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
-            </button>
-          </td>
-        </tr>
+          <tr>
+            <td>$username</td>
+            <td>$reward_points</td>
+            <td>$redemption[redemption_code]</td>
+            <td>$redemption[date_redeemed]</td>
+            <td class="edit-delete">
+              <button id="edit-btn">
+                <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
+              </button>
+              <button id="delete-btn">
+                <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
+              </button>
+            </td>
+          </tr>
         HTML;
       }
     } else {
       echo <<<HTML
-      <tr>
-        <td colspan="5" class="no-results">No results found</td>
-      </tr>
+        <tr>
+          <td colspan="5" class="no-results">No results found</td>
+        </tr>
       HTML;
     }
     echo <<<HTML
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     HTML;
   }
 
@@ -76,18 +76,18 @@ class RedemptionController
       foreach ($redemptions as $redemption) {
         $reward_points = $this->rewardModel->getRewardPoints($redemption['reward_id']);
         echo <<<HTML
-        <tr>
-          <td>$redemption[redemption_code]</td>
-          <td>$reward_points</td>
-          <td>$redemption[date_redeemed]</td>
-        </tr>
+          <tr>
+            <td>$redemption[redemption_code]</td>
+            <td>$reward_points</td>
+            <td>$redemption[date_redeemed]</td>
+          </tr>
         HTML;
       }
     } else {
       echo <<<HTML
-      <tr>
-        <td colspan="3" class="no-rewards">No rewards redeemed</td>
-      </tr>
+        <tr>
+          <td colspan="3" class="no-rewards">No rewards redeemed</td>
+        </tr>
       HTML;
     }
   }

@@ -7,6 +7,7 @@
   <title>Sticky Wall | Sustainable Earth Foundation</title>
   <link rel="stylesheet" href="../../css/header_footer.css">
   <link rel="stylesheet" href="../../css/sticky_wall.css">
+  <link rel="stylesheet" href="../../css/dialog.css">
   <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
   <?php
   require_once '../components/session.php';
@@ -33,6 +34,12 @@
       </div>
       <?php $postController->generateWall(); ?>
     </section>
+    <div class="overlay"></div>
+    <?php isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0 ? $postController->generateCreateDialog() : ""; ?>
+    <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+      $postController->generateEditDialog();
+      $postController->generateDeleteDialog();
+    } ?>
   </main>
   <?php require_once '../components/footer.php'; ?>
 </body>

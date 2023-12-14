@@ -95,7 +95,7 @@ class UserController
 
     echo <<<HTML
         </table>
-    </section>
+      </section>
     HTML;
   }
 
