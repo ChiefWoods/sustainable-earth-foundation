@@ -51,9 +51,9 @@
           <label for="email">Email:</label>
           <label for="phone">Phone Number:</label>
           <label for="user-points">Points:</label>
-          <input type="text" name="username" id="username">
+          <input type="text" name="username" id="username" disabled>
           <input type="email" name="email" id="email" disabled>
-          <input type="text" name="phone" id="phone" pattern="^[0-9]{10}$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
+          <input type="text" name="phone" id="phone" pattern="^\d{10}$|^-$" oninvalid="setCustomValidity('Phone number should consist of 10 digits.')">
           <input type="number" name="user-points" id="user-points" min="0">
         </div>
         <div class="dialog-options">

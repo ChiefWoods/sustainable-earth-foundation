@@ -25,6 +25,18 @@ class RedemptionModel
     $this->pdo->query($query);
   }
 
+  public function editRedemption($oldRedemptionCode, $newRedemptionCode, $date_redeemed) 
+  {
+    $query = "UPDATE redemption SET redemption_code = '$newRedemptionCode', date_redeemed = '$date_redeemed' WHERE redemption_code = '$oldRedemptionCode'";
+    $this->pdo->query($query);
+  }
+
+  public function deleteRedemption($redemption_code)
+  {
+    $query = "DELETE FROM redemption WHERE redemption_code = '$redemption_code'";
+    $this->pdo->query($query);
+  }
+
   private function generateRewardCode()
   {
     $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

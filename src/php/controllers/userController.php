@@ -63,7 +63,7 @@ class UserController
     } else {
       echo <<<HTML
         <tr>
-          <td colspan="5" class="no-results">No results found</td>
+          <td colspan="5" class="no-results">No users found</td>
         </tr>
       HTML;
     }
@@ -194,6 +194,18 @@ class UserController
       header("location:../views/profile.php");
       echo "Password updated";
     }
+  }
+
+  public function editUser($username, $phone, $user_points)
+  {
+    $this->userModel->editUser($username, $phone, $user_points);
+    echo json_encode(['status' => 'success', 'message' => 'User edited successfully!']);
+  }
+
+  public function deleteUser($username)
+  {
+    $this->userModel->deleteUser($username);
+    echo json_encode(['status' => 'success', 'message' => 'User deleted successfully!']);
   }
 
   public function getEmail()

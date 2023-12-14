@@ -66,8 +66,6 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
 
     echo "<a href='../views/sign_up.php'>Go back to sign up page.</a>";
   } else {
-    $userModel->createUser($username, $email, $phone, $password);
-
     session_start();
 
     $password = password_hash($password, PASSWORD_DEFAULT);
@@ -131,5 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rewardController->redeemReward($_POST['reward_name'], $_POST['reward_points']);
   } elseif (isset($_POST['action']) && $_POST['action'] === 'create_post') {
     $postController->createPost($_POST['title'], $_POST['post_text']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'edit_user') {
+    $userController->editUser($_POST['username'], $_POST['phone_number'], $_POST['user_points']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'edit_redemption') {
+    $redemptionController->editRedemption($_POST['old_redemption_code'], $_POST['new_redemption_code'], $_POST['date_redeemed']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'delete_user') {
+    $userController->deleteUser($_POST['username']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'delete_redemption') {
+    $redemptionController->deleteRedemption($_POST['redemption_code']);
   }
 }

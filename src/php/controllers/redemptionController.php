@@ -58,7 +58,7 @@ class RedemptionController
     } else {
       echo <<<HTML
         <tr>
-          <td colspan="5" class="no-results">No results found</td>
+          <td colspan="5" class="no-results">No redemptions found</td>
         </tr>
       HTML;
     }
@@ -90,5 +90,17 @@ class RedemptionController
         </tr>
       HTML;
     }
+  }
+
+  public function editRedemption($old_redemption_code, $new_redemption_code, $date_redeemed)
+  {
+    $this->redemptionModel->editRedemption($old_redemption_code, $new_redemption_code, $date_redeemed);
+    echo json_encode(['status' => 'success', 'message' => 'Redemption edited successfully!']);
+  }
+
+  public function deleteRedemption($redemption_code)
+  {
+    $this->redemptionModel->deleteRedemption($redemption_code);
+    echo json_encode(['status' => 'success', 'message' => 'Redemption deleted successfully!']);
   }
 }

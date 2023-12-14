@@ -116,4 +116,16 @@ class UserModel
     $query = "UPDATE user SET user_points = user_points - $points WHERE username = '$username'";
     $this->pdo->query($query);
   }
+
+  public function editUser($username, $phone, $userPoints)
+  {
+    $query = "UPDATE user SET phone_number = '$phone', user_points = $userPoints WHERE username = '$username'";
+    $this->pdo->query($query);
+  }
+
+  public function deleteUser($username)
+  {
+    $query = "DELETE FROM user WHERE username = '$username'";
+    $this->pdo->query($query);
+  }
 }
