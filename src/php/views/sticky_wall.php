@@ -31,7 +31,7 @@
           <img src="../../assets/icons/bulletin_board/bulletin_board.svg" alt="Sticky Wall">
           <h2>Sticky Wall</h2>
         </div>
-        <?php echo $_SESSION['is_admin'] == 0 ? $postController->generateCreatePostBtn() : ""; ?>
+        <?php echo isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0 ? $postController->generateCreatePostBtn() : ""; ?>
       </div>
       <?php $postController->generateWall(); ?>
     </section>

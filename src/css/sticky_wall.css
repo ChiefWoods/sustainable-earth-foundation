@@ -63,6 +63,11 @@ main > img {
   gap: 40px;
 }
 
+#no-posts {
+  font-size: var(--font-m);
+  text-align: center;
+}
+
 /* Post */
 
 .post {

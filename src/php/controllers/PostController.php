@@ -71,6 +71,10 @@ class PostController
               </div>
             HTML;
       }
+    } else {
+      echo <<<HTML
+        <span id="no-posts">It's a little empty here...</span>
+      HTML;
     }
 
     echo <<<HTML
@@ -91,7 +95,7 @@ class PostController
         <form class="dialog-bottom">
           <div class="post-input">
             <input type="text" name="title" placeholder="Title" id="post-title">
-            <textarea name="post-text" id="post-text" placeholder="Content"></textarea>
+            <textarea name="post-content" id="post-content" placeholder="Content"></textarea>
           </div>
           <div class="dialog-options">
             <button type="submit" id="post-btn" class="confirmation-btn option-btn">Post</button>
@@ -114,7 +118,7 @@ class PostController
         <form class="dialog-bottom">
           <div class="post-input">
             <input type="text" name="title" placeholder="Title" id="post-title">
-            <textarea name="post-text" id="post-text" placeholder="Content"></textarea>
+            <textarea name="post-content" id="post-content" placeholder="Content"></textarea>
           </div>
           <div class="dialog-options">
             <button type="submit" id="edit-btn" class="confirmation-btn option-btn">Edit</button>
@@ -151,5 +155,17 @@ class PostController
     $user_id = $this->userModel->getUserId($_SESSION['username']);
     $this->postModel->createPost($user_id, $title, $postText);
     echo json_encode(['status' => 'success', 'message' => 'Post created successfully!']);
+  }
+  
+  public function editPost($old_title, $old_post_text, $new_title, $new_post_text)
+  {
+    $this->postModel->editPost($old_title, $old_post_text, $new_title, $new_post_text);
+    echo json_encode(['status' => 'success', 'message' => 'Post edited successfully!']);
+  }
+
+  public function deletePost($title, $post_text)
+  {
+    $this->postModel->deletePost($title, $post_text);
+    echo json_encode(['status' => 'success', 'message' => 'Post deleted successfully!']);
   }
 }

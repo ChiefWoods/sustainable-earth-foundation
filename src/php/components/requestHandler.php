@@ -137,5 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userController->deleteUser($_POST['username']);
   } elseif (isset($_POST['action']) && $_POST['action'] === 'delete_redemption') {
     $redemptionController->deleteRedemption($_POST['redemption_code']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'edit_post') {
+    $postController->editPost($_POST['old_title'], $_POST['old_post_text'], $_POST['new_title'], $_POST['new_post_text']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'delete_post') {
+    $postController->deletePost($_POST['title'], $_POST['post_text']);
   }
 }
