@@ -32,4 +32,12 @@ class RewardModel
     $rewards = $statement->fetchAll();
     return $rewards;
   }
+
+  public function getLargestRedeemableReward($user_points)
+  {
+    $query = "SELECT reward_name FROM reward WHERE reward_points <= $user_points ORDER BY reward_points DESC LIMIT 1";
+    $statement = $this->pdo->query($query);
+    $reward = $statement->fetch();
+    return $reward['reward_name'];
+  }
 }

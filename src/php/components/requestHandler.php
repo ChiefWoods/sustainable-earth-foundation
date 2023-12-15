@@ -80,7 +80,7 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
   }
 }
 
-function verifyUser($pdo, $username, $password, $userModel)
+function verifyUser($pdo, $username, $password, $userModel, $rewardModel, $notificationModel)
 {
   $username = str_replace("'", "", sanitise($pdo, $username));
 
@@ -101,6 +101,12 @@ function verifyUser($pdo, $username, $password, $userModel)
       $_SESSION['profile_picture'] = $row['profile_picture'];
       $_SESSION['last_activity'] = time();
 
+      $largest_reward = $rewardModel->getLargestRedeemableReward($row['user_points']);
+
+      if (!empty($largest_reward)) {
+        $notificationModel->createNotification($row['user_id'], 'points', ['reward_name' => $largest_reward]);
+      }
+
       header("location:../views/index.php");
     } else {
       echo "Incorrect password<br>";
@@ -118,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm'])) {
     validateSignUp($pdo, $_POST['username'], $_POST['email'], $_POST['phone'], $_POST['password'], $_POST['confirm'], $userModel);
   } elseif (isset($_POST['username']) && isset($_POST['password'])) {
-    verifyUser($pdo, $_POST['username'], $_POST['password'], $userModel);
+    verifyUser($pdo, $_POST['username'], $_POST['password'], $userModel, $rewardModel, $notificationModel);
   } elseif (isset($_FILES['profile_picture'])) {
     $userController->updateProfilePicture($_FILES['profile_picture']);
   } elseif (isset($_POST['email']) && isset($_POST['phone'])) {
