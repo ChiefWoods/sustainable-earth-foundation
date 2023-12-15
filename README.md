@@ -1,6 +1,6 @@
 # Sustainable Earth Foundation
 
-<!-- ![Landing Screenshot](src/images/landing_screenshot.png) -->
+![Landing Screenshot](src/assets/images/landing_screenshot.png)
 
 Awareness website for WEB2202 Web Programming.
 
@@ -10,9 +10,11 @@ Built together with Xiao Hui.
 
 ## Features
 
-- 
-- 
--
+- Signup for an account
+- Create sticky wall posts
+- Cast votes with other users
+- Exchange points for rewards
+- Manage existing database as an admin
 
 ## Built With
 
@@ -32,14 +34,18 @@ Built together with Xiao Hui.
 
 ### Prerequisites
 
-[XAMPP](https://www.apachefriends.org/) is required to load the database.
+The Apache and phpMyAdmin module from [XAMPP](https://www.apachefriends.org/) are required to load the database.
 
 ### Setup
 
-1. Clone the repository
+1. Clone the repository into the htdocs folder of XAMPP.
 ```
 git clone https://github.com/ChiefWoods/sustainable-earth-foundation.git
 ```
+
+2. Open XAMPP Control Panel.  
+3. Start Apache and MySQL modules.
+4. Go to http://localhost/sustainable-earth-foundation/src/php/views/index.php.
 
 ## Issues
 
@@ -53,10 +59,6 @@ View the [open issues](https://github.com/ChiefWoods/sustainable-earth-foundatio
 - [Google Fonts](https://fonts.google.com/)
 - [Pictogrammers](https://pictogrammers.com/)
 - [SDG](https://sdgs.un.org/)
-
-<!-- ### Hosting
-
-- [GitHub Pages](https://pages.github.com/) -->
 
 ## Contact
 
