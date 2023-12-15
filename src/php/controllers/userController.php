@@ -6,38 +6,43 @@ class UserController
   private $userModel;
   private $rewardModel;
   private $redemptionModel;
+  private $postModel;
+  private $notificationModel;
 
-  public function __construct($pdo, $userModel, $rewardModel, $redemptionModel)
+  public function __construct($pdo, $userModel, $rewardModel, $redemptionModel, $postModel, $notificationModel)
   {
     $this->pdo = $pdo;
     $this->userModel = $userModel;
     $this->rewardModel = $rewardModel;
     $this->redemptionModel = $redemptionModel;
+    $this->postModel = $postModel;
+    $this->notificationModel = $notificationModel;
   }
 
   public function generateUsersTable()
   {
-    echo <<<HTML
-      <table>
-        <thead>
-          <tr class="column">
-            <th class="table-col">Username</th>
-            <th class="table-col">Email</th>
-            <th class="table-col">Phone Number</th>
-            <th class="table-col">Points</th>
-            <th class="table-col"></th>
-          </tr>
-        </thead>
-        <tbody>
-    HTML;
-
     $allUsers = $this->userModel->getAllUsers();
-
     $users = array_filter($allUsers, function ($user) {
       return $user['is_admin'] == 0;
     });
+    $resultCount = count($users);
 
-    if (count($users) > 0) {
+    echo <<<HTML
+      <span id="total-results">Total results: <span id="result-count">$resultCount</span></span>
+        <table>
+          <thead>
+            <tr class="column">
+              <th class="table-col">Username</th>
+              <th class="table-col">Email</th>
+              <th class="table-col">Phone Number</th>
+              <th class="table-col">Points</th>
+              <th class="table-col"></th>
+            </tr>
+          </thead>
+        <tbody>
+    HTML;
+
+    if ($resultCount > 0) {
       foreach ($users as $user) {
         if ($user['phone_number'] == "") {
           $user['phone_number'] = "-";
@@ -89,20 +94,7 @@ class UserController
               <th class="table-col">Date Redeemed</th>
             </tr>
           </thead>
-    HTML;
-
-    echo $this->generateUserRedemptionTbody();
-
-    echo <<<HTML
-        </table>
-      </section>
-    HTML;
-  }
-
-  private function generateUserRedemptionTbody()
-  {
-    echo <<<HTML
-      <tbody>
+        <tbody>
     HTML;
 
     $user_id = $this->userModel->getUserId($_SESSION['username']);
@@ -133,7 +125,9 @@ class UserController
     }
 
     echo <<<HTML
-      </tbody>
+         </tbody>
+        </table>
+      </section>
     HTML;
   }
 
@@ -204,8 +198,19 @@ class UserController
 
   public function deleteUser($username)
   {
+    session_start();
+    $user_id = $this->userModel->getUserId($username);
     $this->userModel->deleteUser($username);
+    $this->redemptionModel->deleteAllUserRedemptions($user_id);
+    $this->postModel->deleteAllUserPosts($user_id);
+    $this->notificationModel->deleteAllUserNotifications($user_id);
     echo json_encode(['status' => 'success', 'message' => 'User deleted successfully!']);
+  }
+
+  public function findUsers($searchValue)
+  {
+    $users = $this->userModel->findUsers($searchValue);
+    echo json_encode(['status' => 'success', 'message' => 'Users found successfully!', 'users' => $users]);
   }
 
   public function getEmail()

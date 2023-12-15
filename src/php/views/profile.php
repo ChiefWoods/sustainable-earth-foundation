@@ -17,8 +17,10 @@
   require_once '../models/UserModel.php';
   require_once '../models/RewardModel.php';
   require_once '../models/RedemptionModel.php';
+  require_once '../models/PostModel.php';
+  require_once '../models/NotificationModel.php';
 
-  $userController = new UserController($pdo, new UserModel($pdo), new RewardModel($pdo), new RedemptionModel($pdo));
+  $userController = new UserController($pdo, new UserModel($pdo), new RewardModel($pdo), new RedemptionModel($pdo), new PostModel($pdo), new NotificationModel($pdo));
   ?>
 </head>
 

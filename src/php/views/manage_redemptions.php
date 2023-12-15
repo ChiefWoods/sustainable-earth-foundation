@@ -31,7 +31,7 @@
         <img src="../../assets/icons/reward/reward.svg" alt="Redemptions" class="icon">
         <h2>Manage Redemptions</h2>
       </div>
-      <form action="" id="search-bar">
+      <form id="search-bar">
         <input type="text" name="search" id="search-input">
         <button type="submit" id="search-btn" class="btn">Search</button>
       </form>

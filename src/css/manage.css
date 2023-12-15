@@ -61,6 +61,11 @@ main > section {
   background: var(--btn-hover-orange);
 }
 
+#total-results {
+  align-self: flex-end;
+  font-size: var(--font-s);
+}
+
 .column > .table-col {
   background: var(--tbl-header-manage-titan);
 }

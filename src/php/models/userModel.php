@@ -128,4 +128,12 @@ class UserModel
     $query = "DELETE FROM user WHERE username = '$username'";
     $this->pdo->query($query);
   }
+
+  public function findUsers($searchValue)
+  {
+    $query = "SELECT username, email, phone_number, user_points FROM user WHERE (username LIKE '%$searchValue%' OR email LIKE '%$searchValue%' OR phone_number LIKE '%$searchValue%' OR CAST(user_points AS SIGNED) = '$searchValue') AND is_admin = 0";
+    $statement = $this->pdo->query($query);
+    $users = $statement->fetchAll();
+    return $users;
+  }
 }

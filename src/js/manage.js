@@ -2,11 +2,13 @@ const overlay = document.querySelector('.overlay');
 const editDialog = document.querySelector('#edit-dialog');
 const deleteDialog = document.querySelector('#delete-dialog');
 const form = document.querySelector('form.dialog-bottom');
+const searchBar = document.querySelector('#search-bar');
 const cancelBtn = document.querySelector('#cancel-btn');
 const deleteBtn = document.querySelector('#delete-btn');
 const closeBtns = document.querySelectorAll('.close-btn');
-const actionEditBtns = document.querySelectorAll('.edit-btn');
-const actionDeleteBtns = document.querySelectorAll('.delete-btn');
+const searchInput = document.querySelector('#search-input');
+const resultCountSpan = document.querySelector('#result-count');
+const table = document.querySelector('table');
 
 let oldCodeValue = null;
 let currentData = null;
@@ -147,35 +149,203 @@ function deleteRedemption(code) {
   xhr.send(formData);
 }
 
-actionEditBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    if (form.id === 'edit-users') {
-      usernameInput.value = btn.parentElement.parentElement.querySelector('.user-username').textContent;
-      emailInput.value = btn.parentElement.parentElement.querySelector('.user-email').textContent;
-      phoneInput.value = btn.parentElement.parentElement.querySelector('.user-phone').textContent;
-      userPointsInput.value = btn.parentElement.parentElement.querySelector('.user-points').textContent;
+function findUsers(searchValue) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      const data = JSON.parse(xhr.responseText);
+
+      if (data.status === 'success') {
+        updateTable(data.users);
+      }
     } else {
-      usernameInput.value = btn.parentElement.parentElement.querySelector('.redemption-username').textContent;
-      rewardPointsInput.value = btn.parentElement.parentElement.querySelector('.redemption-points').textContent;
-      codeInput.value = btn.parentElement.parentElement.querySelector('.redemption-code').textContent;
-      dateInput.value = btn.parentElement.parentElement.querySelector('.redemption-date').textContent;
-
-      oldCodeValue = codeInput.value;
+      console.error('Error:', xhr.status, xhr.statusText);
     }
-    editDialog.showModal();
-    toggleOverlay();
-  });
-});
+  };
 
-actionDeleteBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    currentData = form.id === 'edit-users'
-      ? btn.parentElement.parentElement.querySelector('.user-username').textContent
-      : btn.parentElement.parentElement.querySelector('.redemption-code').textContent;
-    deleteDialog.showModal();
-    toggleOverlay();
+  xhr.onerror = function () {
+    console.error('Network error');
+  }
+
+  const formData = new URLSearchParams({
+    action: 'find_users',
+    search_value: searchValue,
   });
-});
+
+  xhr.send(formData);
+}
+
+function findRedemptions(searchValue) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      const data = JSON.parse(xhr.responseText);
+
+      if (data.status === 'success') {
+        updateTable(data.redemptions);
+      }
+    } else {
+      console.error('Error:', xhr.status, xhr.statusText);
+    }
+  };
+
+  xhr.onerror = function () {
+    console.error('Network error');
+  }
+
+  const formData = new URLSearchParams({
+    action: 'find_redemptions',
+    search_value: searchValue,
+  });
+
+  xhr.send(formData);
+}
+
+function updateTable(data) {
+  table.removeChild(table.querySelector('tbody'));
+
+  const tbody = document.createElement('tbody');
+  const allTr = [];
+
+  data.forEach((row) => {
+    allTr.push(createTr(row));
+  });
+
+  tbody.append(...allTr);
+
+  table.append(tbody);
+
+  addActionEditBtnListener();
+  addActionDeleteBtnListener();
+
+  resultCountSpan.textContent = data.length;
+}
+
+function createTr(row) {
+  if (form.id === 'edit-users') {
+    const tr = document.createElement('tr');
+    tr.className = 'user-row';
+
+    const usernameTd = document.createElement('td');
+    usernameTd.className = 'user-username';
+    usernameTd.textContent = row.username;
+
+    const emailTd = document.createElement('td');
+    emailTd.className = 'user-email';
+    emailTd.textContent = row.email;
+
+    const phoneTd = document.createElement('td');
+    phoneTd.className = 'user-phone';
+    if (row.phone_number === '') {
+      phoneTd.textContent = '-';
+    } else {
+      phoneTd.textContent = row.phone_number;
+    }
+
+    const pointsTd = document.createElement('td');
+    pointsTd.className = 'user-points';
+    pointsTd.textContent = row.user_points;
+
+    const editDeleteTd = document.createElement('td');
+    editDeleteTd.className = 'edit-delete';
+
+    const editBtn = createActionBtn('edit');
+    const deleteBtn = createActionBtn('delete');
+
+    editDeleteTd.append(editBtn, deleteBtn);
+
+    tr.append(usernameTd, emailTd, phoneTd, pointsTd, editDeleteTd);
+
+    return tr;
+  } else {
+    const tr = document.createElement('tr');
+    tr.className = 'redemption-row';
+
+    const usernameTd = document.createElement('td');
+    usernameTd.className = 'redemption-username';
+    usernameTd.textContent = row.username;
+
+    const pointsTd = document.createElement('td');
+    pointsTd.className = 'redemption-points';
+    pointsTd.textContent = row.reward_points;
+
+    const codeTd = document.createElement('td');
+    codeTd.className = 'redemption-code';
+    codeTd.textContent = row.redemption_code;
+
+    const dateTd = document.createElement('td');
+    dateTd.className = 'redemption-date';
+    dateTd.textContent = row.date_redeemed;
+
+    const editDeleteTd = document.createElement('td');
+    editDeleteTd.className = 'edit-delete';
+
+    const editBtn = createActionBtn('edit');
+    const deleteBtn = createActionBtn('delete');
+
+    editDeleteTd.append(editBtn, deleteBtn);
+
+    tr.append(usernameTd, pointsTd, codeTd, dateTd, editDeleteTd);
+
+    return tr;
+  }
+}
+
+function createActionBtn(action) {
+  const button = document.createElement('button');
+  button.className = `action-btn ${action}-btn`;
+
+  const img = document.createElement('img');
+  img.src = `../../assets/icons/${action}/${action}.svg`;
+  img.alt = action.charAt(0).toUpperCase() + action.slice(1);
+  img.className = 'icon';
+
+  button.append(img);
+
+  return button;
+}
+
+function addActionEditBtnListener() {
+  const actionEditBtns = document.querySelectorAll('.edit-btn');
+  actionEditBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (form.id === 'edit-users') {
+        usernameInput.value = btn.parentElement.parentElement.querySelector('.user-username').textContent;
+        emailInput.value = btn.parentElement.parentElement.querySelector('.user-email').textContent;
+        phoneInput.value = btn.parentElement.parentElement.querySelector('.user-phone').textContent;
+        userPointsInput.value = btn.parentElement.parentElement.querySelector('.user-points').textContent;
+      } else {
+        usernameInput.value = btn.parentElement.parentElement.querySelector('.redemption-username').textContent;
+        rewardPointsInput.value = btn.parentElement.parentElement.querySelector('.redemption-points').textContent;
+        codeInput.value = btn.parentElement.parentElement.querySelector('.redemption-code').textContent;
+        dateInput.value = btn.parentElement.parentElement.querySelector('.redemption-date').textContent;
+
+        oldCodeValue = codeInput.value;
+      }
+      editDialog.showModal();
+      toggleOverlay();
+    });
+  });
+}
+
+function addActionDeleteBtnListener() {
+  const actionDeleteBtns = document.querySelectorAll('.delete-btn');
+  actionDeleteBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentData = form.id === 'edit-users'
+        ? btn.parentElement.parentElement.querySelector('.user-username').textContent
+        : btn.parentElement.parentElement.querySelector('.redemption-code').textContent;
+      deleteDialog.showModal();
+      toggleOverlay();
+    });
+  });
+}
 
 closeBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -215,3 +385,16 @@ deleteBtn.addEventListener('click', () => {
     currentData = null;
   }
 });
+
+searchBar.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const searchValue = searchInput.value;
+
+  form.id === 'edit-users'
+    ? findUsers(searchValue)
+    : findRedemptions(searchValue);
+});
+
+addActionEditBtnListener();
+addActionDeleteBtnListener();

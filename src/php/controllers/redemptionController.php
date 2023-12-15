@@ -17,23 +17,25 @@ class RedemptionController
 
   public function generateRedemptionsTable()
   {
+    $redemptions = $this->redemptionModel->getAllRedemptions();
+    $resultCount = count($redemptions);
+
     echo <<<HTML
-      <table>
-      <thead>
-        <tr class="column">
-          <th class="table-col">Username</th>
-          <th class="table-col">Points Used</th>
-          <th class="table-col">Redemption Code</th>
-          <th class="table-col">Date Redeemed</th>
-          <th class="table-col"></th>
-        </tr>
-      </thead>
-      <tbody>
+      <span id="total-results">Total results: <span id="result-count">$resultCount</span></span>
+        <table>
+          <thead>
+            <tr class="column">
+              <th class="table-col">Username</th>
+              <th class="table-col">Points Used</th>
+              <th class="table-col">Redemption Code</th>
+              <th class="table-col">Date Redeemed</th>
+              <th class="table-col"></th>
+            </tr>
+          </thead>
+        <tbody>
     HTML;
 
-    $redemptions = $this->redemptionModel->getAllRedemptions();
-
-    if (count($redemptions) > 0) {
+    if ($resultCount > 0) {
       foreach ($redemptions as $redemption) {
         $username = $this->userModel->getUsername($redemption['user_id']);
         $reward_points = $this->rewardModel->getRewardPoints($redemption['reward_id']);
@@ -102,5 +104,11 @@ class RedemptionController
   {
     $this->redemptionModel->deleteRedemption($redemption_code);
     echo json_encode(['status' => 'success', 'message' => 'Redemption deleted successfully!']);
+  }
+
+  public function findRedemptions($searchValue)
+  {
+    $redemptions = $this->redemptionModel->findRedemptions($searchValue);
+    echo json_encode(['status' => 'success', 'message' => 'Redemption found successfully!', 'redemptions' => $redemptions]);
   }
 }

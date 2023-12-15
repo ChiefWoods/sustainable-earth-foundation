@@ -37,6 +37,20 @@ class RedemptionModel
     $this->pdo->query($query);
   }
 
+  public function findRedemptions($searchValue)
+  {
+    $query = "SELECT user.username, reward.reward_points, redemption.redemption_code, redemption.date_redeemed FROM redemption INNER JOIN user ON redemption.user_id = user.user_id INNER JOIN reward ON redemption.reward_id = reward.reward_id WHERE user.username LIKE '%$searchValue%' OR CAST(reward.reward_points AS SIGNED) = '$searchValue' OR redemption_code LIKE '%$searchValue%' OR date_redeemed LIKE '%$searchValue%'";
+    $statement = $this->pdo->query($query);
+    $redemptions = $statement->fetchAll();
+    return $redemptions;
+  }
+  
+  public function deleteAllUserRedemptions($user_id)
+  {
+    $query = "DELETE FROM redemption WHERE user_id = $user_id";
+    $this->pdo->query($query);
+  }
+
   private function generateRewardCode()
   {
     $letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

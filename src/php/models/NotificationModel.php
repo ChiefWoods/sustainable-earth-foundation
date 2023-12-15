@@ -38,4 +38,10 @@ class NotificationModel
     $query = "INSERT INTO notification (user_id, category, content) VALUES ($user_id, '$category', '$content')";
     $this->pdo->query($query);
   }
+
+  public function deleteAllUserNotifications($user_id)
+  {
+    $query = "DELETE FROM notification WHERE user_id = $user_id";
+    $this->pdo->query($query);
+  }
 }

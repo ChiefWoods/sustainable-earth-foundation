@@ -35,4 +35,10 @@ class PostModel
     $query = "DELETE FROM post WHERE title = '$title' AND post_text = '$post_text'";
     $statement = $this->pdo->query($query);
   }
+
+  public function deleteAllUserPosts($user_id)
+  {
+    $query = "DELETE FROM post WHERE user_id = $user_id";
+    $statement = $this->pdo->query($query);
+  }
 }
