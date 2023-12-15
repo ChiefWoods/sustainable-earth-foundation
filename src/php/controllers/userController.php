@@ -8,8 +8,10 @@ class UserController
   private $redemptionModel;
   private $postModel;
   private $notificationModel;
+  private $upvoteModel;
+  private $downvoteModel;
 
-  public function __construct($pdo, $userModel, $rewardModel, $redemptionModel, $postModel, $notificationModel)
+  public function __construct($pdo, $userModel, $rewardModel, $redemptionModel, $postModel, $notificationModel, $upvoteModel, $downvoteModel)
   {
     $this->pdo = $pdo;
     $this->userModel = $userModel;
@@ -17,6 +19,8 @@ class UserController
     $this->redemptionModel = $redemptionModel;
     $this->postModel = $postModel;
     $this->notificationModel = $notificationModel;
+    $this->upvoteModel = $upvoteModel;
+    $this->downvoteModel = $downvoteModel;
   }
 
   public function generateUsersTable()
@@ -204,6 +208,8 @@ class UserController
     $this->redemptionModel->deleteAllUserRedemptions($user_id);
     $this->postModel->deleteAllUserPosts($user_id);
     $this->notificationModel->deleteAllUserNotifications($user_id);
+    $this->upvoteModel->removeAllUpvotes($user_id);
+    $this->downvoteModel->removeAllDownvotes($user_id);
     echo json_encode(['status' => 'success', 'message' => 'User deleted successfully!']);
   }
 

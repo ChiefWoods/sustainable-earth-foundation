@@ -9,9 +9,25 @@ class PostModel
     $this->pdo = $pdo;
   }
 
+  public function getPostId($title, $post_text)
+  {
+    $query = "SELECT post_id FROM post WHERE title = '$title' AND post_text = '$post_text'";
+    $statement = $this->pdo->query($query);
+    $post = $statement->fetch();
+    return $post['post_id'];
+  }
+
+  public function getUserId($post_id)
+  {
+    $query = "SELECT user_id FROM post WHERE post_id = $post_id";
+    $statement = $this->pdo->query($query);
+    $post = $statement->fetch();
+    return $post['user_id'];
+  }
+
   public function getAllPosts()
   {
-    $query = "SELECT * FROM post";
+    $query = "SELECT * FROM post ORDER BY upvotes DESC";
     $statement = $this->pdo->query($query);
     $posts = $statement->fetchAll();
     return $posts;
@@ -39,6 +55,30 @@ class PostModel
   public function deleteAllUserPosts($user_id)
   {
     $query = "DELETE FROM post WHERE user_id = $user_id";
+    $statement = $this->pdo->query($query);
+  }
+
+  public function upvotePost($title, $post_text)
+  {
+    $query = "UPDATE post SET upvotes = upvotes + 1 WHERE title = '$title' AND post_text = '$post_text'";
+    $statement = $this->pdo->query($query);
+  }
+
+  public function downvotePost($title, $post_text)
+  {
+    $query = "UPDATE post SET downvotes = downvotes + 1 WHERE title = '$title' AND post_text = '$post_text'";
+    $statement = $this->pdo->query($query);
+  }
+
+  public function removeUpvote($title, $post_text)
+  {
+    $query = "UPDATE post SET upvotes = upvotes - 1 WHERE title = '$title' AND post_text = '$post_text'";
+    $statement = $this->pdo->query($query);
+  }
+
+  public function removeDownvote($title, $post_text)
+  {
+    $query = "UPDATE post SET downvotes = downvotes - 1 WHERE title = '$title' AND post_text = '$post_text'";
     $statement = $this->pdo->query($query);
   }
 }

@@ -9,15 +9,19 @@ require_once '../models/RewardModel.php';
 require_once '../models/RedemptionModel.php';
 require_once '../models/NotificationModel.php';
 require_once '../models/PostModel.php';
+require_once '../models/UpvoteModel.php';
+require_once '../models/DownvoteModel.php';
 
 $userModel = new UserModel($pdo);
 $rewardModel = new RewardModel($pdo);
 $redemptionModel = new RedemptionModel($pdo);
 $notificationModel = new NotificationModel($pdo);
 $postModel = new PostModel($pdo);
-$userController = new UserController($pdo, $userModel, $rewardModel, $redemptionModel, $postModel, $notificationModel);
+$upvoteModel = new UpvoteModel($pdo);
+$downvoteModel = new DownvoteModel($pdo);
+$userController = new UserController($pdo, $userModel, $rewardModel, $redemptionModel, $postModel, $notificationModel, $upvoteModel, $downvoteModel);
 $rewardController = new RewardController($pdo, $userModel, $rewardModel, $redemptionModel, $notificationModel);
-$postController = new PostController($pdo, $postModel, $userModel);
+$postController = new PostController($pdo, $postModel, $userModel, $upvoteModel, $downvoteModel, $notificationModel);
 $redemptionController = new RedemptionController($pdo, $redemptionModel, $userModel, $rewardModel);
 
 function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $userModel)
@@ -151,5 +155,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userController->findUsers($_POST['search_value']);
   } elseif (isset($_POST['action']) && $_POST['action'] === 'find_redemptions') {
     $redemptionController->findRedemptions($_POST['search_value']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'upvote_post') {
+    $postController->upvotePost($_POST['title'], $_POST['post_text']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'downvote_post') {
+    $postController->downvotePost($_POST['title'], $_POST['post_text']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'remove_upvote') {
+    $postController->removeUpvote($_POST['title'], $_POST['post_text']);
+  } elseif (isset($_POST['action']) && $_POST['action'] === 'remove_downvote') {
+    $postController->removeDownvote($_POST['title'], $_POST['post_text']);
   }
 }

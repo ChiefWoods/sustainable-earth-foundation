@@ -5,12 +5,18 @@ class PostController
   private $pdo;
   private $postModel;
   private $userModel;
+  private $upvoteModel;
+  private $downvoteModel;
+  private $notificationModel;
 
-  public function __construct($pdo, $postModel, $userModel)
+  public function __construct($pdo, $postModel, $userModel, $upvoteModel, $downvoteModel, $notificationModel)
   {
     $this->pdo = $pdo;
     $this->postModel = $postModel;
     $this->userModel = $userModel;
+    $this->upvoteModel = $upvoteModel;
+    $this->downvoteModel = $downvoteModel;
+    $this->notificationModel = $notificationModel;
   }
 
   public function generateCreatePostBtn()
@@ -30,6 +36,12 @@ class PostController
     HTML;
 
     $posts = $this->postModel->getAllPosts();
+    
+    if (isset($_SESSION['username'])) {
+      $user_id = $this->userModel->getUserId($_SESSION['username']);
+    } else {
+      $user_id = false;
+    }
 
     if (count($posts) > 0) {
       foreach ($posts as $post) {
@@ -47,29 +59,57 @@ class PostController
             </div>
         HTML;
 
-        echo isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0
-          ? <<<HTML
-                <div class="actions">
-                  <button class="upvote-btn">
-                    <img src="../../assets/icons/upvote/upvote.svg" alt="Upvote" class="action-icon">
-                  </button>
-                  <button class="downvote-btn">
-                    <img src="../../assets/icons/downvote/downvote.svg" alt="Downvote" class="action-icon">
-                  </button>
-                </div>
-              </div>
-            HTML
-          : <<<HTML
-                <div class="actions">
-                  <button class="edit-btn">
-                    <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="action-icon">
-                  </button>
-                  <button class="delete-btn">
-                    <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
+        if ($user_id) {
+          if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0) {
+            echo <<<HTML
+              <div class="actions">
+                <button class="upvote-btn">
+            HTML;
+            if ($this->upvoteModel->doesUpvoteExist($user_id, $post['post_id'])) {
+              echo <<<HTML
+                  <img src="../../assets/icons/upvote/upvote_selected.svg" alt="Upvote-selected" class="action-icon">
+                </button>
+              HTML;
+            } else {
+              echo <<<HTML
+                  <img src="../../assets/icons/upvote/upvote.svg" alt="Upvote" class="action-icon">
+                </button>
+              HTML;
+            }
+            if ($this->downvoteModel->doesDownvoteExist($user_id, $post['post_id'])) {
+              echo <<<HTML
+                <button class="downvote-btn">
+                  <img src="../../assets/icons/downvote/downvote_selected.svg" alt="Downvote-selected" class="action-icon">
+              HTML;
+            } else {
+              echo <<<HTML
+                <button class="downvote-btn">
+                  <img src="../../assets/icons/downvote/downvote.svg" alt="Downvote" class="action-icon">
+              HTML;
+            }
+            echo <<<HTML
                   </button>
                 </div>
               </div>
             HTML;
+          } else {
+            echo <<<HTML
+                  <div class="actions">
+                    <button class="edit-btn">
+                      <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="action-icon">
+                    </button>
+                    <button class="delete-btn">
+                      <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
+                    </button>
+                  </div>
+                </div>
+              HTML;
+          }
+        } else {
+          echo <<<HTML
+            </div>
+          HTML;
+        }
       }
     } else {
       echo <<<HTML
@@ -156,7 +196,7 @@ class PostController
     $this->postModel->createPost($user_id, $title, $postText);
     echo json_encode(['status' => 'success', 'message' => 'Post created successfully!']);
   }
-  
+
   public function editPost($old_title, $old_post_text, $new_title, $new_post_text)
   {
     $this->postModel->editPost($old_title, $old_post_text, $new_title, $new_post_text);
@@ -165,7 +205,54 @@ class PostController
 
   public function deletePost($title, $post_text)
   {
+    $post_id = $this->postModel->getPostId($title, $post_text);
     $this->postModel->deletePost($title, $post_text);
+    $this->upvoteModel->removeAllUpvotes($post_id);
+    $this->downvoteModel->removeAllDownvotes($post_id);
     echo json_encode(['status' => 'success', 'message' => 'Post deleted successfully!']);
+  }
+
+  public function upvotePost($title, $post_text)
+  {
+    session_start();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
+    $post_id = $this->postModel->getPostId($title, $post_text);
+    $post_owner_id = $this->postModel->getUserId($post_id);
+    $post_owner_username = $this->userModel->getUsername($post_owner_id);
+    $this->postModel->upvotePost($title, $post_text);
+    $this->upvoteModel->createUpvote($user_id, $post_id);
+    $this->userModel->incrementPoints($post_owner_username);
+    $this->notificationModel->createNotification($post_owner_id, 'upvote', ['title' => $title]);
+    echo json_encode(['status' => 'success', 'message' => 'Post upvoted successfully!']);
+  }
+
+  public function downvotePost($title, $post_text)
+  {
+    session_start();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
+    $post_id = $this->postModel->getPostId($title, $post_text);
+    $this->postModel->downvotePost($title, $post_text);
+    $this->downvoteModel->createDownvote($user_id, $post_id);
+    echo json_encode(['status' => 'success', 'message' => 'Post downvoted successfully!']);
+  }
+
+  public function removeUpvote($title, $post_text)
+  {
+    session_start();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
+    $post_id = $this->postModel->getPostId($title, $post_text);
+    $this->postModel->removeUpvote($title, $post_text);
+    $this->upvoteModel->removeUpvote($user_id, $post_id);
+    echo json_encode(['status' => 'success', 'message' => 'Post upvote removed successfully!']);
+  }
+
+  public function removeDownvote($title, $post_text)
+  {
+    session_start();
+    $user_id = $this->userModel->getUserId($_SESSION['username']);
+    $post_id = $this->postModel->getPostId($title, $post_text);
+    $this->postModel->removeDownvote($title, $post_text);
+    $this->downvoteModel->removeDownvote($user_id, $post_id);
+    echo json_encode(['status' => 'success', 'message' => 'Post downvote removed successfully!']);
   }
 }

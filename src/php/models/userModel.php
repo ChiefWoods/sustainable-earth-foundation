@@ -136,4 +136,10 @@ class UserModel
     $users = $statement->fetchAll();
     return $users;
   }
+
+  public function incrementPoints($username)
+  {
+    $query = "UPDATE user SET user_points = user_points + 1 WHERE username = '$username'";
+    $this->pdo->query($query);
+  }
 }

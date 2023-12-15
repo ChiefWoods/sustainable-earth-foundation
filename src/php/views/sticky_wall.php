@@ -16,8 +16,11 @@
   require_once '../controllers/PostController.php';
   require_once '../models/PostModel.php';
   require_once '../models/UserModel.php';
+  require_once '../models/UpvoteModel.php';
+  require_once '../models/DownvoteModel.php';
+  require_once '../models/NotificationModel.php';
 
-  $postController = new PostController($pdo, new PostModel($pdo), new UserModel($pdo));
+  $postController = new PostController($pdo, new PostModel($pdo), new UserModel($pdo), new UpvoteModel($pdo), new DownvoteModel($pdo), new NotificationModel($pdo));
   ?>
 </head>
 
