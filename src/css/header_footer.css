@@ -339,3 +339,10 @@ footer > div:last-child {
 .github-icon {
   height: 25px;
 }
+
+@media (max-width: 1200px) {
+  .branding .divider,
+  .branding h1 {
+    display: none;
+  }
+}
