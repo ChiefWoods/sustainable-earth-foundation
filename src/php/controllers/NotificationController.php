@@ -18,35 +18,45 @@ class NotificationController
     $user_id = $this->userModel->getUserId($_SESSION['username']);
     $notifications = $this->notificationModel->getLatestNotifications($user_id);
 
-    foreach ($notifications as $notification) {
-      $category = $notification['category'];
-
-      switch ($category) {
-        case 'upvote':
-          $href = "../views/sticky_wall.php";
-          $src = "../../assets/icons/upvote/upvote_selected_blue.svg";
-          $alt = "Upvoted";
-          $class = "upvote-icon";
-          break;
-        case 'reward':
-          $href = "../views/profile.php";
-          $src = "../../assets/icons/reward/reward_blue.svg";
-          $alt = "Reward";
-          $class = "reward-icon";
-          break;
-        case 'points':
-          $href = "../views/rewards.php";
-          $src = "../../assets/icons/points/points_blue.svg";
-          $alt = "Points";
-          $class = "points-icon";
-          break;
-      }
-
+    if (count($notifications) > 0) {
+      foreach ($notifications as $notification) {
+        $category = $notification['category'];
+  
+        switch ($category) {
+          case 'upvote':
+            $href = "../views/sticky_wall.php";
+            $src = "../../assets/icons/upvote/upvote_selected_blue.svg";
+            $alt = "Upvoted";
+            $class = "upvote-icon";
+            break;
+          case 'reward':
+            $href = "../views/profile.php";
+            $src = "../../assets/icons/reward/reward_blue.svg";
+            $alt = "Reward";
+            $class = "reward-icon";
+            break;
+          case 'points':
+            $href = "../views/rewards.php";
+            $src = "../../assets/icons/points/points_blue.svg";
+            $alt = "Points";
+            $class = "points-icon";
+            break;
+        }
+  
+        echo <<<HTML
+        <li>
+          <a href="$href">
+            <img src="$src" alt="$alt" class="icon $class">
+            <span class="dropdown-content">$notification[content]</span>
+          </a>
+        </li>
+        HTML;
+      }  
+    } else {
       echo <<<HTML
       <li>
-        <a href="$href">
-          <img src="$src" alt="$alt" class="icon $class">
-          <span class="dropdown-content">$notification[content]</span>
+        <a href="#">
+          <span class="dropdown-content">No notifications available.</span>
         </a>
       </li>
       HTML;
