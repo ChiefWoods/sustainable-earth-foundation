@@ -213,9 +213,13 @@ function updateTable(data) {
   const tbody = document.createElement('tbody');
   const allTr = [];
 
-  data.forEach((row) => {
-    allTr.push(createTr(row));
-  });
+  if (data.length > 0) {
+    data.forEach((row) => {
+      allTr.push(createTr(row));
+    });
+  } else {
+    allTr.push(createEmptyTr());
+  }
 
   tbody.append(...allTr);
 
@@ -295,6 +299,16 @@ function createTr(row) {
 
     return tr;
   }
+}
+
+function createEmptyTr() {
+  const tr = document.createElement('tr');
+  const td = document.createElement('td');
+  td.colSpan = 5;
+  td.textContent = 'No results found';
+  tr.append(td);
+
+  return tr;
 }
 
 function createActionBtn(action) {
@@ -386,7 +400,7 @@ deleteBtn.addEventListener('click', () => {
   }
 });
 
-searchBar.addEventListener('submit', e => {
+searchInput.addEventListener('input', e => {
   e.preventDefault();
 
   const searchValue = searchInput.value;
