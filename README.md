@@ -20,23 +20,25 @@ Built together with Xiao Hui.
 
 ### Languages
 
-- [![HTML5](https://img.shields.io/badge/HTML5-white?style=for-the-badge&logo=html5)](https://html5.org/)
-- [![CSS3](https://img.shields.io/badge/CSS3-306AF1?style=for-the-badge&logo=css3)](https://www.w3.org/Style/CSS/Overview.en.html)
-- [![JavaScript](https://img.shields.io/badge/Javascript-black?style=for-the-badge&logo=javascript)](https://js.org/index.html)
+- [![HTML5](https://img.shields.io/badge/HTML5-white?style=for-the-badge&logo=html5&logoColor=e65127)](https://html5.org/)
+- [![CSS3](https://img.shields.io/badge/CSS3-white?style=for-the-badge&logo=css3&logoColor=306AF1)](https://www.w3.org/Style/CSS/Overview.en.html)
+- [![JavaScript](https://img.shields.io/badge/Javascript-383936?style=for-the-badge&logo=javascript)](https://js.org/index.html)
 - [![PHP](https://img.shields.io/badge/PHP-793862?style=for-the-badge&logo=php)](https://www.php.net/)
-- [![MariaDB](https://img.shields.io/badge/MariaDB-C0765A?style=for-the-badge&logo=mariadb)](https://mariadb.org/)
+- [![MariaDB](https://img.shields.io/badge/MariaDB-1f305f?style=for-the-badge&logo=mariadb&logoColor=c0765a)](https://mariadb.org/)
 
 ### Tools
 
 - [![!Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-2c2c32?style=for-the-badge&logo=visual-studio-code&logoColor=007ACC)](https://code.visualstudio.com/)
-- [![XAMPP](https://img.shields.io/badge/XAMPP-2a5d84?style=for-the-badge&logo=xampp)](https://www.apachefriends.org/)
-- [![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-f89c0e?style=for-the-badge&logo=phpmyadmin)](https://www.phpmyadmin.net/)
+- [![XAMPP](https://img.shields.io/badge/XAMPP-white?style=for-the-badge&logo=xampp)](https://www.apachefriends.org/)
+- [![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-f8a11b?style=for-the-badge&logo=phpmyadmin&logoColor=6C78AF)](https://www.phpmyadmin.net/)
+- [![Draw.io](https://img.shields.io/badge/draw.io-white?style=for-the-badge&logo=diagrams.net)](https://www.drawio.com/)
+
 
 ## Getting Started
 
 ### Prerequisites
 
-The Apache and MySQL modules from [XAMPP](https://www.apachefriends.org/) are required to load the database.
+The Apache and MySQL modules from XAMPP are required to load the database.
 
 ### Setup
 
