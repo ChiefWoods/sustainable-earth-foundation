@@ -1,5 +1,4 @@
 <?php
-require_once '../components/connect.php';
 require_once '../controllers/NotificationController.php';
 require_once '../models/UserModel.php';
 require_once '../models/NotificationModel.php';
@@ -36,7 +35,7 @@ $notificationController = new NotificationController($pdo, new UserModel($pdo), 
     <button id="notification-btn">
       <img src="assets/icons/notification/notification_blue.svg" alt="Notification" class="icon" id="notification-icon">
     </button>
-    <a href="php/components/session.php?logout=true" id="logout-btn">
+    <a href="php/util/session.php?logout=true" id="logout-btn">
       <img src="assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
     </a>
   </nav>
@@ -54,7 +53,7 @@ $notificationController = new NotificationController($pdo, new UserModel($pdo), 
     <a href="php/views/profile.php" id="profile-btn">
       <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile picture" class="icon" id="profile-icon">
     </a>
-    <a href="php/components/session.php?logout=true" id="logout-btn">
+    <a href="php/util/session.php?logout=true" id="logout-btn">
       <img src="assets/icons/logout/logout_blue.svg" alt="Logout" class="icon" id="logout-icon">
     </a>
   </nav>

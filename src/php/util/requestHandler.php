@@ -1,5 +1,5 @@
 <?php
-require_once '../components/connect.php';
+require_once '../util/database.php';
 require_once '../controllers/UserController.php';
 require_once '../controllers/RewardController.php';
 require_once '../controllers/PostController.php';
@@ -32,34 +32,34 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
   $phone = str_replace("'", "", sanitise($pdo, $phone));
 
   if (!preg_match("/^[a-zA-Z][a-zA-Z0-9]{2,}$/", $username)) {
-    $errors[] = "Username has to be at least 3 characters long, starts with an alphabet, and can only contain alphanumeric characters";
+    $errors[] = "Username has to be at least 3 characters long, starts with an alphabet, and can only contain alphanumeric characters.";
   } else {
     $statement = $userModel->getAllUsersByUsername($username);
 
     if ($statement->rowCount()) {
-      $errors[] = "Username already exists";
+      $errors[] = "Username already exists.";
     }
   }
 
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Invalid email format";
+    $errors[] = "Invalid email format.";
   } else {
     $statement = $userModel->getAllUsersByEmail($email);
 
     if ($statement->rowCount()) {
-      $errors[] = "Email already exists";
+      $errors[] = "Email already exists.";
     }
   }
 
   if ($phone != '' && !preg_match("/^[0-9]{10}$/", $phone)) {
-    $errors[] = "Phone number should consist of 10 digits";
+    $errors[] = "Phone number should consist of 10 digits.";
   }
 
   if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $password)) {
-    $errors[] = "Password needs to be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter";
+    $errors[] = "Password needs to be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter.";
   } else {
     if ($password !== $confirm) {
-      $errors[] = "Passwords do not match";
+      $errors[] = "Passwords do not match.";
     }
   }
 
@@ -91,7 +91,7 @@ function verifyUser($pdo, $username, $password, $userModel, $rewardModel, $notif
   $statement = $userModel->getAllUsersByUsername($username);
 
   if (!$statement->rowCount()) {
-    echo "Username does not exist<br>";
+    echo "Username does not exist.<br>";
     echo "<a href='php/views/login.php'>Go back to login page.</a>";
   } else {
     $row = $statement->fetch();
@@ -113,7 +113,7 @@ function verifyUser($pdo, $username, $password, $userModel, $rewardModel, $notif
 
       header("Location: ../views/index.php");
     } else {
-      echo "Incorrect password<br>";
+      echo "Incorrect password.<br>";
       echo "<a href='../views/login.php'>Go back to login page.</a>";
     }
   }

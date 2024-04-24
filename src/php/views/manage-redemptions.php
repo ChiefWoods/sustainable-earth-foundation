@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/web2202_web_programming/sustainable-earth-foundation/src/">
   <title>Manage Redemptions | Sustainable Earth Foundation</title>
-  <link rel="stylesheet" href="css/header_footer.css">
+  <link rel="stylesheet" href="css/header-footer.css">
   <link rel="stylesheet" href="css/manage.css">
   <link rel="stylesheet" href="css/table.css">
   <link rel="stylesheet" href="css/dialog.css">
   <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
   <script src="js/manage.js" defer></script>
   <?php
-  require_once '../components/session.php';
-  require_once '../components/connect.php';
+  require_once '../util/session.php';
+  require_once '../util/database.php';
   require_once '../controllers/RedemptionController.php';
   require_once '../models/RedemptionModel.php';
   require_once '../models/UserModel.php';

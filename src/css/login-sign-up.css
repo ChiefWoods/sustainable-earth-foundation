@@ -30,7 +30,7 @@ main form > div {
   width: 100%;
 }
 
-main form > div > h2 {
+main form > h2 {
   font-size: var(--font-l);
 }
 

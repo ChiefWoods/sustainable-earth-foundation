@@ -25,7 +25,7 @@ function toggleOverlay() {
 
 function createPost(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -55,7 +55,7 @@ function createPost(title, postText) {
 
 function editPost(oldTitle, oldText, title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -87,7 +87,7 @@ function editPost(oldTitle, oldText, title, postText) {
 
 function deletePost(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -117,7 +117,7 @@ function deletePost(title, postText) {
 
 function upvotePost(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -144,7 +144,7 @@ function upvotePost(title, postText) {
 
 function downvotePost(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -171,7 +171,7 @@ function downvotePost(title, postText) {
 
 function removeUpvote(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -199,7 +199,7 @@ function removeUpvote(title, postText) {
 
 function removeDownvote(title, postText) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {

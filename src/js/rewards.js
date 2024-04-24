@@ -16,7 +16,7 @@ function toggleOverlay() {
 
 function redeemReward(rewardName, rewardPoints) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {

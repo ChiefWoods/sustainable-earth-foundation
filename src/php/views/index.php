@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/web2202_web_programming/sustainable-earth-foundation/src/">
   <title>Home | Sustainable Earth Foundation</title>
-  <link rel="stylesheet" href="css/header_footer.css">
+  <link rel="stylesheet" href="css/header-footer.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
-  <?php require_once '../components/session.php'; ?>
+  <?php
+  require_once '../util/session.php';
+  require_once '../util/database.php';
+  ?>
+
 </head>
 
 <body>

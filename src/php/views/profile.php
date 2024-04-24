@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/web2202_web_programming/sustainable-earth-foundation/src/">
   <title>Profile | Sustainable Earth Foundation</title>
-  <link rel="stylesheet" href="css/header_footer.css">
+  <link rel="stylesheet" href="css/header-footer.css">
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="css/table.css">
   <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
   <script src="js/profile.js" defer></script>
   <?php
-  require_once '../components/session.php';
-  require_once '../components/connect.php';
+  require_once '../util/session.php';
+  require_once '../util/database.php';
   require_once '../controllers/UserController.php';
   require_once '../models/UserModel.php';
   require_once '../models/RewardModel.php';
@@ -31,7 +31,7 @@
   <?php require_once 'templates/header.php' ?>
   <main>
     <section id="profile">
-      <form action="php/components/requestHandler.php" method="post" enctype="multipart/form-data" id="user">
+      <form action="php/util/requestHandler.php" method="post" enctype="multipart/form-data" id="user">
         <div id="image-btn">
           <img src="<?php echo $userController->getProfilePicture($_SESSION['username']); ?>" alt="Profile Picture" id="profile-image">
           <input type="file" name="profile_picture" id="profile-picture">
@@ -40,7 +40,7 @@
         <span id="points">Points: <?php echo $userController->getUserPoints($_SESSION['username']); ?></span>
       </form>
       <div id="info">
-        <form action="php/components/requestHandler.php" method="post">
+        <form action="php/util/requestHandler.php" method="post">
           <h2>Profile Info</h2>
           <div>
             <label for="email">Email</label>
@@ -50,7 +50,7 @@
           </div>
           <button type="submit" class="btn update-btn">Update Info</button>
         </form>
-        <form action="php/components/requestHandler.php" method="post">
+        <form action="php/util/requestHandler.php" method="post">
           <h2>Change Password</h2>
           <div>
             <label for="current">Current Password</label>

@@ -31,7 +31,7 @@ function toggleOverlay() {
 
 function editUser(username, phone, userPoints) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -62,7 +62,7 @@ function editUser(username, phone, userPoints) {
 
 function editRedemption(oldCode, newCode, date) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -93,7 +93,7 @@ function editRedemption(oldCode, newCode, date) {
 
 function deleteUser(username) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -122,7 +122,7 @@ function deleteUser(username) {
 
 function deleteRedemption(code) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -151,7 +151,7 @@ function deleteRedemption(code) {
 
 function findUsers(searchValue) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -180,7 +180,7 @@ function findUsers(searchValue) {
 
 function findRedemptions(searchValue) {
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../components/requestHandler.php', true);
+  xhr.open('POST', 'php/util/requestHandler.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.onload = function () {
@@ -316,7 +316,7 @@ function createActionBtn(action) {
   button.className = `action-btn ${action}-btn`;
 
   const img = document.createElement('img');
-  img.src = `../../assets/icons/${action}/${action}.svg`;
+  img.src = `assets/icons/${action}/${action}.svg`;
   img.alt = action.charAt(0).toUpperCase() + action.slice(1);
   img.className = 'icon';
 
