@@ -1,27 +1,27 @@
-<script src="../../js/footer.js" defer></script>
+<script src="js/footer.js" defer></script>
 <footer>
   <div>
     <div class="head">
       <div id="links-socials">
-        <img src="../../assets/images/logo.png" alt="Logo" class="logo">
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
         <div id="quick-links">
           <div>
-            <a href="../views/index.php#hero">Goals</a>
-            <a href="../views/index.php#targets-indicators">Targets & Indicators</a>
-            <a href="../views/index.php#timeline">Timeline</a>
+            <a href="php/index.php#hero">Goals</a>
+            <a href="php/index.php#targets-indicators">Targets & Indicators</a>
+            <a href="php/index.php#timeline">Timeline</a>
           </div>
           <div>
-            <a href="../views/index.php#purposes">Purposes</a>
-            <a href="../views/index.php#upcoming">Events</a>
+            <a href="php/index.php#purposes">Purposes</a>
+            <a href="php/index.php#upcoming">Events</a>
           </div>
         </div>
         <div id="social-links">
           <span>Follow Us</span>
           <a href="#">
-            <img src="../../assets/icons/facebook/facebook_blue.svg" alt="Facebook" class="social-icon">
+            <img src="assets/icons/facebook/facebook_blue.svg" alt="Facebook" class="social-icon">
           </a>
           <a href="#">
-            <img src="../../assets/icons/instagram/instagram_white.svg" alt="Instagram" class="social-icon">
+            <img src="assets/icons/instagram/instagram_white.svg" alt="Instagram" class="social-icon">
           </a>
         </div>
       </div>
@@ -53,7 +53,7 @@
       </script> ChiefWoods & xhtime
     </span>
     <a class="github-link" href="https://github.com/ChiefWoods/sustainable-earth-foundation" target="_blank">
-      <img src="../../assets/icons/github/github.svg" class="github-icon" alt="GitHub">
+      <img src="assets/icons/github/github.svg" class="github-icon" alt="GitHub">
     </a>
   </div>
 </footer>

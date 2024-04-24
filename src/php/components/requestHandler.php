@@ -68,7 +68,7 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
       echo $error . "<br>";
     }
 
-    echo "<a href='../views/sign_up.php'>Go back to sign up page.</a>";
+    echo "<a href='php/views/sign-up.php'>Go back to sign up page.</a>";
   } else {
     session_start();
 
@@ -77,10 +77,10 @@ function validateSignUp($pdo, $username, $email, $phone, $password, $confirm, $u
 
     $_SESSION['username'] = $username;
     $_SESSION['is_admin'] = 0;
-    $_SESSION['profile_picture'] = '../../assets/images/default_profile_picture.png';
+    $_SESSION['profile_picture'] = 'assets/images/default_profile_picture.png';
     $_SESSION['last_activity'] = time();
 
-    header("location:../views/index.php");
+    header("Location: php/views/index.php");
   }
 }
 
@@ -92,7 +92,7 @@ function verifyUser($pdo, $username, $password, $userModel, $rewardModel, $notif
 
   if (!$statement->rowCount()) {
     echo "Username does not exist<br>";
-    echo "<a href='../views/login.php'>Go back to login page.</a>";
+    echo "<a href='php/views/login.php'>Go back to login page.</a>";
   } else {
     $row = $statement->fetch();
     $hash = $row['password'];
@@ -111,7 +111,7 @@ function verifyUser($pdo, $username, $password, $userModel, $rewardModel, $notif
         $notificationModel->createNotification($row['user_id'], 'points', ['reward_name' => $largest_reward]);
       }
 
-      header("location:../views/index.php");
+      header("Location: ../views/index.php");
     } else {
       echo "Incorrect password<br>";
       echo "<a href='../views/login.php'>Go back to login page.</a>";

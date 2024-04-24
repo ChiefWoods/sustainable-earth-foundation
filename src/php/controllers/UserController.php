@@ -60,10 +60,10 @@ class UserController
             <td class="user-points">{$user['user_points']}</td>
             <td class="edit-delete">
               <button class="action-btn edit-btn">
-                <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
+                <img src="assets/icons/edit/edit.svg" alt="Edit" class="icon">
               </button>
               <button class="action-btn delete-btn">
-                <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
+                <img src="assets/icons/delete/delete.svg" alt="Delete" class="icon">
               </button>
             </td>
           </tr>
@@ -148,7 +148,7 @@ class UserController
         $path = 'data: ' . $content_type . ';base64,' . $data;
         $this->userModel->updateProfilePicture($path, $username);
         $_SESSION['profile_picture'] = $path;
-        header("location:../views/profile.php");
+        header("Location: ../views/profile.php");
         break;
       case UPLOAD_ERR_INI_SIZE:
         echo "The uploaded file is too large";
@@ -170,7 +170,7 @@ class UserController
     session_start();
     $username = $_SESSION['username'];
     $this->userModel->updateProfileInfo($email, $phone, $username);
-    header("location:../views/profile.php");
+    header("Location: ../views/profile.php");
     echo "Profile info updated";
   }
 
@@ -181,15 +181,15 @@ class UserController
     $hash = $this->userModel->getPassword($username);
 
     if (!password_verify($current, $hash)) {
-      header("location:../views/profile.php");
+      header("Location: ../views/profile.php");
       echo "Incorrect password";
     } elseif ($new != $confirm) {
-      header("location:../views/profile.php");
+      header("Location: ../views/profile.php");
       echo "New passwords do not match";
     } else {
       $new = password_hash($new, PASSWORD_DEFAULT);
       $this->userModel->updatePassword($new, $username);
-      header("location:../views/profile.php");
+      header("Location: ../views/profile.php");
       echo "Password updated";
     }
   }

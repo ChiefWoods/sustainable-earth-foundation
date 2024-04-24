@@ -48,10 +48,10 @@ class RedemptionController
             <td class="redemption-date">$redemption[date_redeemed]</td>
             <td class="edit-delete">
               <button class="action-btn edit-btn">
-                <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="icon">
+                <img src="assets/icons/edit/edit.svg" alt="Edit" class="icon">
               </button>
               <button class="action-btn delete-btn">
-                <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="icon">
+                <img src="assets/icons/delete/delete.svg" alt="Delete" class="icon">
               </button>
             </td>
           </tr>

@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/web2202_web_programming/sustainable-earth-foundation/src/">
   <title>Home | Sustainable Earth Foundation</title>
-  <link rel="stylesheet" href="../../css/header_footer.css">
-  <link rel="stylesheet" href="../../css/home.css">
-  <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/header_footer.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
   <?php require_once '../components/session.php'; ?>
 </head>
 
 <body>
-  <?php require_once '../components/header.php'; ?>
+  <?php require_once 'templates/header.php' ?>
   <main>
     <section id="hero">
       <div>
@@ -22,7 +23,7 @@
           <p>Make cities and human settlements inclusive, safe, resilient and sustainable</p>
         </div>
       </div>
-      <img src="../../assets/images/infographics.jpg" alt="Infographics">
+      <img src="assets/images/infographics.jpg" alt="Infographics">
     </section>
     <div class="after-hero">
       <section id="targets-indicators">
@@ -44,7 +45,7 @@
         </div>
       </section>
       <figure id="interlinkage">
-        <img src="../../assets/images/interlinkages.jpg" alt="Interlinkage">
+        <img src="assets/images/interlinkages.jpg" alt="Interlinkage">
         <figcaption>To achieve SDG 11, efforts must focus on strengthening capacities for planning
           for urban development, improving access to public transportation and enhancing waste
           management.</figcaption>
@@ -92,11 +93,11 @@
     <section id="purposes">
       <h2>Purposes</h2>
       <div>
-        <img src="../../assets/images/prosperity.png" alt="Prosperity" class="purposes-img">
-        <img src="../../assets/images/protect_earth.png" alt="Protect the Earth" class="purposes-img">
-        <img src="../../assets/images/health.png" alt="Love Health" class="purposes-img">
-        <img src="../../assets/images/poverty.png" alt="Poverty" class="purposes-img">
-        <img src="../../assets/images/inequality.png" alt="End Equality" class="purposes-img">
+        <img src="assets/images/prosperity.png" alt="Prosperity" class="purposes-img">
+        <img src="assets/images/protect_earth.png" alt="Protect the Earth" class="purposes-img">
+        <img src="assets/images/health.png" alt="Love Health" class="purposes-img">
+        <img src="assets/images/poverty.png" alt="Poverty" class="purposes-img">
+        <img src="assets/images/inequality.png" alt="End Equality" class="purposes-img">
       </div>
       <p>The Sustainable Development Goals (SDGs) aim to transform our world.</p>
     </section>
@@ -107,34 +108,34 @@
           <span class="event-date">Jan<br>30</span>
           <p class="event-desc">2024 ECOSOC Partnership Forum</p>
           <button>
-            <img src="../../assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
+            <img src="assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
           </button>
         </li>
         <li class="event">
           <span class="event-date">Sep<br>13</span>
           <p class="event-desc">Launch of the First Global Report on Climate and SDGs Synergies</p>
           <button>
-            <img src="../../assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
+            <img src="assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
           </button>
         </li>
         <li class="event">
           <span class="event-date">Sep<br>19</span>
           <p class="event-desc">2023 SDG Summit</p>
           <button>
-            <img src="../../assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
+            <img src="assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
           </button>
         </li>
         <li class="event">
           <span class="event-date">Oct<br>12</span>
           <p class="event-desc">Workshop - Building Capacity and Scaling Up Adoption of STI4SDGs Roadmaps in Africa</p>
           <button>
-            <img src="../../assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
+            <img src="assets/icons/chevron_triple_right/chevron_triple_right.svg" alt="Chevron">
           </button>
         </li>
       </ul>
     </section>
   </main>
-  <?php require_once '../components/footer.php'; ?>
+  <?php require_once 'templates/footer.php' ?>
 </body>
 
 </html>

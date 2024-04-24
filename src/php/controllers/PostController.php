@@ -23,7 +23,7 @@ class PostController
   {
     echo <<<HTML
       <button id="create-post-btn" class="btn">
-        <img src="../../assets/icons/add_post/add_post_white.svg" alt="Create Post">
+        <img src="assets/icons/add_post/add_post_white.svg" alt="Create Post">
         <span>Create Post</span>
       </button>
     HTML;
@@ -67,24 +67,24 @@ class PostController
             HTML;
             if ($this->upvoteModel->doesUpvoteExist($user_id, $post['post_id'])) {
               echo <<<HTML
-                  <img src="../../assets/icons/upvote/upvote_selected.svg" alt="Upvote-selected" class="action-icon">
+                  <img src="assets/icons/upvote/upvote_selected.svg" alt="Upvote-selected" class="action-icon">
                 </button>
               HTML;
             } else {
               echo <<<HTML
-                  <img src="../../assets/icons/upvote/upvote.svg" alt="Upvote" class="action-icon">
+                  <img src="assets/icons/upvote/upvote.svg" alt="Upvote" class="action-icon">
                 </button>
               HTML;
             }
             if ($this->downvoteModel->doesDownvoteExist($user_id, $post['post_id'])) {
               echo <<<HTML
                 <button class="downvote-btn">
-                  <img src="../../assets/icons/downvote/downvote_selected.svg" alt="Downvote-selected" class="action-icon">
+                  <img src="assets/icons/downvote/downvote_selected.svg" alt="Downvote-selected" class="action-icon">
               HTML;
             } else {
               echo <<<HTML
                 <button class="downvote-btn">
-                  <img src="../../assets/icons/downvote/downvote.svg" alt="Downvote" class="action-icon">
+                  <img src="assets/icons/downvote/downvote.svg" alt="Downvote" class="action-icon">
               HTML;
             }
             echo <<<HTML
@@ -96,10 +96,10 @@ class PostController
             echo <<<HTML
                   <div class="actions">
                     <button class="edit-btn">
-                      <img src="../../assets/icons/edit/edit.svg" alt="Edit" class="action-icon">
+                      <img src="assets/icons/edit/edit.svg" alt="Edit" class="action-icon">
                     </button>
                     <button class="delete-btn">
-                      <img src="../../assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
+                      <img src="assets/icons/delete/delete.svg" alt="Delete" class="action-icon">
                     </button>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ class PostController
         <div class="dialog-top">
           <h3 class="dialog-title">Create Post</h3>
           <button class="close-btn">
-            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+            <img src="assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
           </button>
         </div>
         <form class="dialog-bottom">
@@ -152,7 +152,7 @@ class PostController
         <div class="dialog-top">
           <h3 class="dialog-title">Edit Post</h3>
           <button class="close-btn">
-            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+            <img src="assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
           </button>
         </div>
         <form class="dialog-bottom">
@@ -175,7 +175,7 @@ class PostController
         <div class="dialog-top">
           <h3 class="dialog-title">Delete Post</h3>
           <button class="close-btn">
-            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+            <img src="assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
           </button>
         </div>
         <div class="dialog-bottom">

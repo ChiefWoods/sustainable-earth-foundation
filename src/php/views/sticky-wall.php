@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/web2202_web_programming/sustainable-earth-foundation/src/">
   <title>Sticky Wall | Sustainable Earth Foundation</title>
-  <link rel="stylesheet" href="../../css/header_footer.css">
-  <link rel="stylesheet" href="../../css/sticky_wall.css">
-  <link rel="stylesheet" href="../../css/dialog.css">
-  <link rel="shortcut icon" href="../../assets/icons/favicon.png" type="image/x-icon">
-  <script src="../../js/sticky_wall.js" defer></script>
+  <link rel="stylesheet" href="css/header_footer.css">
+  <link rel="stylesheet" href="css/sticky_wall.css">
+  <link rel="stylesheet" href="css/dialog.css">
+  <link rel="shortcut icon" href="assets/icons/favicon.png" type="image/x-icon">
+  <script src="js/sticky-wall.js" defer></script>
   <?php
   require_once '../components/session.php';
   require_once '../components/connect.php';
@@ -25,13 +26,13 @@
 </head>
 
 <body>
-  <?php require_once '../components/header.php'; ?>
+  <?php require_once 'templates/header.php' ?>
   <main>
-    <img src="../../assets/backgrounds/sticky_wall_bg.jpg" alt="Groups of people smiling">
+    <img src="assets/backgrounds/sticky_wall_bg.jpg" alt="Groups of people smiling">
     <section id="sticky-wall">
       <div id="head">
         <div id="title">
-          <img src="../../assets/icons/bulletin_board/bulletin_board.svg" alt="Sticky Wall">
+          <img src="assets/icons/bulletin_board/bulletin_board.svg" alt="Sticky Wall">
           <h2>Sticky Wall</h2>
         </div>
         <?php echo isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 0 ? $postController->generateCreatePostBtn() : ""; ?>
@@ -45,7 +46,7 @@
       $postController->generateDeleteDialog();
     } ?>
   </main>
-  <?php require_once '../components/footer.php'; ?>
+  <?php require_once 'templates/footer.php' ?>
 </body>
 
 </html>

@@ -24,20 +24,20 @@ class NotificationController
   
         switch ($category) {
           case 'upvote':
-            $href = "../views/sticky_wall.php";
-            $src = "../../assets/icons/upvote/upvote_selected_blue.svg";
+            $href = "../views/sticky-wall.php";
+            $src = "assets/icons/upvote/upvote_selected_blue.svg";
             $alt = "Upvoted";
             $class = "upvote-icon";
             break;
           case 'reward':
             $href = "../views/profile.php";
-            $src = "../../assets/icons/reward/reward_blue.svg";
+            $src = "assets/icons/reward/reward_blue.svg";
             $alt = "Reward";
             $class = "reward-icon";
             break;
           case 'points':
             $href = "../views/rewards.php";
-            $src = "../../assets/icons/points/points_blue.svg";
+            $src = "assets/icons/points/points_blue.svg";
             $alt = "Points";
             $class = "points-icon";
             break;

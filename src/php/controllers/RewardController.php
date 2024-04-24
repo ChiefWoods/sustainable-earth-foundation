@@ -65,7 +65,7 @@ class RewardController
         <div class="dialog-top">
           <h3 class="dialog-title">Redeem Reward</h3>
           <button class="close-btn">
-            <img src="../../assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
+            <img src="assets/icons/window_close/window_close_white.svg" alt="Close" class="dialog-icon close-icon">
           </button>
         </div>
         <div class="dialog-bottom">
