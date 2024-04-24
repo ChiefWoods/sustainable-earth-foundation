@@ -20,48 +20,71 @@ main form {
   gap: 20px;
   padding: 30px 50px;
   text-align: center;
-}
 
-main form > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  width: 100%;
-}
+  & > fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: none;
 
-main form > h2 {
-  font-size: var(--font-l);
-}
+    & > legend {
+      font-size: var(--font-m);
+      margin-bottom: 20px;
+    }
 
-main form > div > input {
-  padding-block: 10px;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid black;
-  width: 100%;
-}
+    & > .form-control {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
 
-main form > div > button {
-  background: var(--btn-orange);
-  width: 100%;
-  color: white;
-  width: 100%;
-  border: none;
-}
+      & > input {
+        padding-block: 10px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid black;
+        width: 100%;
 
-main form > div > button:hover {
-  background: var(--btn-hover-orange);
-}
+        &.success {
+          border-bottom-color: green;
+        }
 
-main form > a {
-  font-size: var(--font-xs);
-  text-decoration: none;
-  color: black;
-}
+        &.error {
+          border-bottom-color: red;
+        }
 
-main form > a:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  font-weight: bold;
+        & + p {
+          font-size: var(--font-xs);
+          text-align: start;
+          min-height: 40px;
+        }
+      }
+    }
+
+    & > button {
+      background: var(--btn-orange);
+      width: 100%;
+      color: white;
+      width: 100%;
+      max-width: 200px;
+      border: none;
+
+      &:hover {
+        background: var(--btn-hover-orange);
+      }
+    }
+  }
+
+  & > a {
+    font-size: var(--font-xs);
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: bold;
+    }
+  }
 }
