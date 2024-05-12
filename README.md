@@ -26,13 +26,15 @@ Built together with Xiao Hui.
 - [![PHP](https://img.shields.io/badge/PHP-793862?style=for-the-badge&logo=php)](https://www.php.net/)
 - [![MariaDB](https://img.shields.io/badge/MariaDB-1f305f?style=for-the-badge&logo=mariadb&logoColor=c0765a)](https://mariadb.org/)
 
+### Database
+
+- [![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-f8a11b?style=for-the-badge&logo=phpmyadmin&logoColor=6C78AF)](https://www.phpmyadmin.net/)
+
 ### Tools
 
 - [![!Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-2c2c32?style=for-the-badge&logo=visual-studio-code&logoColor=007ACC)](https://code.visualstudio.com/)
 - [![XAMPP](https://img.shields.io/badge/XAMPP-white?style=for-the-badge&logo=xampp)](https://www.apachefriends.org/)
-- [![phpMyAdmin](https://img.shields.io/badge/phpMyAdmin-f8a11b?style=for-the-badge&logo=phpmyadmin&logoColor=6C78AF)](https://www.phpmyadmin.net/)
 - [![Draw.io](https://img.shields.io/badge/draw.io-white?style=for-the-badge&logo=diagrams.net)](https://www.drawio.com/)
-
 
 ## Getting Started
 
@@ -43,9 +45,11 @@ The Apache and MySQL modules from XAMPP are required to load the database.
 ### Setup
 
 1. Clone the repository into the htdocs folder of XAMPP
+
 ```
 git clone https://github.com/ChiefWoods/sustainable-earth-foundation.git
 ```
+
 2. Open XAMPP Control Panel
 3. Start Apache and MySQL modules
 
